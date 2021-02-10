@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>결제하기 페이지입니다.</h1>
 </body>
 </html>
