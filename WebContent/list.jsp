@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체직원목록</title>
+<title>보경<title>
 </head>
 <body>
 	<h1>전체직원목록</h1>
