@@ -7,6 +7,15 @@
 	String clsName = request.getParameter("clsName");
 	int parmPrice = Integer.valueOf(request.getParameter("price"));
 	pageContext.setAttribute("parmPrice",parmPrice);
+	
+	
+	session.setAttribute("id", request.getParameter("id"));	
+	//상세페이지되면 바꿔야하는 것들
+	
+	// 클래스 번호
+	String clsNum = request.getParameter("clsNum");
+	pageContext.setAttribute("clsNum", clsNum);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -52,6 +61,7 @@ $(function(){
 		<tr>
 			<td>예약날짜</td>
 			<td>
+			
 				<select name = "resv_year" >
 					<option value="none" >년도</option>
 					<option value="2021" >2021</option>
@@ -163,6 +173,12 @@ $(function(){
 			<td>결제금액 </td>
 			<td><input type="text" name="totalPrice" value="0" id="totalPrice" readonly></td>
 		</tr>
+		
+		<!-- 상세페이지 나오면 바꿔야함 -->
+		<tr>
+			<td><input type="hidden" name = "clsNum" value="${clsNum }"></td>
+		</tr>
+		
 		<tr>
 			<td>&nbsp&nbsp</td>
 			<td>

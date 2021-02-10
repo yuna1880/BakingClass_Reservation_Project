@@ -17,12 +17,21 @@
 	<form method="get">
 		<tr>
 			<td>클래스명 </td>
-			<td><input type="text" name="clsName"></td>
+			<td><input type="text" name="clsName">모래성쌓기</td>
 		</tr>
 		<tr>
 			<td>1인당가격</td>
-			<td><input type="text" name="price"></td>
+			<td><input type="text" name="price">10000</td>
 		</tr>
+		<tr>
+			<td>클래스번호 </td>
+			<td><input type="text" name="clsNum" value ="10"></td>
+		</tr>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id" value = "lsh3748"></td>
+		</tr>
+		
 		<tr>
 			<td><input type="button" value="확인" onclick="test(this.form)"></td>
 		</tr>
