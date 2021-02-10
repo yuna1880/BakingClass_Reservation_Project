@@ -1,42 +1,49 @@
-package com.bc.comtroller;
+package com.bc.controller.yuna;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-
-@WebServlet("/list")
-public class ListController extends HttpServlet {
-
+@WebServlet("/yuna/MemberJoin")
+public class MemberJoinController extends HttpServlet{
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("> ListController.doGet() 시작");
+		System.out.println("> MemberJoinController.doGet() 시작");
+
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd1");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phoneNo");
+		String addr = request.getParameter("addr");
 		
+		MemberVO vo = new MemberVO(id,pwd,name,phone,addr);
 		
-		//1. DB연결하고 데이터 가져오기.
-		List<MemberVO> list = DAO.getList();
+		DAO.insert(vo);
 		
-		//2. 응답페이지(list.jsp)에 전달 (request 객체에 속성값으로 전달)
-		request.setAttribute("list", list);
+		System.out.println(vo.toString());
 		
-		//3. 페이지 전환 - 응답할 페이지 (list.jsp)로 포워딩 (전환,위임)
-		request.getRequestDispatcher("list.jsp").forward(request, response);
+		request.setAttribute("vo", vo);
+		
+		request.getRequestDispatcher("memberjoin_ok.jsp").forward(request, response);
 		
 		System.out.println("> ListController.doGet() 끝");
+		
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> ListController.doPost() 시작");
 		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 		System.out.println("> ListController.doPost() 끝");
 	}
+
 
 }

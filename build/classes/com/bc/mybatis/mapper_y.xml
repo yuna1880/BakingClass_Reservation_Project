@@ -10,6 +10,12 @@
 		SELECT * FROM MEMBER
 	</select>
 	
+	<!-- 회원가입  -->
+	<insert id="join" parameterType="com.bc.model.vo.MemberVO">
+		INSERT INTO MEMBER
+			(ID, PWD, NAME, PHONE, ADDR)
+			VALUES (#{id}, #{pwd}, #{name}, #{phone}, #{addr})
+	</insert>
 	
 	
 </mapper>
