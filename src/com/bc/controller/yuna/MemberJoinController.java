@@ -27,16 +27,18 @@ public class MemberJoinController extends HttpServlet{
 		
 		int result = DAO.insert(vo);
 		
-		if(result == 0) {
+		/* if(result == 0) {
 			System.out.println("가입 실패");
 			
 		}else {
 			System.out.println("가입 성공" + vo.toString());//회원가입 정보 출력
 			request.setAttribute("vo", vo);
-		}
+		} */
 		
-		request.getRequestDispatcher("memberjoin_ok.jsp").forward(request, response);
+		request.getRequestDispatcher("/yuna/memberjoin_ok.jsp").forward(request, response);
 
+		
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
