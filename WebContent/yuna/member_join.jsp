@@ -8,7 +8,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
-   
+<script>
+
+	function checkValue() {
+		if(!document.join_form.id.value){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		if(!document.join_form.pwd1.value){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		//비밀번호와 비밀번호 확인 입력값이 다를때
+		if(document.join_form.pwd1.value != document.join_form.pwd2.value){
+			alert("비밀번호가 일치하지 않습니다. 확인해주세요.");
+			return false;
+		}
+	
+	}
+	
+</script>  
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -17,7 +36,8 @@
     <br><br>
     
     
-    <form name="join_form" method="post" action="MemberJoin">
+    <form name="join_form" method="post" action="MemberJoin" onsubmit="return checkValue()"
+    >
 
         <!-- container -->
         <div id="container" role="main">

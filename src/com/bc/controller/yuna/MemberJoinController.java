@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
@@ -26,16 +25,18 @@ public class MemberJoinController extends HttpServlet{
 		
 		MemberVO vo = new MemberVO(id,pwd,name,phone,addr);
 		
-		DAO.insert(vo);
+		int result = DAO.insert(vo);
 		
-		System.out.println(vo.toString());
-		
-		request.setAttribute("vo", vo);
+		if(result == 0) {
+			System.out.println("가입 실패");
+			
+		}else {
+			System.out.println("가입 성공" + vo.toString());//회원가입 정보 출력
+			request.setAttribute("vo", vo);
+		}
 		
 		request.getRequestDispatcher("memberjoin_ok.jsp").forward(request, response);
-		
-		System.out.println("> ListController.doGet() 끝");
-		
+
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

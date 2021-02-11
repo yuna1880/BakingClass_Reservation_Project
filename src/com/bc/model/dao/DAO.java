@@ -19,10 +19,8 @@ public class DAO {
 	//회원가입
 	public static int insert(MemberVO vo) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		int result = ss.insert("Baking_y.join");
+		int result = ss.insert("Baking_y.join",vo);
 		ss.close();
-
-		System.out.println(result);
 		return result;
 	}
 	
