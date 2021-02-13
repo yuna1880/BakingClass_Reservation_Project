@@ -1,21 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 회원가입 페이지 --%>
+<%-- 회원수정 페이지 --%>
+<%
+	//가입했던 아이디 불러오기
+	String id = (String)session.getAttribute("userid");
+
+	String pwd = (String)request.getAttribute("pwd");
+	String name = (String)request.getAttribute("name");
+	String phone = (String)request.getAttribute("phone");
+	String addr = (String)request.getAttribute("addr");
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
+    <title>내 정보 수정</title>
 <script>
 
+	function member_update_ok(frm) {
+		//MemberUpdate_OK.jsp페이지로 이동..
+		frm.action = "MemberUpdate_OK";
+		frm.submit();
+	}
+	
 	function checkValue() {
-		if(!document.join_form.id.value){
-			alert("아이디를 입력해주세요.");
-			join_form.id.focus();
-			return false;
-		}
+		
 		if(!document.join_form.pwd1.value){
 			alert("비밀번호를 입력해주세요.");
 			return false;
@@ -33,10 +45,12 @@
 </head>
 <body>
     <br><br><br><br>
-    <h1 align="center">회원 가입</h1>
-    <br><br>
+    <h1 align="center">내 정보 수정</h1>
+    <br>
+    <p align="center">변경하실 정보를 변경하실 수 있습니다.</p>
+    <br>
     
-    <form name="join_form" method="post" action="MemberJoin" onsubmit="return checkValue()">
+    <form name="join_form" method="post" action="MemberUpdate" onsubmit="return checkValue()">
 
         <!-- container -->
         <div id="container" role="main">
@@ -56,17 +70,19 @@
                             </div> -->
 
                             <!-- 아이디, 비밀번호 -->
-                            <div class="join_row join_mobile">
-                                <h3 class="join_title"><label for="id">아이디</label></h3>
-                                <div class="int_mobile_area">
-                                    <span class="ps_box int_mobile">
-                                        <input type="text" id="id" name="id" placeholder="필수 입력사항 입니다." aria-label="아이디입력" class="int" maxlength="16">
-                                    </span>
-                                    <button type="button" class="btn_verify btn_primary" id="btnPrtsSend">
-                                        <span class="">중복확인</span>
-                                    </button>
-                                </div>
-                            </div>
+						<div class="row_group">
+	                        <div class="join_row">
+	                            <h3 class="join_title"><label for="id">아이디</label></h3>
+	                            <div class="name_wrap">
+	                                <div class="">
+	                                    <span class="ps_box box_right_space">
+	                                        <input type="text" id="id" name="id" value="${userid}" class="int" maxlength="40" readonly>
+	                                    </span>
+	                                </div>
+	                            </div>
+	                            <span class="error_next_box" id="nameMsg" style="display:none" aria-live="assertive"></span>
+	                       </div>
+
 
                             <div class="join_row">
                                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
@@ -95,7 +111,7 @@
                             <div class="name_wrap">
                                 <div class="">
                                     <span class="ps_box box_right_space">
-                                        <input type="text" id="name" name="name" placeholder="이름" aria-label="First Name" class="int" maxlength="40">
+                                        <input type="text" id="name" name="name" value="${name}" class="int" maxlength="40">
                                     </span>
                                 </div>
                             </div>
@@ -106,7 +122,7 @@
                         <div class="join_row join_mobile">
                             <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                             <span class="ps_box box_right_space">
-                                <input type="tel" id="phoneNo" name="phoneNo" placeholder="ex)010-0000-0000" title="핸드폰번호" class="int" maxlength="40">
+                                <input type="tel" id="phoneNo" name="phoneNo" value="${phone}" title="핸드폰번호" class="int" maxlength="40">
                             </span>
                             <span class="error_next_box" id="phoneMsg" style="display:none" aria-live="assertive"></span>
                         </div>
@@ -117,7 +133,7 @@
                             <div class="name_wrap">
                                 <div class="">
                                     <span class="ps_box box_right_space">
-                                        <input type="text" id="addr" name="addr" placeholder="주소입력" aria-label="주소입력" class="int" maxlength="40">
+                                        <input type="text" id="addr" name="addr" value="${addr}" class="int" maxlength="40">
                                     </span>
                                 </div>
                             </div>
@@ -126,12 +142,10 @@
                     </div>
 
                     <div class="btn_area">
-                        <button type="submit" id="btnJoin" class="btn_type btn_primary" ><span>가입하기</span></button>
-                        <button type="reset" id="reset" class="btn_type btn_primary"><span>다시입력</span></button>
-                        <button type="button" id="previous" class="btn_type btn_primary" onclick="location.href='back(-1)';"><span>이전페이지로</span></button>
-
+                    	<input type="submit" value="수정완료 " class="btn_type btn_primary" onclick="member_update_ok(this.form)">
+	          			<input type="button" value="취소" class="btn_type btn_primary" onclick="">
                     </div>
-
+                    
 
                     <br><br><br><br><br><br><br><br><br><br><br><br>
 

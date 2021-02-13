@@ -24,4 +24,22 @@ public class DAO {
 		return result;
 	}
 	
+	//로그인
+	public static MemberVO login_check(String id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		MemberVO vo = ss.selectOne("Baking_y.login",id);
+		ss.close();
+		return vo;
+	}
+	
+	//회원 정보 수정
+	public static int update(MemberVO vo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.insert("Baking_y.update",vo);
+		ss.close();
+		return result;
+	}
+	
+	//회원 탈퇴
+	
 }

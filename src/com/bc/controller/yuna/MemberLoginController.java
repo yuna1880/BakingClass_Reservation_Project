@@ -1,19 +1,22 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
+
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-
-//회원가입 컨트롤러
-@WebServlet("/yuna/MemberJoin")
-public class MemberJoinController extends HttpServlet{
+@WebServlet("/yuna/Memberlogin")
+public class MemberLoginController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,27 +24,30 @@ public class MemberJoinController extends HttpServlet{
 
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd1");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phoneNo");
-		String addr = request.getParameter("addr");
+		int check = 0;
 		
-		MemberVO vo = new MemberVO(id,pwd,name,phone,addr);
+		MemberVO vo = DAO.login_check(id); //로그인 체크
 		
-		int result = DAO.insert(vo);
+		System.out.println("로그인 정보 = " + vo.toString());
 		
-		/* if(result == 0) {
-			System.out.println("가입 실패");
-			
-		}else {
-			System.out.println("가입 성공" + vo.toString());//회원가입 정보 출력
-			request.setAttribute("vo", vo);
-		} */
-		
-		request.getRequestDispatcher("/yuna/memberjoin_ok.jsp").forward(request, response);
+		if( vo.getId().equals(id) && vo.getPwd().equals(pwd)) { //로그인 성공
+			System.out.println("로그인 성공!");
+			//로그인 성공시, 세션에 아이디 등록
+			HttpSession session = request.getSession();
+			session.setAttribute("userid", id);
 
-		
-		
-	}
+			request.getRequestDispatcher("memberlogin_ok.jsp").forward(request, response);
+			
+		} else {
+			System.out.println("로그인 실패");
+			request.getRequestDispatcher("login_false.jsp").forward(request, response);
+		}
+				
+			System.out.println("> ListController.doGet() 끝");
+	
+		}
+	
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> ListController.doPost() 시작");

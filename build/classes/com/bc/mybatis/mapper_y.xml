@@ -5,7 +5,6 @@
 <!-- 유나  -->
 <mapper namespace="Baking_y">
 	
-	
 	<select id="all" resultType="com.bc.model.vo.MemberVO">
 		SELECT * FROM MEMBER
 	</select>
@@ -16,6 +15,22 @@
 			(ID, PWD, NAME, PHONE, ADDR)
 			VALUES (#{id}, #{pwd}, #{name}, #{phone}, #{addr})
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="String" resultType="com.bc.model.vo.MemberVO">
+		SELECT * FROM MEMBER
+			WHERE ID = #{id}
+	</select>
+	
+	<!-- 회원수정 -->
+	<update id="update" parameterType="com.bc.model.vo.MemberVO">
+		UPDATE MEMBER
+			SET PWD = #{pwd},
+				NAME = #{name},
+				PHONE = #{phone},
+				ADDR = #{addr}
+			WHERE ID = #{id}
+	</update>
 	
 	
 </mapper>
