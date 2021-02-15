@@ -2,14 +2,40 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 상희  -->
+<!-- 상희 -->
 <mapper namespace="Baking_s">
-	
-	
-	<select id="all" resultType="com.bc.model.vo.MemberVO">
-		SELECT * FROM MEMBER
+
+	<!-- 예약하기 insert -->
+	<insert id="addList" parameterType="com.bc.model.vo.ReservationVO">
+		INSERT INTO RESERVATION (
+		RESERV_IDX,
+		RESERV_DATE,
+		RESERV_TIME,
+		RESERV_PEOPLE,
+		RESERV_PRICE,
+		CLS_IDX,
+		ID,
+		RESERV_STATUS)
+		VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'YYYY-MM-DD'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status})
+	</insert>
+
+	<!-- 전체 게시글 수 조회 -->
+	<select id="totalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) AS CNT FROM RESERVATION WHERE ID = #{id }
 	</select>
 	
-	
-	
+	<!-- 페이지에 표시할 데이터 -->
+	<select id="list" resultType="com.bc.model.vo.ReservationVO"
+			parameterType="Map">
+		SELECT *
+		  FROM (SELECT ROWNUM AS R_NUM, B.*
+		          FROM (SELECT *
+		                  FROM RESERVATION
+		                 ORDER BY RESERV_IDX DESC
+		               ) B 
+		       )
+		 WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+
+
 </mapper>

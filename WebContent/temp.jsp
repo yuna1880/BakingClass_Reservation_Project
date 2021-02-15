@@ -17,15 +17,15 @@
 	<form method="get">
 		<tr>
 			<td>클래스명 </td>
-			<td><input type="text" name="clsName">모래성쌓기</td>
+			<td><input type="text" name="clsName"></td>
 		</tr>
 		<tr>
 			<td>1인당가격</td>
-			<td><input type="text" name="price">10000</td>
+			<td><input type="text" name="price"></td>
 		</tr>
 		<tr>
 			<td>클래스번호 </td>
-			<td><input type="text" name="clsNum" value ="10"></td>
+			<td><input type="text" name="clsNum" value ="2"></td>
 		</tr>
 		<tr>
 			<td>아이디</td>
