@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,93 +180,24 @@ footer .phone{
 	<div class="box">
 	<aside>
 			<h2 class="title1">DALCOCO 베이킹</h2>
-			<p class="comment"> 달코코는 예약제 베이킹 클래스입니다.
-					자세한 문의는 카톡bbo로 주시면 빠르고 정확한 답변을 확인할 수 있습니다^^</p>
+			<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
+					</p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
 
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<a href="">후기게시판</a>
+				<a href="review.jsp"> 후기게시판</a>
 			</ul>
 		</aside>
 	</div>
 	
-<!-- product html 영역 -->
-	<section id="main">
-		<h3 class="title">클래스 목록</h3>
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/mini2.png"></li>
-			<li class="i2">건강은 스스로 만든다! [디저트 베이킹 입문]</li>
-			<li class="i3">미니타르트 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/35,000</span>
-				<span class="s2">김보경 파티쉐</span></div>
-			</li>
-			</ul>
-		</div>
-		
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/macarong1.png"></li>
-			<li class="i2">매일을 달콤하게~ 간식용, 선물용 [취미반]</li>
-			<li class="i3">마카롱 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/22,000</span>
-				<span class="s2">김보경 파티쉐</span></div>
-			</li>
-			</ul>
-		</div>
-		
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/choco6.jpg"></li>
-			<li class="i2">누구나 쉽고 재밌게 배우는 초콜릿 스타일링![취미반]</li>
-			<li class="i3">초콜릿 클레스</li>
-			<li class="i4">
-				<div><span class="s1">1인/25,000</span>
-				<span class="s2">권유나 쇼콜라티에</span></div>
-			</li>
-			</ul>
-		</div>
-		
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/scon.png"></li>
-			<li class="i2">고급 감성을 담고 자격증까지![디저트 베이킹 중급] </li>
-			<li class="i3">스콘 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/30,000</span>
-				<span class="s2">권유나 쇼콜라티에</span></div>
-			</li>
-			</ul>
-		</div>
-		
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/cake.png"></li>
-			<li class="i2">특별한 날을 더 특별하게! 창업까지 [디저트 베이킹 마스터]</li>
-			<li class="i3">케이크 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/40,000</span>
-				<span class="s2">이상희 제빵사</span></div>
-			</li>
-			</ul>
-		</div>
-		
-		<div class="items">
-			<ul>
-			<li class="i1"><img src="./images/cookie.png"></li>
-			<li class="i2">쿠키 위에 그려내는 동화, 아이싱부터 차근히![취미반]</li>
-			<li class="i3">쿠키 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/39,000</span>
-				<span class="s2">이상희 제빵사</span></div>
-			</li>
-			</ul>
-		</div>
-	</section>
+	<!-- 게시판 들어와야 하는 영역  -->
 	
+	
+	
+	
+	
+
 	<!-- footer html 영역 -->
 	<footer>
 		<div class="box">
@@ -272,7 +205,7 @@ footer .phone{
 			<h3>문의전화</h3>
 			<ul>
 			<li class="phone">1588-8282</li>
-			<li>10:00 ~ 18:00(점심시간 12:00 - 13:00)</li>
+			<li>10:00 ~ 18:00 (점심시간 12:00 - 13:00)</li>
 			</ul>
 		</div>
 		<div class="items">

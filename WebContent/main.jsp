@@ -1,8 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 내정보 보기 --%>
+<%
+	String id = (String)session.getAttribute("userid");
+
+	System.out.println(id);
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title> DALCOCO 메인페이지</title>
+<link rel="stylesheet" href="css/style.css"/>
 <style>
 *{
 	margin: 0;
@@ -150,15 +160,15 @@ footer .phone{
 	<header>
 		<div class="box">
 			<div id="logo">
-				<img src="./images/header_logo.jpeg" width="155px" height="140px">
+				<img src="images/header_logo.jpeg" width="155px" height="140px">
 			</div>
 			<div id="menu">
 				<ul id="top_menu">
-				<li>김보경(bbo_gang)님</li>
-				<li>내정보</li>
+				<li>${userid} 님</li>
+				<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<li>로그아웃</li>
+				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
 				<li>Home</li>
@@ -184,7 +194,7 @@ footer .phone{
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<a href="">후기게시판</a>
+				<a href="review.jsp">후기게시판</a>
 			</ul>
 		</aside>
 	</div>
