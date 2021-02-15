@@ -16,7 +16,7 @@
 
 	function member_update(frm) {
 		//frm.action = "memberupdate"; // 예전 jsp 직접 호출 방식
-		frm.action = "MemberUpdate"; //리스트 요청
+		frm.action = "MemberUpdateCheck"; //리스트 요청
 		frm.submit();
 	}
 	function member_delete(frm) {
