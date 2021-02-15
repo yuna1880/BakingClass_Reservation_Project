@@ -143,7 +143,7 @@
 
                     <div class="btn_area">
                     	<input type="submit" value="수정완료 " class="btn_type btn_primary" onclick="member_update_ok(this.form)">
-	          			<input type="button" value="취소" class="btn_type btn_primary" onclick="">
+	          			<input type="button" value="취소" class="btn_type btn_primary" onclick="history.back()">
                     </div>
                     
 

@@ -41,5 +41,22 @@ public class DAO {
 	}
 	
 	//회원 탈퇴
+	public static int delete(String id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.delete("Baking_y.delete",id);
+		ss.close();
+		return result;
+	}
+	
+	//아이디 중복체크
+	public static int check_id(String id) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.selectOne("Baking_y.check_id",id);
+		ss.close();
+		return result;
+	}
+	
+	
+	
 	
 }

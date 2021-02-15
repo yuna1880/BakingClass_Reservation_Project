@@ -1,6 +1,8 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,26 +11,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
+
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/MemberUpdateCheck")
-public class MemberUpdateCheckController extends HttpServlet{
-
+@WebServlet("/yuna/checkId")
+public class MemberIdCheckController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> MemberJoinController.doGet() 시작");
 
-		//세션에서 로그인 된 id값 가져오기. 
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("userid");
-				
-		MemberVO vo = DAO.login_check(id); //로그인 체크 + 정보수정을 위한 pwd 가져오기
-		request.setAttribute("pwd", vo.getPwd());
+		// DB에서 데이터 조회 후 Json 형식 문자열 생성 후 응답처리
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
-		request.getRequestDispatcher("member_update_check.jsp").forward(request, response);
-	
-	}
+		String id = request.getParameter("id");
+		
+		int data = DAO.check_id(id); //로그인 체크
+		
+		System.out.println(" 1: 중복     0: 중복x  : " + data);
+
+		System.out.println("> ListController.doGet() 끝");
+		
+		out.print(data);
+		
+		}
+
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> ListController.doPost() 시작");
@@ -36,5 +46,6 @@ public class MemberUpdateCheckController extends HttpServlet{
 		doGet(request, response);
 		System.out.println("> ListController.doPost() 끝");
 	}
+
 
 }

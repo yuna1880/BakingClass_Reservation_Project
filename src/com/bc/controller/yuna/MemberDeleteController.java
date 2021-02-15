@@ -12,9 +12,11 @@ import javax.servlet.http.HttpSession;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/MemberUpdateCheck")
-public class MemberUpdateCheckController extends HttpServlet{
 
+//회원가입 컨트롤러
+@WebServlet("/yuna/MemberDelete")
+public class MemberDeleteController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> MemberJoinController.doGet() 시작");
@@ -22,12 +24,21 @@ public class MemberUpdateCheckController extends HttpServlet{
 		//세션에서 로그인 된 id값 가져오기. 
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("userid");
-				
-		MemberVO vo = DAO.login_check(id); //로그인 체크 + 정보수정을 위한 pwd 가져오기
-		request.setAttribute("pwd", vo.getPwd());
 		
-		request.getRequestDispatcher("member_update_check.jsp").forward(request, response);
-	
+		int result = DAO.delete(id);
+		
+		if(result == 0) {
+			System.out.println("탈퇴 실패");
+			
+		}else {
+			System.out.println("탈퇴 완료");//회원가입 정보 출력
+			request.getRequestDispatcher("member_delete_ok.jsp").forward(request, response);
+		} 
+		
+		
+
+		
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,5 +47,6 @@ public class MemberUpdateCheckController extends HttpServlet{
 		doGet(request, response);
 		System.out.println("> ListController.doPost() 끝");
 	}
+
 
 }

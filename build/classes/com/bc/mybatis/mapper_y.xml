@@ -32,5 +32,16 @@
 			WHERE ID = #{id}
 	</update>
 	
+	<!-- 회원탈퇴(삭제) -->
+	<delete id="delete" parameterType="String">
+		DELETE MEMBER WHERE ID = #{id}
+	</delete>
 	
+	<!-- 아이디 중복확인     (  1: 중복     0: 중복x ) -->
+	<select id="check_id" parameterType="String" resultType="int">
+		SELECT NVL(COUNT(*),0)
+		FROM MEMBER WHERE ID =#{id}
+	</select>
+	
+
 </mapper>
