@@ -73,9 +73,19 @@
 <head>
 <meta charset="UTF-8">
 <title>예약조회</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-	function pay(frm){
-	window.open("reserv_pay.jsp","ow1","width=500, height=800");
+	$(function(){
+		var result = new Array();
+		
+		
+		 console.log($(this).parents().find(1));
+	});
+
+	function pay(btn){
+		 //console.log($(this).parents().find(2));
+		 let idx = btn.parentElement.parentElement.firstElementChild.textContent;
+	     window.open("reserv_pay.jsp?reserv_idx=" + idx ,"ow1","width=500, height=800");
 	}
 </script>
 <style>
@@ -169,18 +179,18 @@
 	</c:if>
 	<c:if test="${not empty list }">
 		<c:forEach var="vo" items="${list }">
-		<tr>
+		<tr >
 			<td>${vo.reserv_idx }</td>
 			<td>${vo.cls_idx }</td>
 			<td>${vo.reserv_date }</td>
 			<td>${vo.reserv_time } 시</td>
 			<td>${vo.reserv_status }</td>
 			<td>${vo.reserv_price } 원</td>		
-		 	<td><input type="button" value="결제하기" onclick="pay(this.form)"></td>
+		 	<td><input type="button" value="결제하기" onclick="pay(this)"></td>
 		</tr>
 		</c:forEach>
 	</c:if>
-	</tbody>
+	</tbody>1
 	<tfoot>
 		<tr>
 			<td colspan="7" class="pagingtop">
