@@ -1,8 +1,15 @@
+<%@page import="com.bc.model.dao.ReserveDAO"%>
+<%@page import="com.bc.model.vo.ReservationVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	request.getParameter("reserv_idx");
-	System.out.println("여기까지 오누"+request.getParameter("reserv_idx"));
+	int idx = Integer.valueOf(request.getParameter("reserv_idx"));
+	
+	List<ReservationVO> list = ReserveDAO.getResrvList(idx);
+	pageContext.setAttribute("list", list);
+	
  %>
 <!DOCTYPE html>
 <html>
@@ -25,48 +32,74 @@ $(function(){
 });
 
 	function pay(frm){
-		alert("응 하는중~");
+		alert("결제가 완료되었습니다");
+		frm.action = "payment";
+		frm.submit();
+		
 	}
 
 </script>
 <style>
 	.cashDiv{
-		display: block;
+		display: none;
 	}
 	.cardDiv{
-		display: none;
+		display: block;
 	}
 </style>
 </head>
 <body>
 <h1>결제하기 페이지입니다.jsp</h1>
-	<input type = "radio" name = "change_pay" value = "cash" id ="cash" checked="checked">무통장입금
-	<input type = "radio" name = "change_pay" value = "card" id ="card">신용카드
+	<input type = "radio" name = "change_pay" value = "card" id ="card" checked="checked">신용카드
+	<input type = "radio" name = "change_pay" value = "cash" id ="cash" >무통장입금
+	
 	<div class = "cashDiv" >
 		<form method="post">
 			<table>
 				<tr>
 					<td>예약번호&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-					<td>50</td>
+						<c:forEach var="vo" items="${list }">
+							<td><input type="text" name = "reserv_idx" value="${vo.reserv_idx }" readonly="readonly"></td>
+						</c:forEach>
 				</tr>
 				<tr>
 					<td>결제금액</td>
-					<td>50000</td>
+					<c:forEach var="vo" items="${list }">
+						<td><input type="text" name = "reserv_price" value="${vo.reserv_price }" readonly="readonly"></td>
+					</c:forEach>
 				</tr>
 				<tr>
 					<td>은행명</td>
-					<td>기업은행</td>
+					<td>
+						<select name = "pay_cash1" id="cashBank">
+						<option value = "none" >-은행명-</option>
+						<option value = "기업은행" >-기업은행-</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>계좌번호</td>
-					<td>010-3090-3748</td>
+					<td>
+						<select name = "pay_cash2" id="cashAccount" >
+						<option value = "none" >-----계좌번호-----</option>
+						<option value = "010-3090-3748" >010-3090-3748</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>예금주</td>
-					<td>이상희</td>
+					<td>
+						<select name = "pay_cash3" id="cashAccount" >
+						<option value = "none" >-예금주-</option>
+						<option value = "이상희" >이상희</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-				<td><input type="button" name="button" onclick="pay(this.form)" value="결제하기"></td>
+				<td><input type="submit" name="button" onclick="pay(this.form)" value="결제하기"></td>
+				</tr>
+				<tr>
+				<td><input type="hidden" name ="cashOrCard" value = "현금"></td>
 				</tr> 
 			</table>
 		</form>
@@ -77,11 +110,15 @@ $(function(){
 			<table>
 				<tr>
 					<td>예약번호&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
-					<td>50</td>
+					<c:forEach var="vo" items="${list }">
+							<td><input type="text" name = "reserv_idx" value="${vo.reserv_idx }" readonly="readonly"></td>
+					</c:forEach>
 				</tr>
 				<tr>
 					<td>결제금액</td>
-					<td>50000</td>
+					<c:forEach var="vo" items="${list }">
+					<td><input type="text" name = "reserv_price" value="${vo.reserv_price }" readonly="readonly"></td>
+					</c:forEach>
 				</tr>
 				<tr>
 					<td>카드사</td>
@@ -113,7 +150,7 @@ $(function(){
 				<tr>
 					<td>유효기간</td>
 					<td>
-						<select name = "pay_cardDate" id="cardDateMM" name="cardDate">
+						<select name = "pay_cardDateM" id="cardDateMM" name="cardDate">
 							<option value = "none">--월--</option>
 							<option value = "01">01</option>
 							<option value = "02">02</option>
@@ -128,7 +165,7 @@ $(function(){
 							<option value = "11">11</option>
 							<option value = "12">12</option>
 						</select> /
-						<select name = "pay_cardDate" id="cardDateYY" name="cardDate">
+						<select name = "pay_cardDateY" id="cardDateYY" name="cardDate">
 							<option value = "none">--연도--</option>
 							<option value = "2021">2021</option>
 							<option value = "2022">2022</option>
@@ -145,10 +182,13 @@ $(function(){
 				</tr>
 				<tr>
 					<td>CVC 번호</td>
-					<td><input type="password" id="pwd" maxlength="3"></td>
+					<td><input type="password" name="cardPwd" id="pwd" maxlength="3"></td>
 				</tr>
 				<tr>
-				<td><input type="button" name="button" onclick="pay(this.form)" value="결제하기"></td>
+				<td><input type="submit" name="button" onclick="pay(this.form)" value="결제하기"></td>
+				</tr> 
+				<tr>
+				<td><input type="hidden" name ="cashOrCard" value = "카드"></td>
 				</tr> 
 			</table>
 		</form>

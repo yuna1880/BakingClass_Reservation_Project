@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+
+import com.bc.model.vo.PaymentVO;
 import com.bc.model.vo.ReservationVO;
 import com.bc.mybatis.DBService;
 public class ReserveDAO {
@@ -32,4 +34,21 @@ public class ReserveDAO {
 		ss.close();
 		return list;
 	}
+	
+	// 예약번호 조회하여 결제정보 불러오기
+	public static List<ReservationVO> getResrvList(int idx) {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReservationVO> list = ss.selectList("Baking_s.ReservList", idx);
+		ss.close();
+		return list;
+	}
+	
+	// 결제 insert
+	public static int insetPayment(PaymentVO vo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result1 = ss.insert("Baking_s.payment", vo);
+		ss.close();
+		return result1;
+	}
+	
 }

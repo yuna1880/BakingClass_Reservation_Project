@@ -72,7 +72,7 @@ $(function(){
 				<select name = "resv_time">
 					<option value="none" >시간</option>
 					<option value="09" >오전타임 : 오전 9시 ~ 오후 1시</option>
-					<option value="14" >오후타임  : 오후 2시 ~ 호우 6시</option>	
+					<option value="14" >오후타임  : 오후 2시 ~ 오후 6시</option>	
 				</select>
 			</td>
 		</tr>

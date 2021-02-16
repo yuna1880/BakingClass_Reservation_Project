@@ -36,6 +36,16 @@
 		       )
 		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
-
+	
+	<!-- 예약페이지 조회 (예약번호 가지고) -->
+	<select id="ReservList" resultType="com.bc.model.vo.ReservationVO" parameterType="int">
+		SELECT * FROM RESERVATION WHERE RESERV_IDX = #{idx }
+	</select>
+	
+	<!-- 결제페이지 insert -->
+	<insert id="payment" parameterType="com.bc.model.vo.PaymentVO" >
+		INSERT INTO PAYMENT(PAY_IDX, PAY_DATE, PAY_PRICE, PAY_METHOD,RESERV_IDX , PAY_CARD, PAY_BANK) 
+		VALUES(PAYMENT_SEQ.NEXTVAL, SYSDATE, #{pay_price },#{pay_method },#{reserv_idx },#{pay_card },#{pay_bank })
+	</insert>
 
 </mapper>

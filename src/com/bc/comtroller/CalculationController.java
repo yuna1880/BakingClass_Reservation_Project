@@ -47,6 +47,7 @@ public class CalculationController extends HttpServlet{
 		HttpSession hs = req.getSession();
 		String id = (String)hs.getAttribute("id");
 		
+		
 		//VO담기 없는거 예약번호
 		ReservationVO vo = new ReservationVO();
 		vo.setReserv_date(resv_startDate);
@@ -56,6 +57,7 @@ public class CalculationController extends HttpServlet{
 		vo.setCls_idx(clsNum);
 		vo.setId(id);
 		vo.setReserv_status("결제대기");
+		System.out.println("시발머지?");
 		
 		int result = ReserveDAO.addList(vo);
 		List<ReservationVO> list = new ArrayList<ReservationVO>();

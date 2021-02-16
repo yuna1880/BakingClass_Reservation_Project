@@ -75,15 +75,8 @@
 <title>예약조회</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-	$(function(){
-		var result = new Array();
-		
-		
-		 console.log($(this).parents().find(1));
-	});
 
 	function pay(btn){
-		 //console.log($(this).parents().find(2));
 		 let idx = btn.parentElement.parentElement.firstElementChild.textContent;
 	     window.open("reserv_pay.jsp?reserv_idx=" + idx ,"ow1","width=500, height=800");
 	}
@@ -110,10 +103,10 @@
 	.title { background-color: lightsteelblue;
 			height: 50px; }
 	
-	.no { width: 15%; }
+	.no { width: 13%; }
 	.subject { width: 15%; }
 	.writer { width: 15%; }
-	.regdate { width: 20%; }
+	.regdate { width: 35%; }
 	.hit { width: 15%; }
 	
 	/***** 페이지 표시 부분 스타일(시작) ****/
@@ -154,7 +147,7 @@
 </head>
 <body>
 <h1>예약 조회 페이지입니다.</h1>
-<form method="post">
+<form method="get">
 <div id = "bbs">
 <table>
 	<thead>
@@ -163,9 +156,9 @@
 			<th class="subject">클래스명</th>
 			<th class="writer">수업날짜</th>
 			<th class="writer">수업시간</th>
-			<th class="regdate">진행상태</th>
 			<th class="hit">결제금액</th>
 			<th class="hit">결제</th>
+			<th class="regdate">진행상태</th>
 			
 		</tr>
 	</thead>
@@ -184,13 +177,13 @@
 			<td>${vo.cls_idx }</td>
 			<td>${vo.reserv_date }</td>
 			<td>${vo.reserv_time } 시</td>
-			<td>${vo.reserv_status }</td>
 			<td>${vo.reserv_price } 원</td>		
 		 	<td><input type="button" value="결제하기" onclick="pay(this)"></td>
+		 	<td>${vo.reserv_status }</td>
 		</tr>
 		</c:forEach>
 	</c:if>
-	</tbody>1
+	</tbody>
 	<tfoot>
 		<tr>
 			<td colspan="7" class="pagingtop">
