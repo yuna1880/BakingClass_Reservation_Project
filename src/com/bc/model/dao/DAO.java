@@ -1,20 +1,22 @@
 package com.bc.model.dao;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import com.bc.model.vo.MemberVO;
+import com.bc.model.vo.ReviewVO;
 import com.bc.mybatis.DBService;
 public class DAO {
 	
 	//테스트용
-	public static List<MemberVO> getList() {
+	/*public static List<MemberVO> getList() {
 		SqlSession ss = DBService.getFactory().openSession();
 		List<MemberVO> list = ss.selectList("Baking_y.all");
 		ss.close();
 
 		System.out.println(list);
 		return list;
-	}
+	}*/
 	
 	//회원가입
 	public static int insert(MemberVO vo) {
@@ -55,6 +57,58 @@ public class DAO {
 		ss.close();
 		return result;
 	}
+	
+	//------------------------------------------------------------------------
+	
+	//후기 리스트 가져오기
+	public static List<ReviewVO> getReview() {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReviewVO> list = ss.selectList("Baking_y.review_all");
+		ss.close();
+		//리스트 가져오는지 확인
+		System.out.println(list);
+		return list;
+	}
+	
+	// 후기 게시글 (ReviewVO) 전체 건수 조회
+	public static int getTotalCount() {
+		SqlSession ss = DBService.getFactory().openSession();
+		int totalCount = ss.selectOne("Baking_y.totalCount");
+		return totalCount;
+	}
+	
+	// 해당 페이지에 해당하는 후기 게시글  (ReviewVO) 가져오기.
+	public static List<ReviewVO> getList(Map<String, Integer> map) {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReviewVO> list = ss.selectList("Baking_y.review_list", map);
+		ss.close();
+		return list;
+	}
+	
+	
+	// 게시글 하나 조회 (review_idx 값으로 조회)
+	public static ReviewVO getOne(String review_idx) {
+		SqlSession ss = DBService.getFactory().openSession();
+		ReviewVO vo = ss.selectOne("Baking_y.review_one", review_idx);
+		ss.close();
+		return vo;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

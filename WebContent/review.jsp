@@ -1,10 +1,27 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.bc.model.vo.Paging"%>
+<%@page import="com.bc.model.vo.ReviewVO"%>
+<%@page import="com.bc.model.dao.DAO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- 리뷰게시판 --%>
+<%
+	//사용자 로그인 정보 가져오기
+	String id = (String)session.getAttribute("userid");
+
+	System.out.println(id);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> DALCOCO 메인페이지</title>
+<title> 수강 후기 </title>
+<link rel="stylesheet" href="css/board_style.css"/>
 <style>
 *{
 	margin: 0;
@@ -52,6 +69,8 @@ header{
 	text-align: center;
 	padding: 230px 0 0 750px;
 }
+
+
 
 /*------------ product css영역 --------------*/
 #main {
@@ -156,11 +175,11 @@ footer .phone{
 			</div>
 			<div id="menu">
 				<ul id="top_menu">
-				<li>김보경(bbo_gang)님</li>
-				<li>내정보</li>
+				<li>${userid} 님</li>
+				<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<li>로그아웃</li>
+				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
 				<li>Home</li>
@@ -192,11 +211,123 @@ footer .phone{
 	</div>
 	
 	<!-- 게시판 들어와야 하는 영역  -->
-	
-	
-	
-	
-	
+
+	<main class="main">
+		<h2 class="main title">수강후기</h2>
+
+		<!-- 검색  -->
+		<div class="search-form margin-top first align-right">
+			<h3 class="hidden">검색폼</h3>
+			<form class="table-form">
+				<fieldset>
+					<legend class="hidden">검색 필드</legend>
+					<label class="hidden">검색분류</label> <select name="f">
+						<option value="title">제목</option>
+						<option value="writerId">작성자</option>
+					</select> <label class="hidden">검색어</label> <input type="text" name="q"
+						value="" /> <input class="btn btn-search" type="submit" value="검색" />
+				</fieldset>
+			</form>
+			
+			<input type="button" value="WRITE" class="btn btn-5"
+							onclick="javascript:location.href='write_review.jsp'">
+		</div>
+
+		<!-- 게시판 목록 -->
+		<div class="notice margin-top">
+			<h3 class="hidden">후기 게시판 목록</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="w60">번호</th>
+						<th class="expand">제목</th>
+						<th class="w100">작성자</th>
+						<th class="w100">작성일</th>
+						<th class="w60">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+<!--  글 시작  -->
+
+				<c:if test="${empty list }">
+					<tr>
+						<p>★ 게시글이 없습니다. 다시 확인해주세요 ★</p>
+					</tr>
+				</c:if>
+				<c:if test="${not empty list }">
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<td>${list.review_idx}</td>
+							<td class="title indent text-align-left">
+								<form method="get">
+									<a href="reviewOne?review_idx=${list.review_idx}">${list.review_title}</a>
+								</form>
+							</td>
+							<td>${list.id}</td>
+							<td>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${list.review_date}"/>
+							</td>
+							<td>${list.review_hit}</td>
+						</tr>
+					</c:forEach>
+					</c:if>	
+				</tbody>
+			</table>
+		</div>
+		<div class="indexer margin-top align-right">
+			<h3 class="hidden">현재 페이지</h3>
+			<div>
+				<span class="text-orange text-strong">${pvo.nowPage}</span> / ${pvo.totalPage} pages
+			</div>
+		</div>
+		<div class="margin-top align-center pager">
+
+			<%-- 파라미터  값이 null 이면 1을 넣어주고, null 이 아니면 파라미터값으로 셋팅해준다.
+			<c:set var="page" value="${(param.p == null)?1:param.p}" />
+			<c:set var="startNum" value="${page-(page - 1)%5}" />
+			<c:set var="lastNum" value="23" />--%>
+
+
+			<!--  페이징 구현  -->
+			
+				<div>
+					<c:choose>
+						<%-- 1페이지일때 (이전) 메세지 뿌려주기! --%>
+						<c:when test="${pvo.beginPage == 1}">
+							<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
+						</c:when>
+						<c:otherwise>
+							<span class="btn btn-prev"><a href="reviewList?cPage=${pvo.beginPage - 1}">이전</a></span>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<%-- 페이지 번호 --%>
+					<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
+						<c:if test="${pageNo == pvo.nowPage}">
+							<ul class="-list- center">
+								<li><a class="-text- orange bold">${pageNo}</a></li>
+							</ul>
+						</c:if>
+						<c:if test="${pageNo != pvo.nowPage}">
+							<ul class="-list- center">
+								<li><a class="-text- orange bold" href="reviewList?cPage=${pageNo}">${pageNo}</a></li>
+							</ul>
+						</c:if>
+					</c:forEach>
+				<%-- (다음)페이지 --%>
+				<div>
+					<c:if test="${pvo.endPage < pvo.totalPage}">
+						<a class="btn btn-next" href="reviewList?cPage=${pvo.endPage + 1}">다음</a>
+					</c:if>
+					<c:if test="${pvo.endPage >= pvo.totalPage}">
+						<a class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</a>
+					</c:if>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+
 
 	<!-- footer html 영역 -->
 	<footer>

@@ -1,18 +1,20 @@
 package com.bc.model.vo;
 
+import java.sql.Date;
+
 public class ReviewVO {
 
 	private int review_idx;
 	private String review_title;
 	private String review_content;
-	private String review_date;
+	private Date review_date;
 	private int review_hit;
 	private String review_image;
 	private String id;
 	
 	public ReviewVO() { }
 	
-	public ReviewVO(int review_idx, String review_title, String review_content, String review_date, int review_hit,
+	public ReviewVO(int review_idx, String review_title, String review_content, Date review_date, int review_hit,
 			String review_image, String id) {
 		super();
 		this.review_idx = review_idx;
@@ -23,6 +25,7 @@ public class ReviewVO {
 		this.review_image = review_image;
 		this.id = id;
 	}
+
 
 	public int getReview_idx() {
 		return review_idx;
@@ -48,11 +51,12 @@ public class ReviewVO {
 		this.review_content = review_content;
 	}
 
-	public String getReview_date() {
+
+	public Date getReview_date() {
 		return review_date;
 	}
 
-	public void setReview_date(String review_date) {
+	public void setReview_date(Date review_date) {
 		this.review_date = review_date;
 	}
 
