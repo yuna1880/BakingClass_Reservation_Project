@@ -1,0 +1,17 @@
+footer{
+	clear: both; /* float 속성 해제 footer가 새로운 줄에서 시작  */
+	height: 260px;
+	background-color: #474d54;
+	color: white;
+}
+footer .items {
+	float: left;
+	margin: 40px 0 0 100px;
+}
+footer h3 {color:#0ca9a3;}
+footer .items ul{ margin-top: 15px; }
+footer .items li{ margin-top: 5px; }
+footer .phone{
+	font-size: 25px;
+	font-weight: bold;
+}

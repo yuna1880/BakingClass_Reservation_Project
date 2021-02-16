@@ -1,0 +1,43 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+li {list-style-type: none;}
+
+a { color: black; text-decoration: none; }
+a:visited { color: black; text-decoration: none;}
+
+.box{
+	width: 1100px;
+	margin: 0 auto;
+}
+aside {
+	width: 220px;
+	float: left;
+	margin: 70px 0;
+}
+aside .title1{
+	padding: 12px;
+	background-color: #0ca9a3;
+	color: white;
+	font-size: 18px;
+}
+aside .comment{
+	padding: 20px 10px;
+	line-height: 150%;
+}
+
+aside .title2 {
+	margin-top: 20px;
+	padding: 12px;
+	border-top: solid 2px black;
+	border-bottom: solid 1px #cccccc;
+	font-size: 18px;
+}
+aside .list {
+	margin: 20px 0;
+}
+aside .list li {
+	margin: 10px 12px;
+}
