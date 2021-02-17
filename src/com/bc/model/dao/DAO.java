@@ -1,4 +1,5 @@
 package com.bc.model.dao;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,17 +71,50 @@ public class DAO {
 		return list;
 	}
 	
-	// 후기 게시글 (ReviewVO) 전체 건수 조회
-	public static int getTotalCount() {
+	// 해당 페이지에 해당하는 후기 게시글  (ReviewVO) 가져오기.
+	public static List<ReviewVO> getList(Map<String, String> map) {
 		SqlSession ss = DBService.getFactory().openSession();
-		int totalCount = ss.selectOne("Baking_y.totalCount");
+		List<ReviewVO> list = ss.selectList("Baking_y.review_list", map);
+		ss.close();
+		return list;
+	}
+	
+	// 후기 게시글 (ReviewVO) 전체 건수 조회
+	public static int getTotalCount(String select_, String query_) {
+		Map<String, String> map = new HashMap<>();
+		map.put("select_", select_);
+		map.put("query_", query_);
+		
+		SqlSession ss = DBService.getFactory().openSession();
+		int totalCount = ss.selectOne("Baking_y.totalCount", map);
 		return totalCount;
 	}
 	
-	// 해당 페이지에 해당하는 후기 게시글  (ReviewVO) 가져오기.
-	public static List<ReviewVO> getList(Map<String, Integer> map) {
+	
+	// 키워드로 게시물 (제목 검색) 으로 조회
+	public static List<ReviewVO> getListTitle(String begin, String end, String query_) {
+		Map<String, String> map = new HashMap<>();
+		map.put("begin", begin);
+		map.put("end", end);
+		map.put("query_", query_);
+		
 		SqlSession ss = DBService.getFactory().openSession();
-		List<ReviewVO> list = ss.selectList("Baking_y.review_list", map);
+		List<ReviewVO> list = ss.selectList("Baking_y.review_list_title", map);
+		System.out.println(list.toString());
+		ss.close();
+		return list;
+	}
+	
+	
+	// 키워드로 게시물 (아이디 검색) 으로 조회
+	public static List<ReviewVO> getListId(String begin, String end, String query_) {
+		Map<String, String> map = new HashMap<>();
+		map.put("begin", begin);
+		map.put("end", end);
+		map.put("query_", query_);
+		
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReviewVO> list = ss.selectList("Baking_y.review_list_id", map);
 		ss.close();
 		return list;
 	}
