@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bc.	model.dao.ReserveDAO;
 import com.bc.model.vo.PaymentVO;
+import com.bc.model.vo.ReservationVO;
 
 @WebServlet("/payment")
 public class PaymentController extends HttpServlet{
@@ -25,6 +26,9 @@ public class PaymentController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		PaymentVO vo = new PaymentVO();
+		//결제하기 상태 바뀌기 위한 부분
+		ReservationVO rvo = new ReservationVO();
+		
 		
 		//결제번호
 		//결제날짜
@@ -34,6 +38,7 @@ public class PaymentController extends HttpServlet{
 		vo.setPay_price(Integer.valueOf(req.getParameter("reserv_price")));
 		//예약번호
 		vo.setReserv_idx(Integer.valueOf(req.getParameter("reserv_idx")));
+		rvo.setReserv_idx(Integer.valueOf(req.getParameter("reserv_idx")));
 		
 		//결제수단
 		vo.setPay_method(req.getParameter("cashOrCard"));
@@ -46,6 +51,8 @@ public class PaymentController extends HttpServlet{
 			totalCash = cash1+cash2+cash3;
 			vo.setPay_bank(totalCash);
 			vo.setPay_card("null");
+			//결제하기부분
+			rvo.setReserv_status("입금확인중");
 		}else if(vo.getPay_method().equals("카드")) {
 			String card1 = req.getParameter("pay_bank")+"/";
 			String card2 = req.getParameter("pay_cardDateM")+"/";
@@ -55,10 +62,14 @@ public class PaymentController extends HttpServlet{
 			totalCard = card1+card2+card3+card4;
 			vo.setPay_card(totalCard);
 			vo.setPay_bank("null");
+			rvo.setReserv_status("결제완료");
 		}
 		
 		List<PaymentVO> list = new ArrayList<PaymentVO>();
 		list.add(vo);
+		List<ReservationVO> rlist = new ArrayList<ReservationVO>();
+		rlist.add(rvo);
+		
 		
 		for (PaymentVO vo1 : list) {
 			System.out.println(vo1.getPay_bank());
@@ -69,9 +80,14 @@ public class PaymentController extends HttpServlet{
 		}
 		int result = ReserveDAO.insetPayment(vo);
 		System.out.println(result);
+		int resultStat = ReserveDAO.updateStatement(rvo);
+		
+		resp.setContentType("applcation/json;charset=UTF-8");
+		//""=문자열 처리
+		resp.getWriter().write(resultStat + "");
 		
 		
-		resp.sendRedirect("reserv_payExit.jsp");
+		//resp.sendRedirect("JavaScript('window.close();')");
 	}
 	
 	

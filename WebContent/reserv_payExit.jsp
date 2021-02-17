@@ -11,13 +11,13 @@
 		window.close();
 	});
 	
-	function close(frm){
+	function close(){
 		window.close();
 		alert("오냐?");
 	}
 </script>
 </head>
 <body>
-	<input type="button" onclick="window.close()" value = "닫기">
+	<input type="button" onclick="close()" value = "닫기">
 </body>
 </html>

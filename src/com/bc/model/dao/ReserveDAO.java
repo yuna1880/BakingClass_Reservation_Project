@@ -46,9 +46,18 @@ public class ReserveDAO {
 	// 결제 insert
 	public static int insetPayment(PaymentVO vo) {
 		SqlSession ss = DBService.getFactory().openSession(true);
-		int result1 = ss.insert("Baking_s.payment", vo);
+		int result = ss.insert("Baking_s.payment", vo);
 		ss.close();
-		return result1;
+		return result;
 	}
+	
+	// 결제후 결제상태 바꾸기
+	public static int updateStatement(ReservationVO vo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.insert("Baking_s.status", vo);
+		ss.close();
+		return result;
+	}
+	
 	
 }

@@ -15,8 +15,9 @@
 		RESERV_PRICE,
 		CLS_IDX,
 		ID,
-		RESERV_STATUS)
-		VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'YYYY-MM-DD'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status})
+		RESERV_STATUS
+		)
+		VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'yyyy-MM-dd'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status})
 	</insert>
 
 	<!-- 전체 게시글 수 조회 -->
@@ -47,5 +48,9 @@
 		INSERT INTO PAYMENT(PAY_IDX, PAY_DATE, PAY_PRICE, PAY_METHOD,RESERV_IDX , PAY_CARD, PAY_BANK) 
 		VALUES(PAYMENT_SEQ.NEXTVAL, SYSDATE, #{pay_price },#{pay_method },#{reserv_idx },#{pay_card },#{pay_bank })
 	</insert>
-
+	
+	<!-- 결제후 상태바꾸기 update  -->
+	<update id="status" parameterType="com.bc.model.vo.ReservationVO">
+		UPDATE RESERVATION SET RESERV_STATUS = #{reserv_status } WHERE RESERV_IDX = #{reserv_idx }
+	</update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.bc.comtroller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class CalculationController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 
-		String resv_startDate = req.getParameter("startDate");
+		Date resv_startDate = Date.valueOf(req.getParameter("startDate"));
 		
 		System.out.println("날짜: "+resv_startDate);
 		
@@ -56,10 +57,11 @@ public class CalculationController extends HttpServlet{
 		vo.setReserv_price(resv_price);
 		vo.setCls_idx(clsNum);
 		vo.setId(id);
-		vo.setReserv_status("결제대기");
-		System.out.println("시발머지?");
+		vo.setReserv_status("결제기한");
+
 		
 		int result = ReserveDAO.addList(vo);
+		
 		List<ReservationVO> list = new ArrayList<ReservationVO>();
 		list.add(vo);
 		

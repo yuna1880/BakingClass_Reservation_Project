@@ -31,11 +31,25 @@ $(function(){
 	});
 });
 
-	function pay(frm){
+	function pay(frm){ 
+		$.ajax("payment", {
+			method: "post",
+			data: $(frm).serialize(),
+			dataType: "json",
+			success: function (res) {
+				alert("결제가 완료되었습니다. 응답 코드 : " + res);
+				window.close();
+			}
+		})
+		 /*
 		alert("결제가 완료되었습니다");
 		frm.action = "payment";
 		frm.submit();
-		
+		window.open("about:blank", "_self").close();
+		*/
+	}
+	function exit(){
+		 window.close();
 	}
 
 </script>
