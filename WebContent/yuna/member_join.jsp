@@ -51,7 +51,7 @@ crossorigin="anonymous"></script>
 			$.ajax({
 				url : "checkId?id=" + inputid,
 				type : "get",
-				//timer를 찾아보기 .....
+				
 				success : function(data) {
 					console.log(data);
 					if (inputid == "") {
