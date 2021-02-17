@@ -24,18 +24,16 @@ public class ReviewListController extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> 여기!! ReviewListController.doGet() 시작");
 		
+		
 		//세션에서 로그인 된 id값 가져오기. 
 		//HttpSession session = request.getSession();
 		//String id = (String)session.getAttribute("userid");
-		
-		String select_ = "";
-		String query_ = "";
 		
 		//페이징처리
 		Paging p = new Paging();
 		
 		//1. 전체 게시물 수 구하기
-		p.setTotalRecord(DAO.getTotalCount(select_, query_));
+		p.setTotalRecord(DAO.getTotalCount());
 		p.setTotalPage();
 		System.out.println(">전체 게시글 수 : " + p.getTotalRecord());
 		System.out.println(">전체 페이지 수 : " + p.getTotalPage());
@@ -56,8 +54,8 @@ public class ReviewListController extends HttpServlet{
 		
 		System.out.println("---------------");
 		System.out.println(">>현재 페이지 : " + p.getNowPage());
-		System.out.println(">>시작 페이지 번호 : " + p.getBegin());
-		System.out.println(">>끝 페이지 번호 : " + p.getEnd());
+		System.out.println(">>시작 글 번호 : " + p.getBegin());
+		System.out.println(">>끝 글 번호 : " + p.getEnd());
 		
 		//페이지 블록 계산하기.
 		//4. 블록의 시작페이지, 끝페이지 구하기 (현재 페이지 번호 사용.)
@@ -76,9 +74,9 @@ public class ReviewListController extends HttpServlet{
 		System.out.println(">>끝 페이지 (endPage): " + p.getEndPage());
 		
 		//------------------------------------------------------------------------
-		Map<String, String> map = new HashMap<>();
-		map.put("begin", Integer.toString(p.getBegin()));
-		map.put("end", Integer.toString(p.getEnd()));
+		Map<String, Integer> map = new HashMap<>();
+		map.put("begin", p.getBegin());
+		map.put("end", p.getEnd());
 		
 		
 		//DB에서 리스트 조회

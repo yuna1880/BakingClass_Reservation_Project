@@ -27,6 +27,7 @@
 	<br><br><br><br>
     <h1 align="center">로그인</h1>
     <br><br>
+
 	<form name="login_form" method="post" action="Memberlogin"
 		onsubmit="return checkValue()">
 		<div id="container" role="main">
@@ -48,6 +49,8 @@
 							<span class="error_next_box" id="nameMsg" style="display: none"
 								aria-live="assertive"></span>
 						</div>
+
+
 						<div class="join_row">
 							<h3 class="join_title">
 								<label for="pswd1">비밀번호</label>
@@ -60,6 +63,7 @@
 							</span> <span class="error_next_box" id="pswd1Msg" style="display: none"
 								aria-live="assertive"></span>
 						</div>
+
 						<div class="btn_area">
 							<button type="submit" id="btnJoin" class="btn_type btn_primary">
 								<span>로그인</span>

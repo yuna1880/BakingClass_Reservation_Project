@@ -267,10 +267,7 @@ footer .phone{
 		</div>
 
 		<div class="margin-top text-align-center">
-			<form method="get">
-					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">목록으로</a>
-				</form>
+			<a class="btn btn-list" href="list.html">목록</a>
 		</div>
 
 		<div class="margin-top">

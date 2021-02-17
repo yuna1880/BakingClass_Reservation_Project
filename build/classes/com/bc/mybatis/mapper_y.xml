@@ -40,28 +40,16 @@
 		FROM MEMBER WHERE ID =#{id}
 	</select>
 	
+	
 	<!-- 리뷰 리스트 가져오기 -->
 	<select id="review_all" resultType="com.bc.model.vo.ReviewVO">
 		SELECT * FROM REVIEW
 	</select>
 	
-	
 	<!-- 리뷰 게시글의 전체 건수 조회  -->
-	<!-- 제목 검색시 ? 아이디 검색시 ? -->
-	<select id="totalCount" resultType="int" parameterType="map">
+	<select id="totalCount" resultType="int">
 		SELECT COUNT(*) AS CNT FROM REVIEW
-		<choose>
-			<!-- title -->
-			<when test="select_ == 'review_title'">
-				WHERE REVIEW_TITLE LIKE '%'|| #{query_} || '%'
-			</when>
-			<!-- id -->
-			<when test="select_ == 'id'">
-				WHERE ID LIKE '%'|| #{query_} || '%'
-			</when>
-		</choose>
 	</select>
-	
 	
 	<!-- 페이지에 표시할 데이터 조회 -->
 	<select id="review_list" resultType="com.bc.model.vo.ReviewVO" parameterType="Map">
@@ -73,31 +61,6 @@
 			WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
-	
-	<!-- 키워드로 게시물 (제목 검색) 으로 조회   -->
-	<select id="review_list_title" resultType="com.bc.model.vo.ReviewVO" parameterType="Map">
-		SELECT * FROM (
-		    SELECT ROWNUM AS R_NUM, R.*
-		    FROM (SELECT * FROM REVIEW
-		    WHERE REVIEW_TITLE LIKE '%'|| #{query_} || '%'
-		    ORDER BY REVIEW_IDX DESC) R
-		    )
-		WHERE R_NUM BETWEEN #{begin} AND #{end}
-	</select>
-	
-	<!-- 키워드로 게시물 (아이디 검색) 으로 조회   -->
-	<select id="review_list_id" resultType="com.bc.model.vo.ReviewVO" parameterType="Map">
-		SELECT * FROM (
-		    SELECT ROWNUM AS R_NUM, R.*
-		    FROM (SELECT * FROM REVIEW
-		    WHERE ID LIKE '%'|| #{query_} || '%'
-		    ORDER BY REVIEW_IDX DESC) R
-		    )
-		WHERE R_NUM BETWEEN #{begin} AND #{end}
-	</select>
-
-
-
 	<!-- 게시글 하나 조회 (review_idx 값으로 조회) -->
 	<select id="review_one" parameterType="String" resultType="com.bc.model.vo.ReviewVO">
 		SELECT REVIEW_IDX, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_HIT, 
@@ -105,10 +68,6 @@
 		FROM REVIEW
 		WHERE REVIEW_IDX = #{review_idx}
 	</select>
-	
-	
-	
-	
 	
 	
 

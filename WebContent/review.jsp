@@ -205,11 +205,7 @@ footer .phone{
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<form method="get">
-					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">후기게시판</a>
-				</form>
-				
+				<a href="review.jsp"> 후기게시판</a>
 			</ul>
 		</aside>
 	</div>
@@ -221,21 +217,15 @@ footer .phone{
 
 		<!-- 검색  -->
 		<div class="search-form margin-top first align-right">
-			<h3 class="hidden">수강후기 검색폼</h3>
-			<form class="table-form" action="reviewListSearch">
+			<h3 class="hidden">검색폼</h3>
+			<form class="table-form">
 				<fieldset>
-					<legend class="hidden">수강후기 검색 필드</legend>
-					<label class="hidden">검색분류</label> 
-					<!-- value가 갈때, f라는 key값으로 전달될 것이다. -->
-					<select name="f">
-						<!-- value가  title일때, selected되도록 -->
-						<option ${(param.f == "review_title")? "selected":""} value="review_title">글제목</option>
-						<option ${(param.f == "id")? "selected":""} value="id">아이디</option>
-					</select> 
-					<!-- 사용자가 검색창에 입력한 값 q로 전달. -->
-					<label class="hidden">검색어</label>
-					<input type="text" name="q" value="${param.q}" />
-					<input class="btn btn-search" type="submit" value="검색" />
+					<legend class="hidden">검색 필드</legend>
+					<label class="hidden">검색분류</label> <select name="f">
+						<option value="title">제목</option>
+						<option value="writerId">작성자</option>
+					</select> <label class="hidden">검색어</label> <input type="text" name="q"
+						value="" /> <input class="btn btn-search" type="submit" value="검색" />
 				</fieldset>
 			</form>
 			
@@ -258,12 +248,13 @@ footer .phone{
 				</thead>
 				<tbody>
 <!--  글 시작  -->
-				<c:if test="${empty list}">
+
+				<c:if test="${empty list }">
 					<tr>
 						<p>★ 게시글이 없습니다. 다시 확인해주세요 ★</p>
 					</tr>
 				</c:if>
-				<c:if test="${not empty list}">
+				<c:if test="${not empty list }">
 					<c:forEach var="list" items="${list}">
 						<tr>
 							<td>${list.review_idx}</td>
@@ -298,6 +289,7 @@ footer .phone{
 
 
 			<!--  페이징 구현  -->
+			
 				<div>
 					<c:choose>
 						<%-- 1페이지일때 (이전) 메세지 뿌려주기! --%>
@@ -305,49 +297,28 @@ footer .phone{
 							<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
 						</c:when>
 						<c:otherwise>
-							<span class="btn btn-prev"><a href="reviewListSearch?cPage=${pvo.endPage - 1}&f=${review_title}&q=${id}">이전</a></span>
+							<span class="btn btn-prev"><a href="reviewList?cPage=${pvo.beginPage - 1}">이전</a></span>
 						</c:otherwise>
 					</c:choose>
 				</div>
-				
-				
 				<%-- 페이지 번호 --%>
-				
-				
-				
 					<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
-						
-						
-							<c:if test="${pageNo == pvo.nowPage}">
-								<ul class="-list- center">
-									<li><a class="-text- orange bold" href="reviewList?cPage=${pageNo}">${pageNo}</a></li>
-								</ul>
-							</c:if>
-						
-						
-						<c:if test="${param.q != ''}">
-							<c:if test="${pageNo != pvo.nowPage}">
-								<ul class="-list- center">
-									<li><a class="-text- orange bold" href="reviewListSearch?cPage=${pageNo}&f=${review_title}&q=${id}">${pageNo}</a></li>
-								</ul>
-							</c:if>
+						<c:if test="${pageNo == pvo.nowPage}">
+							<ul class="-list- center">
+								<li><a class="-text- orange bold">${pageNo}</a></li>
+							</ul>
+						</c:if>
+						<c:if test="${pageNo != pvo.nowPage}">
+							<ul class="-list- center">
+								<li><a class="-text- orange bold" href="reviewList?cPage=${pageNo}">${pageNo}</a></li>
+							</ul>
 						</c:if>
 					</c:forEach>
-					
-					
-					
-					
-					
 				<%-- (다음)페이지 --%>
 				<div>
-					<c:if test="${param.q != ''}">
-						<c:if test="${pvo.endPage < pvo.totalPage}">
-							<a class="btn btn-next" href="reviewListSearch?cPage=${pvo.endPage + 1}&f=${review_title}&q=${id}">다음</a>
-						</c:if>
-					</c:if>	
-					<!--<c:if test="${pvo.endPage < pvo.totalPage}">
+					<c:if test="${pvo.endPage < pvo.totalPage}">
 						<a class="btn btn-next" href="reviewList?cPage=${pvo.endPage + 1}">다음</a>
-					</c:if>-->
+					</c:if>
 					<c:if test="${pvo.endPage >= pvo.totalPage}">
 						<a class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</a>
 					</c:if>
@@ -356,6 +327,7 @@ footer .phone{
 		</main>
 	</div>
 </div>
+
 
 	<!-- footer html 영역 -->
 	<footer>
