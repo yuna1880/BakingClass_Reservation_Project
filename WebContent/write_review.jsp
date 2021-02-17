@@ -1,29 +1,26 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.bc.model.vo.Paging"%>
 <%@page import="com.bc.model.vo.ReviewVO"%>
 <%@page import="com.bc.model.dao.DAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%-- 리뷰게시판 --%>
 <%
 	//사용자 로그인 정보 가져오기
 	String id = (String)session.getAttribute("userid");
 
 	System.out.println(id);
-	
-	//DB에서 리스트 조회
-	List<ReviewVO> list = DAO.getReview();
-	System.out.println(">>현재 페이지 글 목록 (list): " + list);
-	
-	//EL , JSTL 사용을 위한 Scope 등록 !
-	pageContext.setAttribute("list", list);
 
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 수강 후기 </title>
+<title>후기 작성</title>
 <link rel="stylesheet" href="css/board_style.css"/>
 <style>
 *{
@@ -72,6 +69,8 @@ header{
 	text-align: center;
 	padding: 230px 0 0 750px;
 }
+
+
 
 /*------------ product css영역 --------------*/
 #main {
@@ -206,16 +205,19 @@ footer .phone{
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<a href="review.jsp"> 후기게시판</a>
+				<form method="get">
+					<!-- reviewList 컨트롤러로 이동 !!  -->
+					<a href="reviewList">후기게시판</a>
+				</form>
+				
 			</ul>
 		</aside>
 	</div>
 	
-	<!-- 게시판 상세정보 들어와야 하는 영역  -->
-
+	<!-- 게시판 들어와야 하는 영역  -->
 
 	<main>
-		<h2 class="main title">수강 후기</h2>
+		<h2 class="main title">후기 작성</h2>
 
 		<div class="margin-top first">
 			<h3 class="hidden">수강후기 내용</h3>
@@ -223,8 +225,11 @@ footer .phone{
 				<tbody>
 					<tr>
 						<th>제목</th>
-						<td class="text-align-left text-indent text-strong text-orange"
-							colspan="3">재밌어용</td>
+						<td>
+							<input type="text" name="subject" size="100" title="제목" 
+							style="width:520px;height:25px;font-size:20px;">
+						</td>
+						
 					</tr>
 					<tr>
 						<th>작성일</th>
@@ -268,32 +273,21 @@ footer .phone{
 
 		<div class="margin-top text-align-center">
 			<form method="get">
-					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">목록으로</a>
-				</form>
+				<!-- reviewList 컨트롤러로 이동 !!  -->
+				<a href="reviewList">목록으로</a>
+			</form>
 		</div>
-
 		<div class="margin-top">
 			<table class="table border-top-default">
 				<tbody>
 
-					<tr>
-						<th>다음글</th>
-						<td colspan="3" class="text-align-left text-indent">다음글이
-							없습니다.</td>
-					</tr>
-					<tr>
-						<th>이전글</th>
-						<td colspan="3" class="text-align-left text-indent"><a
-							class="text-blue text-strong" href="">좋아요</a></td>
-					</tr>
+					
 				</tbody>
 			</table>
 		</div>
 	</main>
 	</div>
 </div>
-
 
 	<!-- footer html 영역 -->
 	<footer>
