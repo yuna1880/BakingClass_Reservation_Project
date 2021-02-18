@@ -98,7 +98,7 @@ crossorigin="anonymous"></script>
                                 <span class="ps_box int_id">
                                     <input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
 
-                            </div> -->
+                           </div> -->
 
                             <!-- 아이디, 비밀번호 -->
                             <div class="join_row">

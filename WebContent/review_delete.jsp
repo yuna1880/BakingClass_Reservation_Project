@@ -4,26 +4,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 리뷰게시판 상세페이지--%>
+<%-- 리뷰 게시물 삭제 전 비밀번호 입력--%>
 <%
 	//사용자 로그인 정보 가져오기
 	String id = (String)session.getAttribute("userid");
 
 	System.out.println(id);
 	
-	//DB에서 리스트 조회
-	List<ReviewVO> list = DAO.getReview();
-	System.out.println(">>현재 페이지 글 목록 (list): " + list);
-	
-	//EL , JSTL 사용을 위한 Scope 등록 !
-	pageContext.setAttribute("list", list);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 수강 후기 </title>
-<link rel="stylesheet" href="css/board_style.css"/>
+<title> 리뷰 삭제</title>
+<link rel="stylesheet" href="css/style.css"/>
 <style>
 *{
 	margin: 0;
@@ -190,6 +184,7 @@ footer .phone{
 		</div>
 	</header>
 	
+
 <!-- mainimg html 영역 -->
 	<section id="main_image">
 		<a href="#"><img src="./images/btn_goclass.png"></a>
@@ -213,92 +208,51 @@ footer .phone{
 	<!-- 페이지 내용 들어와야 하는 영역  -->
 
 	<main>
-	<br><br>
-		<h2 class="main title">수강 후기</h2>
+	
+	<br><br><br><br>
+    <h1 align="center">정보 수정</h1>
+    <br>
+    <p align="center">후기 삭제를 위한 회원 비밀번호를 입력해주세요.</p>
+    <br>
 
-		<div class="margin-top first">
-			<h3 class="hidden">수강후기 내용</h3>
-			<table class="table">
-				<tbody>
-					<tr>
-						<th>제목</th>
-						<td class="text-align-left text-indent text-strong text-orange"
-							colspan="3">${vo.review_title}</td>
-					</tr>
-					<tr>
-						<th>작성일</th>
-						<td class="text-align-left text-indent" colspan="3">${vo.review_date}</td>
-					</tr>
-					<tr>
-						<th>수업 이름 </th>
-						<td class="text-align-left text-indent" colspan="3">${vo.review_cls}</td>
-					</tr>
-					<tr>
-						<th>작성자</th>
-						<td>${vo.id}</td>
-						<th>평점</th>
-						<td>5점 중 ${vo.review_star}</td>
-					</tr>
-					<tr>
-						<th>첨부파일 : ${vo.review_image}</th>
-						<td colspan="3"></td>
-					</tr>
-					<tr class="content">
-						<td colspan="4">
-							<div>
-								<br>
-							</div>
-							<div>
-							${vo.review_content}
-							<img src="/upload/${vo.review_image}" width=500 height=500 />
-							</div>
-							<div>
-								<br>
-							</div>
-							<div>
-								<a href="http://www.newlecture.com/resource/spring2.zip"><b><u><font
-											size="5" color="#dd8a00">사진 다운로드하기</font></u></b></a>
-							</div>
-							<div>
-								<br>
-							</div>
-							<div>
-								<br>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+	<form name="check_form" method="post" action="MemberUpdate" onsubmit="return checkValue()">
 
-		<div class="margin-top text-align-center">
-			<form method="get">
-					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">목록으로</a>
-					<a href="reviewUpdate">수정</a>
-					<a href="review_delete.jsp">삭제</a>
-				</form>
-		</div>
+		<div id="container" role="main">
+			<div id="content">
+				<div class="join_content">
 
-		<div class="margin-top">
-			<table class="table border-top-default">
-				<tbody>
-					<tr>
-						<th>다음글</th>
-						<td colspan="3" class="text-align-left text-indent">다음글이 없습니다.</td>
-					</tr>
-					<tr>
-						<th>이전글</th>
-						<td colspan="3" class="text-align-left text-indent"><a
-							class="text-blue text-strong" href="">좋아요</a></td>
-					</tr>
-				</tbody>
-			</table>
+					<div class="join_row">
+						<h3 class="join_title">
+							<label for="pswd1">비밀번호</label>
+						</h3>
+						<span class="ps_box int_pass" id="pswd1Img"> <input
+							type="password" id="pwd1" name="pwd1" class="int"
+							placeholder="password" title="Input password"
+							aria-describedby="pswd1Msg" maxlength="20"> <span
+							class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
+						</span> <span class="error_next_box" id="pswd1Msg" style="display: none"
+							aria-live="assertive"></span>
+					</div>
+					<div class="btn_area">
+						<input type="button" value="입력" class="btn_type btn_primary" onclick="member_pwd_ok(this.form)">
+						<input type="button" value="이전페이지로" class="btn_type btn_primary"
+							onclick="history.back()">
+					</div>
+				</div>
+			</div>
 		</div>
+	</form>
+	
+	
+	
+	
 	</main>
-	</div>
-</div>
+	
+	
 
+
+
+	
 	<!-- footer html 영역 -->
 	<footer>
 		<div class="box">
