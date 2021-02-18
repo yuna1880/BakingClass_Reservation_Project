@@ -17,7 +17,7 @@ import com.bc.model.vo.MemberVO;
 import com.bc.model.vo.Paging;
 import com.bc.model.vo.ReviewVO;
 
-//후기 가져오는 컨트롤러
+//후기 가져오는 컨트롤러//
 @WebServlet("/reviewListSearch")
 public class ReviewListSearchController extends HttpServlet{
 	
@@ -79,7 +79,6 @@ public class ReviewListSearchController extends HttpServlet{
 		//선택한 값 + 입력한 값
 		String select_ = request.getParameter("f");
 		String query_ = request.getParameter("q");
-		
 		
 		
 		if(select_.equals("review_title")) {
@@ -202,7 +201,14 @@ public class ReviewListSearchController extends HttpServlet{
 			System.out.println("변환 후 >>시작 페이지 (beginPage): " + p.getBeginPage());
 			System.out.println("변환 후 >>끝 페이지 (endPage): " + p.getEndPage());
 			System.out.println("선택값 : " + select_);
+			
+			
+			
+			
 			System.out.println("입력값 : " + query_);
+			
+			
+			
 			
 			//정의해주기.
 			String begin = Integer.toString(p.getBegin());
@@ -218,6 +224,7 @@ public class ReviewListSearchController extends HttpServlet{
 			request.setAttribute("pvo", p);
 	
 			request.setAttribute("review_title", select_);
+			
 			request.setAttribute("id", query_);
 			
 					

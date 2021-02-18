@@ -14,7 +14,7 @@
 	String id = (String)session.getAttribute("userid");
 
 	System.out.println(id);
-
+//
 %>
 <!DOCTYPE html>
 <html>

@@ -59,7 +59,7 @@ public class DAO {
 		return result;
 	}
 	
-	//------------------------------------------------------------------------
+	//---------------- 후기 게시판 --------------------------------------------------------
 	
 	//후기 리스트 가져오기
 	public static List<ReviewVO> getReview() {
@@ -90,7 +90,6 @@ public class DAO {
 		return totalCount;
 	}
 	
-	
 	// 키워드로 게시물 (제목 검색) 으로 조회
 	public static List<ReviewVO> getListTitle(String begin, String end, String query_) {
 		Map<String, String> map = new HashMap<>();
@@ -105,7 +104,6 @@ public class DAO {
 		return list;
 	}
 	
-	
 	// 키워드로 게시물 (아이디 검색) 으로 조회
 	public static List<ReviewVO> getListId(String begin, String end, String query_) {
 		Map<String, String> map = new HashMap<>();
@@ -119,7 +117,6 @@ public class DAO {
 		return list;
 	}
 	
-	
 	// 게시글 하나 조회 (review_idx 값으로 조회)
 	public static ReviewVO getOne(String review_idx) {
 		SqlSession ss = DBService.getFactory().openSession();
@@ -128,10 +125,14 @@ public class DAO {
 		return vo;
 	}
 	
-	
-	
-	
-	
+	// 게시물 작성 (+파일)
+	public static int write(ReviewVO vo) {
+		//오토커밋
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.insert("Baking_y.write", vo);
+		ss.close();
+		return result;
+	}
 	
 	
 	

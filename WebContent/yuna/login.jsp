@@ -30,7 +30,7 @@
 	<form name="login_form" method="post" action="Memberlogin"
 		onsubmit="return checkValue()">
 		<div id="container" role="main">
-			<div id="content">
+			<div id="content">                                                                            
 				<h2 class="blind">Sign In</h2>
 				<div class="join_content">
 					<div class="row_group">

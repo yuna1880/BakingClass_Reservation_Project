@@ -6,7 +6,7 @@
 <mapper namespace="Baking_y">
 	
 	
-	<!-- 회원가입  -->
+	<!-- 회원가입 ! -->
 	<insert id="join" parameterType="com.bc.model.vo.MemberVO">
 		INSERT INTO MEMBER
 			(ID, PWD, NAME, PHONE, ADDR)
@@ -106,7 +106,14 @@
 		WHERE REVIEW_IDX = #{review_idx}
 	</select>
 	
-	
+	<!-- 게시물 입력 -->
+	<insert id="write" parameterType="com.bc.model.vo.ReviewVO">
+		INSERT INTO REVIEW
+			(REVIEW_IDX, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_HIT, 
+				REVIEW_IMAGE, ID, REVIEW_CLS, REVIEW_STAR)
+			VALUES (REVIEW_SEQ1.NEXTVAL, #{review_title}, #{review_content},
+			SYSDATE, 0, #{review_image}, #{id}, #{cls_name}, #{review_star})
+	</insert>
 	
 	
 	

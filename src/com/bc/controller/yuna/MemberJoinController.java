@@ -39,8 +39,6 @@ public class MemberJoinController extends HttpServlet{
 		
 		request.getRequestDispatcher("/yuna/memberjoin_ok.jsp").forward(request, response);
 
-		
-		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
