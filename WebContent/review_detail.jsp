@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 리뷰게시판 상세페이지--%>
+<%-- 리뷰게시판 --%>
 <%
 	//사용자 로그인 정보 가져오기
 	String id = (String)session.getAttribute("userid");
@@ -17,6 +17,7 @@
 	
 	//EL , JSTL 사용을 위한 Scope 등록 !
 	pageContext.setAttribute("list", list);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -196,24 +197,24 @@ footer .phone{
 	</section>
 	
 <!-- sidebar html 영역 -->
-<div class="box">
+	<div class="box">
 	<aside>
 			<h2 class="title1">DALCOCO 베이킹</h2>
 			<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
-			<p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
+					</p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
 
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<a href="reviewList"> 후기게시판</a>
+				<a href="review.jsp"> 후기게시판</a>
 			</ul>
-	</aside>
-</div>
+		</aside>
+	</div>
 	
-	<!-- 페이지 내용 들어와야 하는 영역  -->
+	<!-- 게시판 상세정보 들어와야 하는 영역  -->
+
 
 	<main>
-	<br><br>
 		<h2 class="main title">수강 후기</h2>
 
 		<div class="margin-top first">
@@ -223,35 +224,29 @@ footer .phone{
 					<tr>
 						<th>제목</th>
 						<td class="text-align-left text-indent text-strong text-orange"
-							colspan="3">${vo.review_title}</td>
+							colspan="3">재밌어용</td>
 					</tr>
 					<tr>
 						<th>작성일</th>
-						<td class="text-align-left text-indent" colspan="3">${vo.review_date}</td>
-					</tr>
-					<tr>
-						<th>수업 이름 </th>
-						<td class="text-align-left text-indent" colspan="3">${vo.review_cls}</td>
+						<td class="text-align-left text-indent" colspan="3">2019-08-18
+						</td>
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td>${vo.id}</td>
-						<th>평점</th>
-						<td>5점 중 ${vo.review_star}</td>
+						<td>ㅎㅎㅎ</td>
+						<th>조회수</th>
+						<td>148</td>
 					</tr>
 					<tr>
-						<th>첨부파일 : ${vo.review_image}</th>
+						<th>첨부파일</th>
 						<td colspan="3"></td>
 					</tr>
 					<tr class="content">
-						<td colspan="4">
+						<td colspan="4">너무재밌어요
 							<div>
 								<br>
 							</div>
-							<div>
-							${vo.review_content}
-							<img src="/upload/${vo.review_image}" width=500 height=500 />
-							</div>
+							<div>다음에 또 들으러 갈게요</div>
 							<div>
 								<br>
 							</div>
@@ -275,17 +270,17 @@ footer .phone{
 			<form method="get">
 					<!-- reviewList 컨트롤러로 이동 !!  -->
 					<a href="reviewList">목록으로</a>
-					<a href="reviewUpdate">수정</a>
-					<a href="review_delete.jsp">삭제</a>
 				</form>
 		</div>
 
 		<div class="margin-top">
 			<table class="table border-top-default">
 				<tbody>
+
 					<tr>
 						<th>다음글</th>
-						<td colspan="3" class="text-align-left text-indent">다음글이 없습니다.</td>
+						<td colspan="3" class="text-align-left text-indent">다음글이
+							없습니다.</td>
 					</tr>
 					<tr>
 						<th>이전글</th>
@@ -298,6 +293,7 @@ footer .phone{
 	</main>
 	</div>
 </div>
+
 
 	<!-- footer html 영역 -->
 	<footer>
@@ -315,7 +311,7 @@ footer .phone{
 			<li>주소 : 경기도 용인시 수지구 123 </li>
 			<li>전화 : 031-123-1234</li>
 			<li>팩스 : 002-323-8222</li>
-			<li>카카오톡 : dalcoco_office</li>
+			<li>카카오톡 : bbo</li>
 			<li>인스타그램: @coco_yeah</li>
 			<li>이메일 : dalcoco@test.com</li>
 			</ul>
