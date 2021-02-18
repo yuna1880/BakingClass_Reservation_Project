@@ -14,8 +14,7 @@ public class ReserveDAO {
 		SqlSession ss = DBService.getFactory().openSession(true);
 		int result = ss.insert("Baking_s.addList",vo);
 		ss.close();
-
-		System.out.println(result);
+		System.out.println("문제~~~~~"+vo.getReserv_date());
 		return result;
 		
 	}
@@ -31,6 +30,9 @@ public class ReserveDAO {
 	public static List<ReservationVO> getList(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession();
 		List<ReservationVO> list = ss.selectList("Baking_s.list", map);
+		for (ReservationVO vo : list) {
+			System.out.println("내가 찾고있는거~~"+vo.getReserv_inputDate());
+		}
 		ss.close();
 		return list;
 	}
@@ -39,6 +41,7 @@ public class ReserveDAO {
 	public static List<ReservationVO> getResrvList(int idx) {
 		SqlSession ss = DBService.getFactory().openSession();
 		List<ReservationVO> list = ss.selectList("Baking_s.ReservList", idx);
+		
 		ss.close();
 		return list;
 	}

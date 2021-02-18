@@ -65,18 +65,7 @@ public class CalculationController extends HttpServlet{
 		List<ReservationVO> list = new ArrayList<ReservationVO>();
 		list.add(vo);
 		
-		/*
-		//출력해보기 테스트
-		for (ReservationVO li : list) {
-			System.out.println(li.getReserv_date());
-			System.out.println(li.getReserv_time());
-			System.out.println(li.getReserv_people());
-			System.out.println(li.getReserv_price());
-			System.out.println(li.getCls_idx());
-			System.out.println(li.getId());
-			System.out.println(li.getReserv_status());
-		}
-		*/
+		
 		resp.sendRedirect("reserv_myPage.jsp");
 	}
 	

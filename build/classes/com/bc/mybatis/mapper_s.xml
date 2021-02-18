@@ -15,11 +15,13 @@
 		RESERV_PRICE,
 		CLS_IDX,
 		ID,
-		RESERV_STATUS
+		RESERV_STATUS,
+		RESERV_INPUTDATE
 		)
-		VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'yyyy-MM-dd'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status})
+		VALUES( RESERVATION_SEQ.NEXTVAL, #{reserv_date}, #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status}, SYSDATE)
 	</insert>
-
+	<!-- VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'yyyy/MM/dd'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status}, SYSDATE) -->
+	
 	<!-- 전체 게시글 수 조회 -->
 	<select id="totalCount" resultType="int" parameterType="String">
 		SELECT COUNT(*) AS CNT FROM RESERVATION WHERE ID = #{id }
