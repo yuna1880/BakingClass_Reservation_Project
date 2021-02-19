@@ -229,12 +229,14 @@ footer .phone{
 						<td class="text-align-left text-indent" colspan="3">${vo.review_date}</td>
 					</tr>
 					<tr>
-						<th>수업 이름 </th>
+						<th>수업명 </th>
 						<td class="text-align-left text-indent" colspan="3">${vo.review_cls}</td>
 						</tr>
 					<tr>
 						<th>작성자</th>
 						<td>${vo.id}</td>
+					</tr>
+					<tr>
 						<th>평점</th>
 						<td>5점 중 ${vo.review_star}</td>
 					</tr>
@@ -267,14 +269,16 @@ footer .phone{
 		</div>
 
 		<div class="margin-top text-align-center">
-			<form method="get">
-					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">목록으로</a>
-					<a href="reviewUpdate">수정</a>
-					<a href="review_delete.jsp?review_idx=${vo.review_idx}">삭제</a>
+				<form method="get">
+						<!-- reviewList 컨트롤러로 이동 !!  -->
+						<a href="reviewList">목록으로</a>
+						<!-- 아이디가 로그인 아이디랑 같을때만 수정/삭제 가능하도록.. -->
+							<a href="ReviewUpdateForm?idx=${vo.review_idx}">수정</a>
+							<a href="review_delete.jsp?review_idx=${vo.review_idx}">삭제</a>
+						<c:if test="${mvo.id == vo.id}">
+						</c:if>
 				</form>
 		</div>
-
 		<div class="margin-top">
 			<table class="table border-top-default">
 				<tbody>

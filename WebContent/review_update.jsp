@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- 리뷰게시판 --%>
+<%-- 리뷰 수정 폼  --%>
 <%
 	//사용자 로그인 정보 가져오기
 	String id = (String)session.getAttribute("userid");
@@ -21,6 +21,7 @@
 <head>
 <meta charset="UTF-8">
 <title>후기 작성</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="css/write_style.css"/>
 <style>
 *{
@@ -164,7 +165,36 @@ footer .phone{
 	font-weight: bold;
 }
 
+input[type='file']{
+	display:none;
+}
+
+
+}
 </style>
+<script>
+	
+	document.addEventListener("DOMContentLoaded", function(){
+		
+		document.getElementById("file-attach").addEventListener("click",function(){
+			document.getElementById("update_file").click();
+		});
+		
+		document.getElementById("update_file").addEventListener("click",function(){
+			alert("요기");
+			let fileName = this.files[0].name;
+			console.log(fileName);
+			alert("요기");
+			alert(fileName);
+			document.getElementById("fileName").innerText = fileName;
+			document.querySelector("#removed").value = "false";
+		});
+		
+		
+
+	});
+
+</script>
 </head>
 <body>
 <!-- header html영역 -->
@@ -219,12 +249,12 @@ footer .phone{
 	<!--  후기 -->
 
 		<div class="container">
-			<form id="contact" action="reviewWrite" method="post" enctype="multipart/form-data">
-				<h3>후기작성</h3>
-				<h4> ${userid} 님, 수강하신 클래스 후기를 자유롭게 작성해주세요! </h4>
+			<form id="contact" method="post" enctype="multipart/form-data">
+				<h3>후기수정</h3>
+				<h4> ${userid} 님, 수정할 내용을 입력 후, 등록 버튼을 눌러주세요. </h4>
 				
 				<fieldset>
-					<input placeholder="제목" name="title" type="text" tabindex="1" required
+					<input value="${vo.review_title}" name="title" type="text" tabindex="1" required
 						autofocus>
 				</fieldset>
 				
@@ -235,27 +265,89 @@ footer .phone{
 					<option value="파티시에 클래스">파티시에 클래스</option>
 				</select>
 				
-				<!-- 별점 -->
+				<!-- 별점 선택한 값으로 checked -->
 				<div class="product-review-stars">
-					<input type="radio" id="star5" name="rating" value="5"
-						class="visuallyhidden" /><label for="star5" title="Rocks!">★</label>
-					<input type="radio" id="star4" name="rating" value="4"
-						class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
-					<input type="radio" id="star3" name="rating" value="3"
-						class="visuallyhidden" /><label for="star3" title="Meh">★</label>
-					<input type="radio" id="star2" name="rating" value="2"
-						class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
-					<input type="radio" id="star1" name="rating" value="1"
-						class="visuallyhidden" /><label for="star1"
-						title="Sucks big time">★</label>
+				
+				
+					<c:if test="${vo.review_star == '5'}">
+						<input type="radio" id="star5" name="rating" value="5"
+							class="visuallyhidden" checked="checked" /><label for="star5" title="Rocks!">★</label>
+						<input type="radio" id="star4" name="rating" value="4"
+							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
+						<input type="radio" id="star3" name="rating" value="3"
+							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
+						<input type="radio" id="star2" name="rating" value="2"
+							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
+						<input type="radio" id="star1" name="rating" value="1"
+							class="visuallyhidden" /><label for="star1"
+							title="Sucks big time">★</label>	
+					</c:if>
+					<c:if test="${vo.review_star == '4'}">
+						<input type="radio" id="star5" name="rating" value="5"
+							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
+						<input type="radio" id="star4" name="rating" value="4"
+							class="visuallyhidden" checked="checked"/><label for="star4" title="Pretty good">★</label>
+						<input type="radio" id="star3" name="rating" value="3"
+							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
+						<input type="radio" id="star2" name="rating" value="2"
+							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
+						<input type="radio" id="star1" name="rating" value="1"
+							class="visuallyhidden" /><label for="star1"
+							title="Sucks big time">★</label>	
+					</c:if>
+					<c:if test="${vo.review_star == '3'}">
+						<input type="radio" id="star5" name="rating" value="5"
+							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
+						<input type="radio" id="star4" name="rating" value="4"
+							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
+						<input type="radio" id="star3" name="rating" value="3"
+							class="visuallyhidden" checked="checked"/><label for="star3" title="Meh">★</label>
+						<input type="radio" id="star2" name="rating" value="2"
+							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
+						<input type="radio" id="star1" name="rating" value="1"
+							class="visuallyhidden" /><label for="star1"
+							title="Sucks big time">★</label>	
+					</c:if>
+					<c:if test="${vo.review_star == '2'}">
+						<input type="radio" id="star5" name="rating" value="5"
+							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
+						<input type="radio" id="star4" name="rating" value="4"
+							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
+						<input type="radio" id="star3" name="rating" value="3"
+							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
+						<input type="radio" id="star2" name="rating" value="2"
+							class="visuallyhidden" checked="checked"/><label for="star2" title="Kinda bad">★</label>
+						<input type="radio" id="star1" name="rating" value="1"
+							class="visuallyhidden" /><label for="star1"
+							title="Sucks big time">★</label>	
+					</c:if>
+					<c:if test="${vo.review_star == '1'}">
+						<input type="radio" id="star5" name="rating" value="5"
+							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
+						<input type="radio" id="star4" name="rating" value="4"
+							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
+						<input type="radio" id="star3" name="rating" value="3"
+							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
+						<input type="radio" id="star2" name="rating" value="2"
+							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
+						<input type="radio" id="star1" name="rating" value="1"
+							class="visuallyhidden" checked="checked"/><label for="star1"
+							title="Sucks big time">★</label>	
+					</c:if>
+					
 				</div>
 				<p class="star_text"> 별표를 클릭하여 평가해주세요.</p>
 				<fieldset>
 					<textarea placeholder="어떤 점이 좋았나요?" name="content" tabindex="5"
-						required></textarea>
+						required>${vo.review_content}</textarea>
 				</fieldset>
+				
 				<fieldset>
-					<input type = file name="file">
+					<p id="fileName">${vo.review_image}</p>
+					
+					<input type = file id="update_file">
+					<button id="file-attach">파일수정</button>
+					<button id="file-delete">삭제</button>
 				</fieldset>
 				<fieldset>
 					<button name="submit" type="submit" id="contact-submit"

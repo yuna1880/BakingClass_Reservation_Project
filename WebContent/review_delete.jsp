@@ -31,10 +31,9 @@
 			return false;
 		}
 	}
-	
 	function member_pwd_ok(frm) {
 		if(document.check_form.pwd1.value == ${pwd}) {
-			frm.action = "ReviewDelete";
+			frm.action = "ReviewDelete?idx=${idx}";
 			frm.submit();
 		} else {
 			alert("비밀번호가 다릅니다. 확인해주세요.");

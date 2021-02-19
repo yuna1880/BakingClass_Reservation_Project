@@ -36,6 +36,7 @@ public class MemberLoginController extends HttpServlet{
 			HttpSession session = request.getSession();
 			session.setAttribute("userid", id);
 			session.setAttribute("pwd", pwd);
+			session.setAttribute("mvo", vo);
 			
 			//!!!!! 경로때문에 ../main으로 설정! (컨트롤러 1개 타고 경로 바꿔주도록 redirect)
 			response.sendRedirect("../main");
