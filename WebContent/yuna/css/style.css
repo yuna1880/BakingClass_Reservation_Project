@@ -1,0 +1,906 @@
+
+@import url("//vendor-cdn.imweb.me/css/notosanskr-hestia.css");@import url("//vendor-cdn.imweb.me/css/notosans.css");@import url("//vendor-cdn.imweb.me/css/lora.css");@import url('//fonts.googleapis.com/earlyaccess/nanumgothic.css');	*::-moz-selection {
+		background-color: #212121;
+		color: #fff;
+	}
+	
+	/*2/8/2021, 12:44:25 PM*/
+@charset "UTF-8";
+
+@font-face {
+    font-family: NanumSquareL;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareR;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareB;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareEB;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.ttf) format("truetype")
+}
+
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+li,
+ol,
+p,
+select,
+table,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none
+}
+
+body,
+button,
+input,
+select,
+table,
+textarea {
+    font-family: Dotum, '돋움', Helvetica, sans-serif;
+    font-size: 12px;
+    -webkit-text-size-adjust: none
+}
+
+html {
+    font-size: 12px
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%
+}
+
+button,
+input,
+select,
+textarea {
+    border-radius: 0;
+    border: none;
+    background: 0 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-text-size-adjust: none
+}
+
+button {
+    cursor: pointer
+}
+
+label {
+    cursor: pointer
+}
+
+fieldset,
+img {
+    border: 0
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+address,
+em {
+    font-style: normal
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer
+}
+
+a:active,
+a:focus,
+a:hover {
+    text-decoration: underline
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    -webkit-text-size-adjust: none
+}
+
+hr {
+    display: none
+}
+
+.u_skip {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden
+}
+
+.u_skip::before {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '\00a0';
+    font-size: 0
+}
+
+#header .lang .sel::before {
+    background-image: url(https://ssl.pstatic.net/static/nid/join/m_sp_00_common_b64fc3c2.png);
+    background-size: 42px 23px;
+    background-repeat: no-repeat
+}
+
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px
+}
+
+body {
+    position: relative;
+    background: #f5f6f7
+}
+
+html[lang=en] body,
+html[lang=en] button,
+html[lang=en] input,
+html[lang=en] select,
+html[lang=en] table,
+html[lang=en] textarea,
+html[lang=zh-Hans] body,
+html[lang=zh-Hans] button,
+html[lang=zh-Hans] input,
+html[lang=zh-Hans] select,
+html[lang=zh-Hans] table,
+html[lang=zh-Hans] textarea,
+html[lang=zh-Hant] body,
+html[lang=zh-Hant] button,
+html[lang=zh-Hant] input,
+html[lang=zh-Hant] select,
+html[lang=zh-Hant] table,
+html[lang=zh-Hant] textarea {
+    font-family: Arial
+}
+
+#u_skip {
+    position: relative;
+    z-index: 2147483647
+}
+
+#u_skip a {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 128px;
+    text-align: center;
+    border: 1px solid #4ec53d;
+    outline: 0;
+    background: url(https://static.nid.naver.com/images/web/user/sp_u_skip.png) repeat-x 0 -11px
+}
+
+#u_skip a:active,
+#u_skip a:focus {
+    top: 0;
+    cursor: pointer;
+    text-decoration: none;
+    *zoom: 1
+}
+
+#u_skip span {
+    font-size: 11px;
+    line-height: 26px;
+    display: inline-block;
+    padding: 2px 6px 0 0;
+    letter-spacing: -1px;
+    color: #fff;
+    background: url(https://static.nid.naver.com/images/web/user/sp_u_skip.png) no-repeat 100% 11px
+}
+
+div[tabindex='-1'] {
+    outline: 0
+}
+
+
+
+#footer address .bar,
+html[lang=en] #footer .footer_none,
+html[lang=zh-Hans] #footer .footer_none,
+html[lang=zh-Hant] #footer .footer_none {
+    display: none
+}
+
+.btn_area {
+    margin: 30px 0 9px
+}
+
+.btn_area.double {
+    overflow: hidden;
+    margin: 29px -5px 0
+}
+
+.btn_area.double>span {
+    display: block;
+    float: left;
+    width: 50%
+}
+
+.btn_area.double span:before {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.btn_area>span .btn_type {
+    width: auto;
+    margin: 0 5px
+}
+
+.btn_type {
+    display: block;
+    width: 100%;
+    padding: 15px 0 15px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box
+}
+
+.btn_type:active,
+.btn_type:focus,
+.btn_type:hover {
+    text-decoration: none
+}
+
+.btn_type+.btn_type {
+    margin-top: 10px
+}
+
+.btn_default {
+    color: #fff;
+    background-color: #8e8e8e
+}
+
+.btn_primary {
+    color: #fff;
+    background-color: rgb(63, 63, 63);
+}
+
+html[lang=en] .btn_type,
+html[lang=zh-Hans] .btn_type,
+html[lang=zh-Hant] .btn_type {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400
+}
+
+html[lang=en] .btn_primary span {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    vertical-align: top
+}
+
+.btn_verify {
+    display: block;
+    font-size: 15px;
+    cursor: pointer
+}
+
+::-webkit-input-placeholder {
+    color: #8e8e8e
+}
+
+::-moz-placeholder {
+    color: #4a4a4a
+}
+
+input.int:-ms-input-placeholder {
+    color: #8e8e8e
+}
+
+input:-moz-placeholder {
+    color: #8e8e8e
+}
+
+select::-ms-expand {
+    opacity: 0
+}
+
+.sp {
+    background: url(https://static.nid.naver.com/images/ui/join/pc_sp_join_20170904.png) no-repeat
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+    .sp {
+        background: url(https://static.nid.naver.com/images/ui/join/t_sp_join_20170904.png) no-repeat;
+        background-size: 460px auto
+    }
+}
+
+.green {
+    color: #08a600 !important
+}
+
+#wrap {
+    width: 100%
+}
+
+#container,
+#footer,
+#header {
+    margin: 0 auto;
+    max-width: 768px;
+    min-width: 460px
+}
+
+
+
+#content {
+    width: 460px;
+    margin: 0 auto
+}
+
+.error {
+    display: block;
+    margin: 8px 0 -1px;
+    font-size: 12px;
+    line-height: 14px;
+    color: red
+}
+
+.error_next_box {
+    display: block;
+    margin: 9px 0 -2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: red
+}
+
+
+
+.input_chk {
+    position: relative;
+    display: block;
+    box-sizing: border-box
+}
+
+.input_chk input {
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    margin-top: -10px;
+    outline: 0
+}
+
+.input_chk label {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-left: 29px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    cursor: pointer;
+    color: #333;
+    box-sizing: border-box
+}
+
+.input_chk a {
+    color: #333
+}
+
+.input_chk input:focus~label {
+    outline: dotted thin
+}
+
+
+
+a.btn_group_join {
+    text-decoration: underline;
+    color: #333
+}
+
+a.btn_group_join:hover,
+a.btn_group_join:visited {
+    text-decoration: underline;
+    color: #333
+}
+
+html[lang=en] .group_join {
+    margin-top: 18px
+}
+
+.m_br {
+    display: none
+}
+
+.pc_br {
+    display: block
+}
+
+.ipin_box,
+.row_group {
+    overflow: hidden;
+    width: 100%
+}
+
+.lbl {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    margin-top: -9px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8e8e8e;
+    z-index: 9
+}
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    padding-right: 25px;
+    line-height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+    box-sizing: border-box;
+    z-index: 10;
+    *position: absolute;
+    *top: 0;
+    *left: 0;
+    apperance: none;
+    -webkit-apperance: none
+}
+
+
+.row_group+.row_group {
+    margin-top: 20px
+}
+
+.ps_box+.ps_box {
+    margin-top: 10px
+}
+
+.join_minor+.join_mobile {
+    margin-top: 20px
+}
+
+.join_title {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.ps_box,
+.ps_box_disable {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 110px 10px 14px;
+    background: #fff;
+    box-sizing: border-box;
+    vertical-align: top
+}
+
+.ps_box .lbl {
+    left: 0;
+    padding: 0 14px;
+    width: 100%;
+    box-sizing: border-box
+}
+
+.ps_box.int_id,
+.ps_box.int_id input {
+    background: #fff;
+    outline: 0
+}
+
+.ps_box.int_pass_step1 {
+    padding: 10px 93px 10px 14px
+}
+
+.ps_box.int_pass_step2,
+.ps_box.int_pass_step3,
+.ps_box.int_pass_step4 {
+    padding: 10px 85px 10px 14px
+}
+
+.ps_box.int_pass:after,
+.ps_box.int_pass_check2:after,
+.ps_box.int_pass_check:after,
+.ps_box.int_pass_step1:after,
+.ps_box.int_pass_step2:after,
+.ps_box.int_pass_step3:after,
+.ps_box.int_pass_step4:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    background-image: url(https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 125px 75px;
+    cursor: pointer
+}
+
+.ps_box.int_pass:after {
+    background-position: 0 0
+}
+
+.ps_box.int_pass_step1:after {
+    background-position: -27px -27px
+}
+
+.ps_box.int_pass_step2:after {
+    background-position: 0 -27px
+}
+
+.ps_box.int_pass_step3:after {
+    background-position: -54px -27px
+}
+
+.ps_box.int_pass_step4:after {
+    background-position: -54px 0
+}
+
+.ps_box.int_pass_check:after {
+    background-position: -27px 0
+}
+
+.ps_box.int_pass_check2:after {
+    background-position: -81px 0
+}
+
+.step_url {
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8e8e8e
+}
+
+
+
+.ps_box.discord {
+    border: solid 1px red
+}
+
+html[lang=en] .ps_box.accord,
+html[lang=en] .ps_box.discord {
+    padding-right: 90px
+}
+
+.ps_box.int_pass,
+.ps_box.int_pass_check,
+.ps_box.int_pass_check2 {
+    padding-right: 40px
+}
+
+.join_row .green {
+    color: #08a600
+}
+
+
+html[lang=en] .bir_title {
+    width: 77px;
+    padding-right: 7px;
+    padding-left: 8px
+}
+
+html[lang=zh-hans] .bir_title,
+html[lang=zh-hant] .bir_title {
+    width: 33px
+}
+
+.row_group+.join_mobile {
+    margin-top: 20px
+}
+
+.join_mobile {
+    position: relative;
+    overflow: hidden
+}
+
+.join_mobile+.join_mobile {
+    margin-top: 10px
+}
+
+.gender_nationality .gender_code,
+.join_mobile .country_code,
+.join_sex .gender_code {
+    display: block;
+    width: 100%;
+    padding-right: 7px;
+    box-sizing: border-box
+}
+
+.join_mobile .country_code .country_sel {
+    *margin-top: 0;
+    width: auto
+}
+
+:root .join_mobile .country_code .country_sel {
+    width: 100%
+}
+
+.join_mobile .int_mobile_area {
+    position: relative;
+    margin-top: 10px;
+    padding: 0 125px 0 0
+}
+
+.int_mobile_area+.ps_box,
+.int_mobile_area+.ps_box_disable,
+.ps_box_disable+.ps_box {
+    margin-top: 10px
+}
+
+.join_mobile .ps_box_disable,
+.join_mobile .ps_box_disable input {
+    background: #f7f7f7;
+    outline: 0
+}
+
+.join_mobile .int_mobile {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 15px 10px 14px;
+    vertical-align: top;
+    *position: relative;
+    *width: auto;
+    *top: -3px
+}
+
+.join_mobile .int_mobile_area .btn_verify {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 115px;
+    height: 51px;
+    padding: 18px 0 16px;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none
+}
+
+.join_mobile a.btn_c,
+.join_mobile_certify a.btn_c {
+    right: 15px;
+    width: 99px
+}
+
+.btn_certify_submit,
+.btn_mobile_submit {
+    position: absolute;
+    top: 8px;
+    right: 8px
+}
+
+.join_mobile_certify {
+    position: relative
+}
+
+.int_mobile_certify {
+    margin-right: 112px;
+    *width: 341px
+}
+
+.ps_box.accord,
+.ps_box.discord {
+    margin-top: 10px;
+    padding-right: 70px
+}
+
+
+
+.ipin_certify_btn {
+    width: 128px;
+    padding: 18px 0 17px;
+    background: #08a600;
+    font-size: 15px;
+    color: #fff;
+    box-sizing: border-box;
+    cursor: pointer
+}
+
+.ipin_certify_txt+.ipin_certify_btn {
+    margin-top: 6px
+}
+
+.row_group+.join_minor {
+    margin-top: 40px
+}
+
+.join_minor .join_com,
+.join_minor .sex_local {
+    padding-top: 8px;
+    padding-bottom: 8px
+}
+
+:root .agree_check_wrap .terms_chk_all .input_chk label:before {
+    margin-top: -12px
+}
+
+.small_check_box .input_chk label {
+    text-decoration: underline
+}
+
+.ie7 .lbl,
+.ie8 .lbl,
+.ie9 .lbl {
+    z-index: 11
+}
+
+.ie7 .lbl.focus,
+.ie8 .lbl.focus,
+.ie9 .lbl.focus {
+    z-index: 9
+}
+
+html[lang=zh-Hans] .btn_group a,
+html[lang=zh-Hans] .btn_join input {
+    background: #1fbc02 url(https://static.nid.naver.com/images/join/pc/btn_join2_2x_g.gif) 50% -1px no-repeat;
+    background-size: 75px auto
+}
+
+html[lang=zh-Hant] .btn_group a,
+html[lang=zh-Hant] .btn_join input {
+    background: #1fbc02 url(https://static.nid.naver.com/images/join/pc/btn_join2_2x_b.gif) 50% -1px no-repeat;
+    background-size: 75px auto
+}
+
+html[lang=zh-Hans] .btn_group a.btn_agree,
+html[lang=zh-Hant] .btn_group a.btn_agree {
+    background-position: 50% -126px
+}
+
+html[lang=zh-Hans] .btn_group a.btn_cancel,
+html[lang=zh-Hant] .btn_group a.btn_cancel {
+    border: solid 1px #e6e7e7;
+    background-color: #fff;
+    background-position: 50% -190px
+}
+
+html[lang=zh-Hans] .btn_join input.int_home,
+html[lang=zh-Hant] .btn_join input.int_home {
+    background-position: 50% -63px
+}
+
+.join_success .title {
+    margin: 0 auto 9px;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    text-align: center;
+    color: #222
+}
+
+    .btn_type {
+        font-weight: 400
+    }
+
+
+    #container {
+        width: auto;
+        max-width: 768px
+    }
+
+    #content {
+        width: 460px;
+        margin: 0 auto
+    }
+
+
+    #wrap.pop_easy .top_easy .ico_naver {
+        display: inline-block;
+        width: 58px;
+        height: 11px;
+        background: url(https://static.nid.naver.com/images/ui/join/m_naver_logo_white.png) no-repeat 0 0;
+        background-size: 58px 11px
+    }
+
+    .easy_btn_area {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 15px;
+        padding: 0 15px;
+        text-align: center
+    }
+
+ 
+
+@media (max-width:768px) {
+    .btn_group_join {
+        display: block;
+        padding-top: 3px
+    }
+
+    #wrap {
+        min-width: 250px
+    }
+
+    #header {
+        padding-top: 59px
+    }
+
+    #container,
+    #footer,
+    #header {
+        min-width: 220px;
+        margin: 0 15px;
+        box-sizing: border-box
+    }
+
+    #header .h_logo {
+        width: 165px;
+        height: 32px;
+        background-image: url(https://ssl.pstatic.net/static/nid/join/m_logo_naver.png);
+        background-size: 165px auto
+    }
+
+    #content {
+        max-width: 460px;
+        width: auto
+    }
+
+	
