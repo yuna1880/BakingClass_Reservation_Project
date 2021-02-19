@@ -1,4 +1,4 @@
-package com.bc.comtroller;
+package com.bc.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -38,15 +38,20 @@ public class CalculationController extends HttpServlet{
 
 		//시간
 		String resv_time = req.getParameter("resv_time");
+		System.out.println(resv_time);
 		//인원
 		int resv_people = Integer.valueOf(req.getParameter("resv_people"));
+		System.out.println(resv_people);
 		//결제금액
 		int resv_price = Integer.valueOf(req.getParameter("totalPrice"));
+		System.out.println(resv_price);
 		//클래스번호
 		int clsNum = Integer.valueOf(req.getParameter("clsNum"));
+		System.out.println("asdsadsadsa"+clsNum);
 		//아이디
 		HttpSession hs = req.getSession();
-		String id = (String)hs.getAttribute("id");
+		String id = (String)hs.getAttribute("nname");
+		System.out.println("sadsadsa"+id);
 		
 		
 		//VO담기 없는거 예약번호

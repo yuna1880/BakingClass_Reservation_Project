@@ -1,0 +1,13 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#main_image{
+	height: 312px;
+	background-image: url("./images/main_new.png");
+	background-reapeat: no-reapeat;
+	background-position: top center;
+	text-align: center;
+	padding: 230px 0 0 750px;
+}

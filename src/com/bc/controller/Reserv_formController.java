@@ -1,4 +1,4 @@
-package com.bc.comtroller;
+package com.bc.controller;
 
 import java.io.IOException;
 

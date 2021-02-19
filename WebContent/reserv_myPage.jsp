@@ -11,10 +11,13 @@
 <%
 	//페이징 처리를 위한 Paging 객체 생성해서 값을 읽고 설정
 	Reserv_Paging p = new Reserv_Paging();
-	String id = String.valueOf(session.getAttribute("id"));
+
+//여기 또바꿔야됨
+	String id = String.valueOf(session.getAttribute("nname"));
+	System.out.println("~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+id);
 
 	//1. 전체게시물 수를 구하기
-	p.setTotalRecord(ReserveDAO.getTotalCount(String.valueOf(session.getAttribute("id"))));
+	p.setTotalRecord(ReserveDAO.getTotalCount(id));
 	p.setTotalPage();
 	System.out.println("> 전체 게시글 수 : " + p.getTotalRecord());
 	System.out.println("> 전체 페이지 수 : " + p.getTotalPage());

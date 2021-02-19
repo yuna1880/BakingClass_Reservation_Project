@@ -5,11 +5,43 @@
 <!-- 보경  -->
 <mapper namespace="Baking_b">
 	
-	
-	<select id="all" resultType="com.bc.model.vo.MemberVO">
-		SELECT * FROM MEMBER
+	<!-- 클래스목록 -->
+ 	<!-- <select id="list" resultType="com.bc.model.vo.ClsVO"> 
+		SELECT CLS_IDX, CLS_NAME, CLS_CONTENT, CLS_IMAGE1, CLS_IMAGE2, CLS_IMAGE3
+		, CLS_PRICE, CLS_STARTDATE, TEACHER_ID, CLS_LOCATION 
+		FROM CLS ORDER BY CLS_IDX
+	</select> -->
+
+<!--   	<select id="list" resultType="com.bc.model.vo.ClsVO"> 
+		SELECT * FROM CLS ORDER BY CLS_IDX
+	</select>
+ -->
+ <select id="list" resultType="com.bc.model.vo.ClsVO">
+ SELECT C.CLS_IDX, C.CLS_NAME, C.CLS_CONTENT, C.CLS_IMAGE1, C.CLS_PRICE, 
+		C.CLS_STARTDATE, C.CLS_ENDDATE, C.TEACHER_ID, C.CLS_LOCATION, C.CLS_IMAGE2, 
+		C.CLS_IMAGE3, B.NAME, B.PHONE
+		FROM CLS C FULL OUTER JOIN MEMBER B ON C.TEACHER_ID = B.ID
+		WHERE C.TEACHER_ID = 'teacher'
+ </select>
+ 
+<!-- 클래스상세페이지  -->
+	<select id="one" parameterType="string" resultType="com.bc.model.vo.ClsVO"> 
+		SELECT C.CLS_IDX, C.CLS_NAME, C.CLS_CONTENT, C.CLS_IMAGE1, C.CLS_PRICE, 
+		C.CLS_STARTDATE, C.CLS_ENDDATE, C.TEACHER_ID, C.CLS_LOCATION, C.CLS_IMAGE2, 
+		C.CLS_IMAGE3, B.NAME, B.PHONE
+		FROM CLS C FULL OUTER JOIN MEMBER B ON C.TEACHER_ID = B.ID
+		WHERE CLS_IDX = #{cls_idx}
 	</select>
 	
-	
+<!-- 상세페이지 강사이름불러오는 조인문 -->
+     <select id="name" parameterType="string" resultType="com.bc.model.vo.ClsVO"> 
+		SELECT C.CLS_IDX, C.CLS_NAME, C.CLS_CONTENT, C.CLS_IMAGE1, C.CLS_PRICE, 
+		C.CLS_STARTDATE, C.CLS_ENDDATE, C.TEACHER_ID, C.CLS_LOCATION, C.CLS_IMAGE2, 
+		C.CLS_IMAGE3, B.ID, B.PWD, B.NAME, B.PHONE, B.ADDR
+		FROM CLS C FULL OUTER JOIN MEMBER B ON C.TEACHER_ID = B.ID
+		WHERE CLS_IDX = #{cls_idx}
+	</select>
+
+ 		
 	
 </mapper>

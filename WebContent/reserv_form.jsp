@@ -2,8 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-
+	
 <% 
+	String clsName = request.getParameter("clsname");
+	String clsidx = request.getParameter("clsidx");
+	String clsprice = request.getParameter("clsprice");
+	String id = (String)session.getAttribute("nname");
+
+	
+/*
+	String clsidx = request.getParameter("clsidx");
+	int clsprice = Integer.valueOf(request.getParameter("clsprice"));
+	*/
+	
+
+/* 	
 	String clsName = request.getParameter("clsName");
 	int parmPrice = Integer.valueOf(request.getParameter("price"));
 	pageContext.setAttribute("parmPrice",parmPrice);
@@ -15,7 +28,7 @@
 	// 클래스 번호
 	String clsNum = request.getParameter("clsNum");
 	pageContext.setAttribute("clsNum", clsNum);
-
+ */
 	
 %>
 <!DOCTYPE html>
@@ -41,7 +54,7 @@ $(function(){
 	$(".people").change(function(){
 		let thisPrice = $(".people option:selected").val();
 		
-		let parmPrice = ${parmPrice};
+		let parmPrice = <%=clsprice%>;
 		
 		$("#totalPrice").val(thisPrice * parmPrice);
 				
@@ -102,7 +115,7 @@ $(function(){
 		
 		<!-- 상세페이지 나오면 바꿔야함 -->
 		<tr>
-			<td><input type="hidden" name = "clsNum" value="${clsNum }"></td>
+			<td><input type="hidden" name = "clsNum" value=<%=clsidx %>></td>
 		</tr>
 		
 		<tr>

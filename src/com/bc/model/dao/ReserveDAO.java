@@ -22,6 +22,7 @@ public class ReserveDAO {
 	public static int getTotalCount(String id) {
 		SqlSession ss = DBService.getFactory().openSession();
 		int totalCount = ss.selectOne("Baking_s.totalCount",id);
+		System.out.println("sdsadsadsad"+id);
 		ss.close();
 		return totalCount;
 	}

@@ -2,14 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 유나  -->
-<mapper namespace="Baking_y">
-	
-	
-	<select id="all" resultType="com.bc.model.vo.MemberVO">
-		SELECT * FROM MEMBER
-	</select>
-	
-	
-	
+<mapper namespace="product"> 	
+
+
+ 		
 </mapper>
+
