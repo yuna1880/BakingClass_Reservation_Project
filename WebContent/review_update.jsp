@@ -170,6 +170,7 @@ input[type='file']{
 }
 
 </style>
+
 <script>
 	
 	document.addEventListener("DOMContentLoaded", function(){

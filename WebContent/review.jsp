@@ -166,6 +166,7 @@ footer .phone{
 
 </style>
 <script>
+//메세지 띄워주기.
 let msg = "${param.msg}";
 if (msg != null && msg.length > 0) {
 	alert(msg);
@@ -185,7 +186,7 @@ if (msg != null && msg.length > 0) {
 				<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+				<a href = "yuna/logout.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
 				<li>Home</li>

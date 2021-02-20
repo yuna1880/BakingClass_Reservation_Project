@@ -1,6 +1,7 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,10 +41,16 @@ public class MemberLoginController extends HttpServlet{
 			
 			//!!!!! 경로때문에 ../main으로 설정! (컨트롤러 1개 타고 경로 바꿔주도록 redirect)
 			response.sendRedirect("../main");
+
 			
 		} else {
 			System.out.println("로그인 실패");
-			request.getRequestDispatcher("login_false.jsp").forward(request, response);
+			
+			//삭제 완료 후 페이지에 넘겨줄 메세지.
+			String msg = "비밀번호가 틀립니다. 다시 입력해주세요.";
+			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+			response.sendRedirect("login.jsp?msg=" + encodedMsg);
+		
 		}
 				
 			System.out.println("> ListController.doGet() 끝");

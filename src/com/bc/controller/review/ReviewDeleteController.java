@@ -1,6 +1,7 @@
 package com.bc.controller.review;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +32,11 @@ public class ReviewDeleteController extends HttpServlet{
 		
 		int result = DAO.review_delete(review_idx);
 		
-		request.getRequestDispatcher("review_delete_ok.jsp").forward(request, response);
+		//삭제 완료 후 페이지에 넘겨줄 메세지.
+		String msg = "삭제가 완료되었습니다.";
+		String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+				
+		response.sendRedirect("reviewList?msg=" + encodedMsg);
 		
 	}
 	

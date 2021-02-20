@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <script>
+
+	let msg = "${param.msg}";
+	if (msg != null && msg.length > 0) {
+		alert(msg);
+	}
+	
 	function checkValue() {
 		if(!document.join_form.id.value){
 			alert("아이디를 입력해주세요.");
@@ -19,18 +25,19 @@
 			return false;
 			}
 		}
+	
 </script>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<br><br><br><br>
-    <h1 align="center">로그인</h1>
-    <br><br>
 	<form name="login_form" method="post" action="Memberlogin"
 		onsubmit="return checkValue()">
 		<div id="container" role="main">
+			<br><br><br><br>
+		    <h1 align="center">로그인</h1>
+		    <br><br>
 			<div id="content">                                                                            
-				<h2 class="blind">Sign In</h2>
+			<h2 class="blind">Sign In</h2>
 				<div class="join_content">
 					<div class="row_group">
 						<div class="join_row">
@@ -69,7 +76,6 @@
 								<span>회원가입</span>
 							</button>
 						</div>
-
 					</div>
 				</div>
 			</div>

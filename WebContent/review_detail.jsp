@@ -10,13 +10,7 @@
 	String id = (String)session.getAttribute("userid");
 
 	System.out.println(id);
-	
-	//DB에서 리스트 조회
-	List<ReviewVO> list = DAO.getReview();
-	System.out.println(">>현재 페이지 글 목록 (list): " + list);
-	
-	//EL , JSTL 사용을 위한 Scope 등록 !
-	pageContext.setAttribute("list", list);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -165,6 +159,13 @@ footer .phone{
 }
 
 </style>
+<script>
+//메세지 띄워주기
+let msg = "${param.msg}";
+if (msg != null && msg.length > 0) {
+	alert(msg);
+}
+</script>
 </head>
 <body>
 <!-- header html영역 -->
@@ -176,15 +177,15 @@ footer .phone{
 			<div id="menu">
 				<ul id="top_menu">
 				<li>${userid} 님</li>
-				<a href = "yuna/mypage.jsp">내정보</a>
+					<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+					<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
-				<li>Home</li>
-				<li>DALCOCO소개</li>
-				<li>강사소개</li>
+					<li>Home</li>
+					<li>DALCOCO소개</li>
+					<li>강사소개</li>
 				</ul>
 			</div>
 		</div>
@@ -198,24 +199,22 @@ footer .phone{
 <!-- sidebar html 영역 -->
 <div class="box">
 	<aside>
-			<h2 class="title1">DALCOCO 베이킹</h2>
-			<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
-			<p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
-			<h2 class="title2">게시판</h2>
-			<ul class="list">
-				<li>공지사항
-					<a href="reviewList"> 후기게시판</a>
-				</li>
-			</ul>
+		<h2 class="title1">DALCOCO 베이킹</h2>
+		<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
+		<p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
+		<h2 class="title2">게시판</h2>
+		<ul class="list">
+			<li>공지사항</li>
+				<a href="reviewList"> 후기게시판</a>
+		</ul>
 	</aside>
 </div>
 	
 	<!-- 페이지 내용 들어와야 하는 영역  -->
-
+	
 	<main>
 	<br><br>
 		<h2 class="main title">수강 후기</h2>
-
 		<div class="margin-top first">
 			<h3 class="hidden">수강후기 내용</h3>
 			<table class="table">
@@ -239,7 +238,29 @@ footer .phone{
 					</tr>
 					<tr>
 						<th>평점</th>
-						<td>5점 중 ${vo.review_star}</td>
+						<td>
+							<div class="product-review-stars">
+								<input type="radio" id="star5" name="rating" value="5"
+									class="visuallyhidden" ${vo.review_star == '5' ? "checked" : ""} />
+								<label for="star5" title="Rocks!">★</label>
+							
+								<input type="radio" id="star4" name="rating" value="4"
+									class="visuallyhidden" ${vo.review_star == '4' ? "checked" : ""}/>
+								<label for="star4" title="Pretty good">★</label>
+							
+								<input type="radio" id="star3" name="rating" value="3"
+									class="visuallyhidden" ${vo.review_star == '3' ? "checked" : ""}/>
+								<label for="star3" title="Meh">★</label>
+							
+								<input type="radio" id="star2" name="rating" value="2"
+									class="visuallyhidden" ${vo.review_star == '2' ? "checked" : ""}/>
+								<label for="star2" title="Kinda bad">★</label>
+							
+								<input type="radio" id="star1" name="rating" value="1"
+									class="visuallyhidden" ${vo.review_star == '1' ? "checked" : ""}/>
+								<label for="star1" title="Sucks big time">★</label>	
+							</div>
+						</td>
 					</tr>
 					<tr class="content">
 						<td colspan="4">
@@ -253,9 +274,6 @@ footer .phone{
 							</div>
 							<div>
 								<br>
-							</div>
-							<div>
-								----
 							</div>
 							<div>
 								<br>
@@ -296,35 +314,33 @@ footer .phone{
 			</table>
 		</div>
 	</main>
-	</div>
-</div>
-
+	
 	<!-- footer html 영역 -->
 	<footer>
 		<div class="box">
 		<div class="items">
 			<h3>문의전화</h3>
 			<ul>
-			<li class="phone">1588-8282</li>
-			<li>10:00 ~ 18:00 (점심시간 12:00 - 13:00)</li>
+				<li class="phone">1588-8282</li>
+				<li>10:00 ~ 18:00 (점심시간 12:00 - 13:00)</li>
 			</ul>
 		</div>
 		<div class="items">
 			<h3>달코코(DALCOCO)</h3>
 			<ul>
-			<li>주소 : 경기도 용인시 수지구 123 </li>
-			<li>전화 : 031-123-1234</li>
-			<li>팩스 : 002-323-8222</li>
-			<li>카카오톡 : dalcoco_office</li>
-			<li>인스타그램: @coco_yeah</li>
-			<li>이메일 : dalcoco@test.com</li>
+				<li>주소 : 경기도 용인시 수지구 123 </li>
+				<li>전화 : 031-123-1234</li>
+				<li>팩스 : 002-323-8222</li>
+				<li>카카오톡 : dalcoco_office</li>
+				<li>인스타그램: @coco_yeah</li>
+				<li>이메일 : dalcoco@test.com</li>
 			</ul>
 		</div>
 		<div class="items">
 			<h3>입금 정보</h3>
 			<ul>
-			<li> 우리 12345-678-172023</li>
-			<li> 예금주 : DALCOCO(관리자) </li>
+				<li> 우리 12345-678-172023</li>
+				<li> 예금주 : DALCOCO(관리자) </li>
 			</ul>
 			</div>
 		</div>

@@ -36,7 +36,6 @@ public class ReviewUpdateController extends HttpServlet{
 				new DefaultFileRenamePolicy() //파일명 중복시, 새로운 이름으로 생성
 				);
 		
-		
 		// 세션에서 로그인 된 id값 가져오기. 
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("userid");
@@ -74,7 +73,6 @@ public class ReviewUpdateController extends HttpServlet{
 			
 			Files.delete(file.toPath());
 						
-			System.out.println("file = " + file);
 			
 			//파일이 존재할때
 			if (file.exists()) {
@@ -93,7 +91,6 @@ public class ReviewUpdateController extends HttpServlet{
 		}
 		
 		
-		
 		// 파일변경 (mr.getFilesystemName("write_file")) & 파일변경X null 
 		if (removed.equals("false")) {
 			
@@ -103,19 +100,18 @@ public class ReviewUpdateController extends HttpServlet{
 	    		// 파일이 변경됨
 	    		vo.setReview_image(fileName);
 	    	}
-
 		}
 		
-			
 		System.out.println("수정 후 vo 값 : " + vo.toString());
 		
 		int result = DAO.updateReview(vo);
 		
+		//수정 후 페이지에 넘겨줄 메세지 
 		String msg = "수정이 완료되었습니다";
 		String encodedMsg = URLEncoder.encode(msg, "UTF-8");
-		response.sendRedirect("reviewList?msg=" + encodedMsg);
+		response.sendRedirect("reviewOne?msg=" + encodedMsg + "&review_idx=" + review_idx);
 		
-		System.out.println("> ReviewUpdateController.doGet() 끝");
+		System.out.println(">ReviewUpdateController.doGet() 끝");
 		
 		}
 	

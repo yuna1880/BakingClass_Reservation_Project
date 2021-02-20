@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -90,10 +91,13 @@ public class ReviewWriteController extends HttpServlet{
 		System.out.println("vo 입력값 : " + vo.toString());
 		
 		int result = DAO.write(vo);
-
-		request.getRequestDispatcher("review_write_ok.jsp").forward(request, response);
 		
-		System.out.println("> ReviewWriteController.doGet() 끝");
+		//작성 후 페이지에 넘겨줄 메세지
+		String msg = "작성이 완료되었습니다.";
+		String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+		response.sendRedirect("reviewList?msg=" + encodedMsg);
+		
+		System.out.println(">ReviewWriteController.doGet() 끝");
 		
 		}
 	
