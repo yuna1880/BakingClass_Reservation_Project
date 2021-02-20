@@ -101,7 +101,7 @@
 	<!-- 게시글 하나 조회 (review_idx 값으로 조회) -->
 	<select id="review_one" parameterType="String" resultType="com.bc.model.vo.ReviewVO">
 		SELECT REVIEW_IDX, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_DATE, REVIEW_HIT, 
-		REVIEW_IMAGE, ID, REVIEW_CLS, REVIEW_STAR
+		REVIEW_IMAGE, ID, REVIEW_CLS, REVIEW_STAR, REVIEW_FILEPATH 
 		FROM REVIEW
 		WHERE REVIEW_IDX = #{review_idx}
 	</select>
@@ -115,10 +115,25 @@
 			SYSDATE, 0, #{review_image}, #{id}, #{review_cls}, #{review_star}, #{review_filepath})
 	</insert>
 	
+	<!-- 게시물 수정 -->
+	<update id="update_review" parameterType="com.bc.model.vo.ReviewVO">
+		UPDATE REVIEW
+		    SET 
+		    REVIEW_TITLE = #{review_title},
+		    REVIEW_CONTENT = #{review_content},
+		    REVIEW_IMAGE = #{review_image},
+		    REVIEW_CLS = #{review_cls},
+		    REVIEW_STAR = #{review_star},
+		    REVIEW_FILEPATH = #{review_filepath}
+		WHERE REVIEW_IDX = #{review_idx}
+	</update>
+	
 	<!-- 게시물 삭제 -->
 	<delete id="review_delete" parameterType="String">
-		DELETE REVIEW WHERE REVIEW_IDX=${review_idx}
+		DELETE REVIEW WHERE REVIEW_IDX= #{review_idx}
 	</delete>
+	
+	
 	
 	
 

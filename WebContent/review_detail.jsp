@@ -203,8 +203,9 @@ footer .phone{
 			<p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
-				<li>공지사항</li>
-				<a href="reviewList"> 후기게시판</a>
+				<li>공지사항
+					<a href="reviewList"> 후기게시판</a>
+				</li>
 			</ul>
 	</aside>
 </div>
@@ -246,9 +247,9 @@ footer .phone{
 								<br>
 							</div>
 							<div>
-							<img src="${vo.review_image}" width="600px" height="500px">
+								<img src="${vo.review_image}" width="600px" height="500px">
 							<br>
-							${vo.review_content}
+								${vo.review_content}
 							</div>
 							<div>
 								<br>

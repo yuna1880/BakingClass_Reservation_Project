@@ -165,6 +165,12 @@ footer .phone{
 }
 
 </style>
+<script>
+let msg = "${param.msg}";
+if (msg != null && msg.length > 0) {
+	alert(msg);
+}
+</script>
 </head>
 <body>
 <!-- header html영역 -->

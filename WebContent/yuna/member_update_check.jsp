@@ -48,7 +48,6 @@
 		<div id="container" role="main">
 			<div id="content">
 				<div class="join_content">
-
 					<div class="join_row">
 						<h3 class="join_title">
 							<label for="pswd1">비밀번호</label>

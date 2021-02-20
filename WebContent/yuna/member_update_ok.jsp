@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>탈퇴 완료</title>
 <script>
-		alert("수정 완료되었습니다. 확인해주세요.");
+		alert("탈퇴가 완료되었습니다. 안녕히가십시오.");
 </script>
 <%
 	//세션에 들어있는 정보 모두 삭제 !
 	session.invalidate();
-	response.sendRedirect("review_detail.jsp");
+	response.sendRedirect("login.jsp");
 %>	
 	
 </head>

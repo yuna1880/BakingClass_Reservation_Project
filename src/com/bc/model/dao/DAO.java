@@ -135,6 +135,15 @@ public class DAO {
 		return result;
 	}
 	
+	// 게시물 수정 
+	public static int updateReview(ReviewVO vo) {
+		//오토커밋
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.update("Baking_y.update_review", vo);
+		ss.close();
+		return result;
+	}
+
 	// 게시물 삭제
 	public static int review_delete(String review_idx) {
 		SqlSession ss = DBService.getFactory().openSession(true);

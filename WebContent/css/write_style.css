@@ -140,7 +140,10 @@ h1:before{
 }
 
 .class_select{
-	padding: 0px 650px 0px 0px;
+	/* padding: 0px 650px 0px 0px; */
+	display: block;
+	width: 100%;
+	margin-top: 10px;
 }
 
 .star_text{

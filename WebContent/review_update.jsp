@@ -169,29 +169,30 @@ input[type='file']{
 	display:none;
 }
 
-
-}
 </style>
 <script>
 	
 	document.addEventListener("DOMContentLoaded", function(){
 		
-		document.getElementById("file-attach").addEventListener("click",function(){
-			document.getElementById("update_file").click();
+		document.querySelector("#fileAttach").addEventListener("click", function() {
+			document.querySelector("#fileUpdate").click();
 		});
 		
-		document.getElementById("update_file").addEventListener("click",function(){
-			alert("요기");
+		//파일 새로 업로드시 -> false
+		document.querySelector("#fileUpdate").addEventListener("change", function() {
+			//선택한 0번째 파일의 이름을 fileName에 저장.
 			let fileName = this.files[0].name;
-			console.log(fileName);
-			alert("요기");
-			alert(fileName);
-			document.getElementById("fileName").innerText = fileName;
+			// 파일 이름을 빈 칸에 표시!
+			document.querySelector("#fileName").innerText = fileName;
 			document.querySelector("#removed").value = "false";
 		});
 		
+		document.querySelector("#fileDelete").onclick = function () {
+			document.querySelector("#fileName").innerText = "첨부된 파일이 없습니다."
+			document.querySelector("#fileUpdate").value = "";
+			document.querySelector("#removed").value = "true";
+		};
 		
-
 	});
 
 </script>
@@ -205,16 +206,20 @@ input[type='file']{
 			</div>
 			<div id="menu">
 				<ul id="top_menu">
-				<li>${userid} 님</li>
-				<a href = "yuna/mypage.jsp">내정보</a>
-				<li>관심목록</li>
-				<li>예약조회</li>
-				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+					<li>${userid} 님</li>
+					<li>
+						<a href = "yuna/mypage.jsp">내정보</a>
+					</li>
+					<li>관심목록</li>
+					<li>예약조회</li>
+					<li>
+						<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+					</li>
 				</ul>
 				<ul id="main_menu">
-				<li>Home</li>
-				<li>DALCOCO소개</li>
-				<li>강사소개</li>
+					<li>Home</li>
+					<li>DALCOCO소개</li>
+					<li>강사소개</li>
 				</ul>
 			</div>
 		</div>
@@ -227,18 +232,17 @@ input[type='file']{
 	
 <!-- sidebar html 영역 -->
 	<div class="box">
-	<aside>
+		<aside>
 			<h2 class="title1">DALCOCO 베이킹</h2>
 			<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
-					</p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
-
+			<p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				<form method="get">
 					<!-- reviewList 컨트롤러로 이동 !!  -->
+				<li>
 					<a href="reviewList">후기게시판</a>
-				</form>
+				</li>
 			</ul>
 		</aside>
 	</div>
@@ -249,94 +253,48 @@ input[type='file']{
 	<!--  후기 -->
 
 		<div class="container">
-			<form id="contact" method="post" enctype="multipart/form-data">
+			<form id="contact" method="post" action="reviewUpdate" enctype="multipart/form-data">
 				<h3>후기수정</h3>
-				<h4> ${userid} 님, 수정할 내용을 입력 후, 등록 버튼을 눌러주세요. </h4>
+				<h4>${userid} 님, 수정할 내용을 입력 후, 등록 버튼을 눌러주세요.</h4>
 				
 				<fieldset>
 					<input value="${vo.review_title}" name="title" type="text" tabindex="1" required
 						autofocus>
+						
+					<select name="class_name" class="class_select" required>
+						<option value="선택없음" disabled>수강 클래스 리스트</option>
+						<option value="제빵 클래스">제빵 클래스</option>
+						<option value="마카롱 클래스">마카롱 클래스</option>
+						<option value="파티시에 클래스">파티시에 클래스</option>
+					</select>
 				</fieldset>
 				
-				<select name="class_name" class="class_select" required>
-					<option value="선택없음" disabled>수강 클래스 리스트</option>
-					<option value="제빵 클래스">제빵 클래스</option>
-					<option value="마카롱 클래스">마카롱 클래스</option>
-					<option value="파티시에 클래스">파티시에 클래스</option>
-				</select>
 				
 				<!-- 별점 선택한 값으로 checked -->
+				
 				<div class="product-review-stars">
+					<input type="radio" id="star5" name="rating" value="5"
+						class="visuallyhidden" ${vo.review_star == '5' ? "checked" : ""} />
+					<label for="star5" title="Rocks!">★</label>
 				
+					<input type="radio" id="star4" name="rating" value="4"
+						class="visuallyhidden" ${vo.review_star == '4' ? "checked" : ""}/>
+					<label for="star4" title="Pretty good">★</label>
 				
-					<c:if test="${vo.review_star == '5'}">
-						<input type="radio" id="star5" name="rating" value="5"
-							class="visuallyhidden" checked="checked" /><label for="star5" title="Rocks!">★</label>
-						<input type="radio" id="star4" name="rating" value="4"
-							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
-						<input type="radio" id="star3" name="rating" value="3"
-							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
-						<input type="radio" id="star2" name="rating" value="2"
-							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
-						<input type="radio" id="star1" name="rating" value="1"
-							class="visuallyhidden" /><label for="star1"
-							title="Sucks big time">★</label>	
-					</c:if>
-					<c:if test="${vo.review_star == '4'}">
-						<input type="radio" id="star5" name="rating" value="5"
-							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
-						<input type="radio" id="star4" name="rating" value="4"
-							class="visuallyhidden" checked="checked"/><label for="star4" title="Pretty good">★</label>
-						<input type="radio" id="star3" name="rating" value="3"
-							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
-						<input type="radio" id="star2" name="rating" value="2"
-							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
-						<input type="radio" id="star1" name="rating" value="1"
-							class="visuallyhidden" /><label for="star1"
-							title="Sucks big time">★</label>	
-					</c:if>
-					<c:if test="${vo.review_star == '3'}">
-						<input type="radio" id="star5" name="rating" value="5"
-							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
-						<input type="radio" id="star4" name="rating" value="4"
-							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
-						<input type="radio" id="star3" name="rating" value="3"
-							class="visuallyhidden" checked="checked"/><label for="star3" title="Meh">★</label>
-						<input type="radio" id="star2" name="rating" value="2"
-							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
-						<input type="radio" id="star1" name="rating" value="1"
-							class="visuallyhidden" /><label for="star1"
-							title="Sucks big time">★</label>	
-					</c:if>
-					<c:if test="${vo.review_star == '2'}">
-						<input type="radio" id="star5" name="rating" value="5"
-							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
-						<input type="radio" id="star4" name="rating" value="4"
-							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
-						<input type="radio" id="star3" name="rating" value="3"
-							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
-						<input type="radio" id="star2" name="rating" value="2"
-							class="visuallyhidden" checked="checked"/><label for="star2" title="Kinda bad">★</label>
-						<input type="radio" id="star1" name="rating" value="1"
-							class="visuallyhidden" /><label for="star1"
-							title="Sucks big time">★</label>	
-					</c:if>
-					<c:if test="${vo.review_star == '1'}">
-						<input type="radio" id="star5" name="rating" value="5"
-							class="visuallyhidden"  /><label for="star5" title="Rocks!">★</label>
-						<input type="radio" id="star4" name="rating" value="4"
-							class="visuallyhidden" /><label for="star4" title="Pretty good">★</label>
-						<input type="radio" id="star3" name="rating" value="3"
-							class="visuallyhidden" /><label for="star3" title="Meh">★</label>
-						<input type="radio" id="star2" name="rating" value="2"
-							class="visuallyhidden" /><label for="star2" title="Kinda bad">★</label>
-						<input type="radio" id="star1" name="rating" value="1"
-							class="visuallyhidden" checked="checked"/><label for="star1"
-							title="Sucks big time">★</label>	
-					</c:if>
-					
+					<input type="radio" id="star3" name="rating" value="3"
+						class="visuallyhidden" ${vo.review_star == '3' ? "checked" : ""}/>
+					<label for="star3" title="Meh">★</label>
+				
+					<input type="radio" id="star2" name="rating" value="2"
+						class="visuallyhidden" ${vo.review_star == '2' ? "checked" : ""}/>
+					<label for="star2" title="Kinda bad">★</label>
+				
+					<input type="radio" id="star1" name="rating" value="1"
+						class="visuallyhidden" ${vo.review_star == '1' ? "checked" : ""}/>
+					<label for="star1" title="Sucks big time">★</label>	
 				</div>
-				<p class="star_text"> 별표를 클릭하여 평가해주세요.</p>
+				<p class="star_text">별표를 클릭하여 평가해주세요.</p>
+				
 				<fieldset>
 					<textarea placeholder="어떤 점이 좋았나요?" name="content" tabindex="5"
 						required>${vo.review_content}</textarea>
@@ -344,48 +302,46 @@ input[type='file']{
 				
 				<fieldset>
 					<p id="fileName">${vo.review_image}</p>
-					
-					<input type = file id="update_file">
-					<button id="file-attach">파일수정</button>
-					<button id="file-delete">삭제</button>
+					<input type="file" name="file" id="fileUpdate">
+					<button type="button" id="fileAttach">파일수정</button>
+					<button type="button" id="fileDelete">파일삭제</button>
+					<input type="hidden" id="removed" name="removed" value="false">
+					<input type="hidden" name="idx" value="${vo.review_idx}">
 				</fieldset>
 				<fieldset>
-					<button name="submit" type="submit" id="contact-submit"
-						data-submit="...Sending">등록</button>
+					<button type="submit" id="contact-submit">등록</button>
 				</fieldset>
 			</form>
 		</div>
 	</main>
-	</div>
-</div>
 
 	<!-- footer html 영역 -->
 	<footer>
 		<div class="box">
-		<div class="items">
-			<h3>문의전화</h3>
-			<ul>
-			<li class="phone">1588-8282</li>
-			<li>10:00 ~ 18:00 (점심시간 12:00 - 13:00)</li>
-			</ul>
-		</div>
-		<div class="items">
-			<h3>달코코(DALCOCO)</h3>
-			<ul>
-			<li>주소 : 경기도 용인시 수지구 123 </li>
-			<li>전화 : 031-123-1234</li>
-			<li>팩스 : 002-323-8222</li>
-			<li>카카오톡 : bbo</li>
-			<li>인스타그램: @coco_yeah</li>
-			<li>이메일 : dalcoco@test.com</li>
-			</ul>
-		</div>
-		<div class="items">
-			<h3>입금 정보</h3>
-			<ul>
-			<li> 우리 12345-678-172023</li>
-			<li> 예금주 : DALCOCO(관리자) </li>
-			</ul>
+			<div class="items">
+				<h3>문의전화</h3>
+				<ul>
+					<li class="phone">1588-8282</li>
+					<li>10:00 ~ 18:00 (점심시간 12:00 - 13:00)</li>
+				</ul>
+			</div>
+			<div class="items">
+				<h3>달코코(DALCOCO)</h3>
+				<ul>
+					<li>주소 : 경기도 용인시 수지구 123 </li>
+					<li>전화 : 031-123-1234</li>
+					<li>팩스 : 002-323-8222</li>
+					<li>카카오톡 : bbo</li>
+					<li>인스타그램: @coco_yeah</li>
+					<li>이메일 : dalcoco@test.com</li>
+				</ul>
+			</div>
+			<div class="items">
+				<h3>입금 정보</h3>
+				<ul>
+					<li> 우리 12345-678-172023</li>
+					<li> 예금주 : DALCOCO(관리자) </li>
+				</ul>
 			</div>
 		</div>
 	</footer>
