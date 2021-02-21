@@ -2,14 +2,7 @@
     pageEncoding="UTF-8"%>
 <%-- 회원수정 페이지 --%>
 <%
-	//가입했던 아이디 불러오기
-	String id = (String)session.getAttribute("userid");
-
-	String pwd = (String)request.getAttribute("pwd");
-	String name = (String)request.getAttribute("name");
-	String phone = (String)request.getAttribute("phone");
-	String addr = (String)request.getAttribute("addr");
-	
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 정보 수정</title>
 <script>
-
 	function member_update_ok(frm) {
 		//MemberUpdate_OK.jsp페이지로 이동..
 		frm.action = "MemberUpdate_OK";
@@ -43,32 +35,19 @@
 </script>  
     <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
-    <br><br><br><br>
-    <h1 align="center">내 정보 수정</h1>
-    <br>
-    <p align="center">변경하실 정보를 변경하실 수 있습니다.</p>
-    <br>
-    
+<body>  
     <form name="join_form" method="post" action="MemberUpdate" onsubmit="return checkValue()">
-
         <!-- container -->
         <div id="container" role="main">
+		    <br><br><br><br>
+		    <h1 align="center">내 정보 수정</h1>
+		    <br>
+		    <p align="center">변경하실 정보를 변경하실 수 있습니다.</p>
+		    <br>
             <div id="content">
                 <!-- tg-text=title -->
                 <h2 class="blind">Sign Up</h2>
                     <div class="join_content">
-                        <!-- 아이디, 비밀번호 입력 -->
-                        
-                        <!--
-                        <div class="row_group">
-                            <div class="join_row">
-                                <h3 class="join_title"><label for="id">아이디</label></h3>
-                                <span class="ps_box int_id">
-                                    <input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
-
-                            </div> -->
-
                             <!-- 아이디, 비밀번호 -->
 						<div class="row_group">
 	                        <div class="join_row">
@@ -103,7 +82,7 @@
                                 </span>
                                 <span class="error_next_box" id="pswd2Msg" style="display:none" aria-live="assertive"></span>
                             </div>
-                    </div>
+                   		 </div>
                     <!-- 이름 -->
                     <div class="row_group">
                         <div class="join_row">
@@ -116,9 +95,8 @@
                                 </div>
                             </div>
                             <span class="error_next_box" id="nameMsg" style="display:none" aria-live="assertive"></span>
-                        </div>
+                    	 </div>
                         <!-- 전화번호 -->
-
                         <div class="join_row join_mobile">
                             <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                             <span class="ps_box box_right_space">
@@ -126,7 +104,6 @@
                             </span>
                             <span class="error_next_box" id="phoneMsg" style="display:none" aria-live="assertive"></span>
                         </div>
-
                         <!-- 주소 -->
                         <div class="join_row">
                             <h3 class="join_title"><label for="addr">주소</label></h3>

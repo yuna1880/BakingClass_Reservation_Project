@@ -1,6 +1,7 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -29,8 +30,11 @@ public class MemberUpdateOKController extends HttpServlet{
 		MemberVO vo = new MemberVO(id,pwd,name,phone,addr);
 		
 		int result = DAO.update(vo); //회원정보 수정
-	
-		request.getRequestDispatcher("/yuna/mypage.jsp").forward(request, response);
+		
+		//수정 후 다음 페이지에 넘겨줄 메세지
+		String msg = "수정이 완료되었습니다. 확인해주세요.";
+		String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+		response.sendRedirect("mypage.jsp?msg=" + encodedMsg);
 		
 		System.out.println("> MemberUpdateOKController.doGet() 끝");
 	}

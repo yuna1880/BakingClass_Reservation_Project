@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 회원가입 페이지 --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 페이지</title>
+    <title>회원가입</title>
     <style>
     	#id_check { color : red; }
-    
     </style>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
-crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" 
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script>
 	function checkValue() {
 		if(!document.join_form.id.value){
@@ -67,39 +65,24 @@ crossorigin="anonymous"></script>
 					console.log("실패");
 				}
 			});
-		}, 400);
-				
+		}, 400);	
 	}
-	
 </script>  
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-    <br><br><br><br>
-    <h1 align="center">회원 가입</h1>
-    <br>
-    <p align="center">회원가입을 위한 정보를 입력해주세요.</p>
-    <br>
-    
     <form name="join_form" method="post" action="MemberJoin" onsubmit="return checkValue()">
-
         <!-- container -->
         <div id="container" role="main">
+		    <br><br><br><br>
+		    <h1 align="center">회원 가입</h1>
+		    <br>
+		    <p align="center">회원가입을 위한 정보를 입력해주세요.</p>
+		    <br>
             <div id="content">
                 <!-- tg-text=title -->
                 <h2 class="blind">Sign Up</h2>
                     <div class="join_content">
-                        <!-- 아이디, 비밀번호 입력 -->
-                        
-                        <!--
-                        <div class="row_group">
-                            <div class="join_row">
-                                <h3 class="join_title"><label for="id">아이디</label></h3>
-                                <span class="ps_box int_id">
-                                    <input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
-
-                           </div> -->
-
                             <!-- 아이디, 비밀번호 -->
                             <div class="join_row">
                                 <h3 class="join_title"><label for="id">아이디</label></h3>
@@ -119,8 +102,8 @@ crossorigin="anonymous"></script>
                                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                                 <span class="ps_box int_pass" id="pswd1Img">
                                     <input type="password" id="pswd1" name="pwd1" class="int" placeholder="비밀번호 (영문+숫자) 8자이상" 
-                                    		title="비밀번호 (영문+숫자) 8자이상" aria-describedby="pswd1Msg" maxlength="20"
-                                    		pattern="[A-Za-z0-9]{8}">
+                                    		title="비밀번호 (영문+숫자) 8-15자" aria-describedby="pswd1Msg" maxlength="20"
+                                    		pattern="[A-Za-z0-9]{8-15}">
                                     		
                                     <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
                                 </span>
@@ -129,7 +112,7 @@ crossorigin="anonymous"></script>
                                 <h3 class="join_title"><label for="pswd2">비밀번호 확인</label></h3>
                                 <span class="ps_box int_pass_check" id="pswd2Img">
                                     <input type="password" id="pswd2" name="pwd2" class="int" placeholder="비밀번호 (영문+숫자) 8자이상" 
-                                    	title="비밀번호 (영문+숫자) 8자이상" aria-describedby="pswd2Blind" maxlength="20">
+                                    	title="비밀번호 (영문+숫자) 8-15자" aria-describedby="pswd2Blind" maxlength="20">
                                     	
                                     <span id="pswd2Blind" class="wa_blind"></span>
                                 </span>
@@ -179,14 +162,10 @@ crossorigin="anonymous"></script>
                         <button type="submit" id="btnJoin" class="btn_type btn_primary" ><span>가입하기</span></button>
                         <button type="reset" id="reset" class="btn_type btn_primary"><span>다시입력</span></button>
                         <button type="button" id="previous" class="btn_type btn_primary" onclick="history.back()"><span>이전페이지로</span></button>
-
                     </div>
 
 
-                    <br><br><br><br><br><br><br><br><br><br><br><br>
 
-                    <!-- footer -->
-
-    </form>
-</body>
-</html>
+    		</form>
+		</body>
+	</html>

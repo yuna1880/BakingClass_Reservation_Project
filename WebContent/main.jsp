@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- 내정보 보기 --%>
-<%
-	String id = (String)session.getAttribute("userid");
-
-	System.out.println(id);
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title> DALCOCO 메인페이지</title>
 <script>
-
+	let msg = "${param.msg}";
+	if (msg != null && msg.length > 0) {
+		alert(msg);
+	}
 </script>
 <link rel="stylesheet" href="css/style.css"/>
 <style>
@@ -159,6 +156,7 @@ footer .phone{
 </style>
 </head>
 <body>
+
 <!-- header html영역 -->
 	<header>
 		<div class="box">
@@ -167,16 +165,16 @@ footer .phone{
 			</div>
 			<div id="menu">
 				<ul id="top_menu">
-				<li>${userid} 님</li>
-				<a href = "yuna/mypage.jsp">내정보</a>
+					<li>${sessionScope.userid} 님</li>
+					<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+					<a href = "yuna/logout.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
-				<li>Home</li>
-				<li>DALCOCO소개</li>
-				<li>강사소개</li>
+					<li>Home</li>
+					<li>DALCOCO소개</li>
+					<li>강사소개</li>
 				</ul>
 			</div>
 		</div>
@@ -189,15 +187,15 @@ footer .phone{
 	
 <!-- sidebar html 영역 -->
 	<div class="box">
-	<aside>
+		<aside>
 			<h2 class="title1">DALCOCO 베이킹</h2>
 			<p class="comment"> 달코코는 예약제 베이킹 클래스입니다.
-					자세한 문의는 카톡bbo로 주시면 빠르고 정확한 답변을 확인할 수 있습니다^^</p>
-
+						자세한 문의는 카톡bbo로 주시면 빠르고 정확한 답변을 확인할 수 있습니다^^</p>
+	
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
 				<li>공지사항</li>
-				
+					
 				<form method="get">
 					<!-- reviewList 컨트롤러로 이동 !!  -->
 					<a href="reviewList">후기게시판</a>
@@ -211,12 +209,14 @@ footer .phone{
 		<h3 class="title">클래스 목록</h3>
 		<div class="items">
 			<ul>
-			<li class="i1"><img src="./images/mini2.png"></li>
-			<li class="i2">건강은 스스로 만든다! [디저트 베이킹 입문]</li>
-			<li class="i3">미니타르트 클래스</li>
-			<li class="i4">
-				<div><span class="s1">1인/35,000</span>
-				<span class="s2">김보경 파티쉐</span></div>
+				<li class="i1"><img src="./images/mini2.png"></li>
+				<li class="i2">건강은 스스로 만든다! [디저트 베이킹 입문]</li>
+				<li class="i3">미니타르트 클래스</li>
+				<li class="i4">
+		<div>
+			<span class="s1">1인/35,000</span>
+			<span class="s2">김보경 파티쉐</span>
+		</div>
 			</li>
 			</ul>
 		</div>

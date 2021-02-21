@@ -1,6 +1,7 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,16 +30,12 @@ public class MemberJoinController extends HttpServlet{
 		
 		int result = DAO.insert(vo);
 		
-		/* if(result == 0) {
-			System.out.println("가입 실패");
-			
-		}else {
-			System.out.println("가입 성공" + vo.toString());//회원가입 정보 출력
-			request.setAttribute("vo", vo);
-		} */
-		
-		request.getRequestDispatcher("/yuna/memberjoin_ok.jsp").forward(request, response);
-
+		//가입 후 페이지에 넘겨줄 메세지 
+		String msg = "회원가입이 완료되었습니다. 환영합니다. 로그인 페이지로 이동합니다.";
+		String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+		response.sendRedirect("login.jsp?msg=" + encodedMsg);
+				
+		System.out.println(">MemberJoinController.doGet() 끝");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

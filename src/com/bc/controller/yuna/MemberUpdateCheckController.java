@@ -27,7 +27,6 @@ public class MemberUpdateCheckController extends HttpServlet{
 		request.setAttribute("pwd", vo.getPwd());
 		
 		request.getRequestDispatcher("member_update_check.jsp").forward(request, response);
-	
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

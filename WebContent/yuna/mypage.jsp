@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 내정보 보기 --%>
 <%
-	String id = (String)session.getAttribute("userid");
-
-	System.out.println(id);
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +11,10 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <script>
+	let msg = "${param.msg}";
+	if (msg != null && msg.length > 0) {
+		alert(msg);
+	}
 
 	function member_update(frm) {
 		//frm.action = "memberupdate"; // 예전 jsp 직접 호출 방식

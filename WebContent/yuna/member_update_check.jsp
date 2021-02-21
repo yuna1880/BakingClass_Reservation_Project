@@ -3,10 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 회원정보 수정 전 비밀번호 체크! --%>
 <%
-	String pwd = (String)request.getAttribute("pwd");
-	pageContext.setAttribute("pwd", pwd);
-	System.out.println("가입시 pwd : " + pwd);
-	
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +11,6 @@
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
 <script>
-
 	function checkValue() {
 		if(!document.check_form.pwd1.value){
 			alert("비밀번호를 입력해주세요.");
@@ -36,16 +32,14 @@
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<br><br><br><br>
-    <h1 align="center">정보 수정</h1>
-    <br>
-    <p align="center">${userid} 님 , 정보 수정을 위해 가입시 비밀번호를 입력해주세요.</p>
-    <br>
-
 
 	<form name="check_form" method="post" action="MemberUpdate" onsubmit="return checkValue()">
-
 		<div id="container" role="main">
+			<br><br><br><br>
+		    <h1 align="center">정보 수정</h1>
+		    <br>
+		    <p align="center">${userid} 님 , 정보 수정을 위해 가입시 비밀번호를 입력해주세요.</p>
+		    <br>
 			<div id="content">
 				<div class="join_content">
 					<div class="join_row">
@@ -64,6 +58,7 @@
 						<input type="button" value="입력" class="btn_type btn_primary" onclick="member_pwd_ok(this.form)">
 						<input type="button" value="이전페이지로" class="btn_type btn_primary"
 							onclick="history.back()">
+						<input type="hidden" name="pwd" value="${pwd}">
 					</div>
 				</div>
 			</div>

@@ -8,13 +8,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- 리뷰게시판 --%>
+<%-- 리뷰 게시판 --%>
 <%
-	//사용자 로그인 정보 가져오기
-	String id = (String)session.getAttribute("userid");
-
-	System.out.println(id);
-//
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +18,8 @@
 <meta charset="UTF-8">
 <title>후기 작성</title>
 <link rel="stylesheet" href="css/write_style.css"/>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" 
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <style>
 *{
 	margin: 0;
@@ -165,6 +163,18 @@ footer .phone{
 }
 
 </style>
+<script>
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			
+			reader.onload = function (e) {
+				$('#blah').attr('src',e.target.result);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 </head>
 <body>
 <!-- header html영역 -->
@@ -251,11 +261,12 @@ footer .phone{
 				</div>
 				<p class="star_text"> 별표를 클릭하여 평가해주세요.</p>
 				<fieldset>
-					<textarea placeholder="어떤 점이 좋았나요?" name="content" tabindex="5"
-						required></textarea>
+					<textarea placeholder="어떤 점이 좋았나요?" id="blah" name="content" tabindex="5"
+						required>
+					</textarea>
 				</fieldset>
 				<fieldset>
-					<input type = file name="file">
+					<input type=file name="file" onchange="readURL(this);">
 				</fieldset>
 				<fieldset>
 					<button name="submit" type="submit" id="contact-submit"

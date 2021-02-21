@@ -25,7 +25,6 @@ public class MemberLoginController extends HttpServlet{
 
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd1");
-		int check = 0;
 		
 		MemberVO vo = DAO.login_check(id); //로그인 체크
 		
@@ -39,25 +38,23 @@ public class MemberLoginController extends HttpServlet{
 			session.setAttribute("pwd", pwd);
 			session.setAttribute("mvo", vo);
 			
-			//!!!!! 경로때문에 ../main으로 설정! (컨트롤러 1개 타고 경로 바꿔주도록 redirect)
-			response.sendRedirect("../main");
-
+			//로그인 완료 후 페이지에 넘겨줄 메세지.
+			String msg = id + "님 환영합니다.";
+			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
 			
+			//!!!!! 경로때문에 ../main으로 설정! (컨트롤러 1개 타고 경로 바꿔주도록 redirect)
+			response.sendRedirect("../main.jsp?msg=" + encodedMsg);
+
 		} else {
 			System.out.println("로그인 실패");
 			
-			//삭제 완료 후 페이지에 넘겨줄 메세지.
+			//로그인 실패시 페이지에 넘겨줄 메세지.
 			String msg = "비밀번호가 틀립니다. 다시 입력해주세요.";
 			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
 			response.sendRedirect("login.jsp?msg=" + encodedMsg);
-		
 		}
-				
 			System.out.println("> ListController.doGet() 끝");
-	
 		}
-	
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> ListController.doPost() 시작");
@@ -65,6 +62,4 @@ public class MemberLoginController extends HttpServlet{
 		doGet(request, response);
 		System.out.println("> ListController.doPost() 끝");
 	}
-
-
 }
