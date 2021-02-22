@@ -6,11 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 리뷰게시판 상세페이지--%>
 <%
-	//사용자 로그인 정보 가져오기
-	String id = (String)session.getAttribute("userid");
-
-	System.out.println(id);
-
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -180,7 +176,7 @@ if (msg != null && msg.length > 0) {
 					<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-					<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+					<a href = "yuna/logout.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
 					<li>Home</li>
@@ -292,9 +288,9 @@ if (msg != null && msg.length > 0) {
 						<!-- reviewList 컨트롤러로 이동 !!  -->
 						<a href="reviewList">목록으로</a>
 						<!-- 아이디가 로그인 아이디랑 같을때만 수정/삭제 가능하도록.. -->
+						<c:if test="${mvo.id == userid}">
 							<a href="ReviewUpdateForm?idx=${vo.review_idx}">수정</a>
 							<a href="review_delete.jsp?review_idx=${vo.review_idx}">삭제</a>
-						<c:if test="${mvo.id == vo.id}">
 						</c:if>
 				</form>
 		</div>

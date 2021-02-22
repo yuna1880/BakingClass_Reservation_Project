@@ -10,11 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%-- 리뷰게시판 --%>
 <%
-	//사용자 로그인 정보 가져오기
-	String id = (String)session.getAttribute("userid");
-
-	System.out.println(id);
-//
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
