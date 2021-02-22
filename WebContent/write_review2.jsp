@@ -162,6 +162,8 @@ footer .phone{
 	font-weight: bold;
 }
 
+}
+
 </style>
 <script>
 	function readURL(input) {
@@ -236,14 +238,13 @@ footer .phone{
 				<fieldset>
 					<input placeholder="제목" name="title" type="text" tabindex="1" required
 						autofocus>
+					<select name="class_name" class="class_select" required>
+						<option value="선택없음" disabled>수강 클래스 리스트</option>
+						<option value="제빵 클래스">제빵 클래스</option>
+						<option value="마카롱 클래스">마카롱 클래스</option>
+						<option value="파티시에 클래스">파티시에 클래스</option>
+					</select>
 				</fieldset>
-				
-				<select name="class_name" class="class_select" required>
-					<option value="선택없음" disabled>수강 클래스 리스트</option>
-					<option value="제빵 클래스">제빵 클래스</option>
-					<option value="마카롱 클래스">마카롱 클래스</option>
-					<option value="파티시에 클래스">파티시에 클래스</option>
-				</select>
 				
 				<!-- 별점 -->
 				<div class="product-review-stars">
@@ -261,12 +262,10 @@ footer .phone{
 				</div>
 				<p class="star_text"> 별표를 클릭하여 평가해주세요.</p>
 				<fieldset>
-					<textarea placeholder="어떤 점이 좋았나요?" id="blah" name="content" tabindex="5"
-						required>
-					</textarea>
+					<textarea placeholder="어떤 점이 좋았나요?" id="blah" name="content"></textarea>
 				</fieldset>
 				<fieldset>
-					<input type=file name="file" onchange="readURL(this);">
+					<input type=file name="file">
 				</fieldset>
 				<fieldset>
 					<button name="submit" type="submit" id="contact-submit"

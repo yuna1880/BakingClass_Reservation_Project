@@ -253,11 +253,9 @@ input[type='file']{
 			<form id="contact" method="post" action="reviewUpdate" enctype="multipart/form-data">
 				<h3>후기수정</h3>
 				<h4>${userid} 님, 수정할 내용을 입력 후, 등록 버튼을 눌러주세요.</h4>
-				
 				<fieldset>
 					<input value="${vo.review_title}" name="title" type="text" tabindex="1" required
 						autofocus>
-						
 					<select name="class_name" class="class_select" required>
 						<option value="선택없음" disabled>수강 클래스 리스트</option>
 						<option value="제빵 클래스">제빵 클래스</option>

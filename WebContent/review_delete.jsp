@@ -6,18 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 리뷰 게시물 삭제 전 비밀번호 입력--%>
 <%
-
-	//사용자 로그인 정보 가져오기
-	String id = (String)session.getAttribute("userid");
-	String pwd = (String)session.getAttribute("pwd");
-	String review_idx = (String)request.getParameter("review_idx");
-	
-	System.out.println("현재 id : " + id);
-	System.out.println("가입시 pwd : " + pwd);
-	System.out.println("현재 review_idx : " + review_idx);
-	
-	session.setAttribute("idx", review_idx);
-	
+	request.setCharacterEncoding("UTF-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +22,7 @@
 	}
 	function member_pwd_ok(frm) {
 		if(document.check_form.pwd1.value == ${pwd}) {
-			frm.action = "ReviewDelete?idx=${idx}";
+			frm.action = "ReviewDelete";
 			frm.submit();
 		} else {
 			alert("비밀번호가 다릅니다. 확인해주세요.");
@@ -196,7 +185,7 @@ footer .phone{
 				<a href = "yuna/mypage.jsp">내정보</a>
 				<li>관심목록</li>
 				<li>예약조회</li>
-				<a href = "yuna/member_delete_ok.jsp">로그아웃</a>
+				<a href = "yuna/logout.jsp">로그아웃</a>
 				</ul>
 				<ul id="main_menu">
 				<li>Home</li>
@@ -229,7 +218,7 @@ footer .phone{
 	
 	<!-- 페이지 내용 들어와야 하는 영역  -->
 <main>
-	<form name="check_form" method="post" action="checkpwd" onsubmit="return checkValue()">
+	<form name="check_form" method="post" onsubmit="return checkValue()">
 		<div id="container" role="main">
 			<br><br><br><br>
 		    <h1 align="center">후기 삭제</h1>
@@ -242,15 +231,16 @@ footer .phone{
 						<h3 class="join_title">
 							<label for="pswd1">비밀번호</label>
 						</h3>
-						<span class="ps_box int_pass" id="pswd1Img"> <input
-							type="password" id="pwd1" name="pwd1" class="int"
+						<span class="ps_box int_pass" id="pswd1Img"> 
+						<input type="password" id="pwd1" name="pwd1" class="int"
 							placeholder="password" title="Input password"
-							aria-describedby="pswd1Msg" maxlength="20"> <span
-							class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
-						</span> <span class="error_next_box" id="pswd1Msg" style="display: none"
-							aria-live="assertive"></span>
+							aria-describedby="pswd1Msg" maxlength="20"> 
+							<span class="lbl"><span id="pswd1Span" class="step_txt"></span></span></span>
+							<span class="error_next_box" id="pswd1Msg" style="display: none"
+								aria-live="assertive"></span>
 					</div>
 					<div class="btn_area">
+						<input type="hidden" name="idx" value="${param.review_idx}">
 						<input type="button" value="입력" class="btn_type btn_primary" onclick="member_pwd_ok(this.form)">
 						<input type="button" value="이전페이지로" class="btn_type btn_primary"
 							onclick="history.back()">
@@ -260,7 +250,6 @@ footer .phone{
 		</div>
 	</form>
 </main>
-
 	<!-- footer html 영역 -->
 	<footer>
 		<div class="box">

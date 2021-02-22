@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- 리뷰게시판 --%>
+<%-- 공지게시판 --%>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -16,7 +16,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 수강 후기 </title>
+<title> 메인페이지</title>
+<script>
+	let msg = "${param.msg}";
+	if (msg != null && msg.length > 0) {
+		alert(msg);
+	}
+</script>
 <link rel="stylesheet" href="css/board_style.css"/>
 <style>
 *{
@@ -66,8 +72,6 @@ header{
 	padding: 230px 0 0 750px;
 }
 
-
-
 /*------------ product css영역 --------------*/
 #main {
 	width: 840px;
@@ -76,7 +80,9 @@ header{
 }
 #main .title{
 	padding-bottom: 10px;
-	border-bottom: solid 1px black;
+	padding-left: 30px;
+	border-bottom: solid 1px #cccccc;
+	text-decoration: none;
 }
 
 #main .items {
@@ -161,33 +167,32 @@ footer .phone{
 }
 
 </style>
-<script>
-//메세지 띄워주기.
-let msg = "${param.msg}";
-if (msg != null && msg.length > 0) {
-	alert(msg);
-}
-</script>
 </head>
 <body>
+
 <!-- header html영역 -->
 	<header>
 		<div class="box">
 			<div id="logo">
-				<img src="./images/header_logo.jpeg" width="155px" height="140px">
+				<img src="images/header_logo.jpeg" width="155px" height="140px">
 			</div>
 			<div id="menu">
 				<ul id="top_menu">
-				<li>${userid} 님</li>
-				<a href = "yuna/mypage.jsp">내정보</a>
-				<li>관심목록</li>
-				<li>예약조회</li>
-				<a href = "yuna/logout.jsp">로그아웃</a>
+					<li>${sessionScope.userid} 님</li>
+					<li><a href = "yuna/mypage.jsp">내정보</a></li>
+					<li>예약조회</li>
+					<li><a href = "yuna/logout.jsp">로그아웃</a></li>
 				</ul>
 				<ul id="main_menu">
-				<li>Home</li>
-				<li>DALCOCO소개</li>
-				<li>강사소개</li>
+					<li>
+						<a href = "main.jsp">Home</a>
+					</li>
+					<li>
+						<a href = "main.jsp">DALCOCO소개</a>
+					</li>
+					<li>
+						<a href = "main.jsp">강사소개</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -200,22 +205,26 @@ if (msg != null && msg.length > 0) {
 	
 <!-- sidebar html 영역 -->
 	<div class="box">
-	<aside>
+		<aside>
 			<h2 class="title1">DALCOCO 베이킹</h2>
-			<p class="comment">예약제 원데이 베이킹 클래스 DALCOCO 입니다.</p>
-					</p class="comment"> 자세한 문의는 카카오톡 : dalcoco 로 주시면 빠른 답변 드리도록 하겠습니다.</p>
-
+			<p class="comment"> 달코코는 예약제 베이킹 클래스입니다.
+						자세한 문의는 카톡bbo로 주시면 빠르고 정확한 답변을 확인할 수 있습니다^^</p>
+	
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
-				<li>공지사항</li>
 				<form method="get">
+					<li>
+						<a href="noticeList">공지사항</a>
+					</li>
 					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">후기게시판</a>
+					<li>
+						<a href="reviewList">수강후기</a>
+					</li>
 				</form>
-				
 			</ul>
 		</aside>
 	</div>
+	
 	
 	<!-- 게시판 들어와야 하는 영역  -->
 
@@ -236,7 +245,6 @@ if (msg != null && msg.length > 0) {
 							<input type="text" name="q" value="" />
 							<input class="btn btn-search" type="submit" value="검색" />
 						</fieldset>
-						
 					</form>
 				</div>
 
@@ -249,75 +257,33 @@ if (msg != null && msg.length > 0) {
 								<th class="expand">제목</th>
 								<th class="w100">작성자</th>
 								<th class="w100">작성일</th>
-								<th class="w60">조회수</th>
+								<th class="w100">조회수</th>
 								<th class="w40">공개</th>
 								<th class="w40">삭제</th>
 							</tr>
 						</thead>
 						<tbody>
-
-							<tr>
-								<td>8</td>
-								<td class="title indent text-align-left"><a href="detail.html">스프링 8강까지의 예제 코드</a></td>
-								<td>newlec</td>
-								<td>
-									2019-08-18
-								</td>
-								<td>146</td>
-								<td><input type="checkbox" name="open"></td>
-								<td><input type="checkbox" name="del"></td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td class="title indent text-align-left"><a href="detail.html">스프링 DI 예제 코드</a></td>
-								<td>newlec</td>
-								<td>
-									2019-08-15
-								</td>
-								<td>131</td>
-								<td><input type="checkbox" name="open"></td>
-								<td><input type="checkbox" name="del"></td>
-							</tr>
-
-							<tr>
-								<td>6</td>
-								<td class="title indent text-align-left"><a href="detail.html">뉴렉쌤 9월 초 국기과정 모집 안내</a>
-								</td>
-								<td>newlec</td>
-								<td>
-									2019-06-11
-								</td>
-								<td>517</td>
-								<td><input type="checkbox" name="open"></td>
-								<td><input type="checkbox" name="del"></td>
-							</tr>
-
-							<tr>
-								<td>5</td>
-								<td class="title indent text-align-left"><a href="detail.html">뉴렉처 강의 수강 방식 안내</a></td>
-								<td>newlec</td>
-								<td>
-									2019-05-24
-								</td>
-								<td>448</td>
-								<td><input type="checkbox" name="open"></td>
-								<td><input type="checkbox" name="del"></td>
-							</tr>
-
-							<tr>
-								<td>4</td>
-								<td class="title indent text-align-left"><a href="detail.html">자바 구조적인 프로그래밍 강의 예제
-										파일</a></td>
-								<td>newlec</td>
-								<td>
-									2019-04-24
-								</td>
-								<td>520</td>
-								<td><input type="checkbox" name="open"></td>
-								<td><input type="checkbox" name="del"></td>
-							</tr>
-
-
+							<c:if test="${empty list}">
+								<tr>
+									<p>★ 게시글이 없습니다. 다시 확인해주세요 ★</p>
+								</tr>
+							</c:if>
+							<c:if test="${not empty list}">
+								<c:forEach var="list" items="${list}">
+									<tr>
+										<td>${list.notice_idx}</td>
+										<td><a href="detail.html">${list.notice_title}</a></td>
+										<td>${list.notice_name}</td>
+										<td>
+											<fmt:formatDate pattern="yyyy-MM-dd" value="${list.notice_date}"/>
+											
+										</td>
+										<td>${list.notice_hit}</td>
+										<td><input type="checkbox" name="open"></td>
+										<td><input type="checkbox" name="del"></td>
+									</tr>
+								</c:forEach>
+							</c:if>
 						</tbody>
 					</table>
 				</div>

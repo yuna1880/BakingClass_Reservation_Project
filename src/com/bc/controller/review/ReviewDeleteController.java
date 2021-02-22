@@ -26,7 +26,7 @@ public class ReviewDeleteController extends HttpServlet{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("userid");
 		
-		String review_idx = (String)session.getAttribute("idx");
+		String review_idx = request.getParameter("idx");
 		
 		System.out.println("현재 review_idx : " + review_idx);
 		

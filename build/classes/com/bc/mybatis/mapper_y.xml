@@ -62,6 +62,15 @@
 		</choose>
 	</select>
 	
+	<!-- 공지사항 리스트 전체 건수 조회! -->
+	<select id="totalNotice" resultType="int">
+		SELECT COUNT(*) AS CNT FROM NOTICE
+	</select>
+	
+	<!-- 공지사항 리스트 가져오기 -->
+	<select id="notice_all" resultType="com.bc.model.vo.NoticeVO">
+		SELECT * FROM NOTICE
+	</select>
 	
 	<!-- 페이지에 표시할 데이터 조회 -->
 	<select id="review_list" resultType="com.bc.model.vo.ReviewVO" parameterType="Map">
@@ -72,6 +81,7 @@
 			    )
 			WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
+	
 	
 	
 	<!-- 키워드로 게시물 (제목 검색) 으로 조회   -->

@@ -79,6 +79,29 @@ public class DAO {
 		return list;
 	}
 	
+//------------ 공지사항 -------------------------------------------------
+	
+	// 공지사항 리스트 가져오기
+	public static List<ReviewVO> getNotice() {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReviewVO> list = ss.selectList("Baking_y.notice_all");
+		ss.close();
+		//리스트 가져오는지 확인
+		System.out.println(list);
+		return list;
+	}
+
+	// 공지 (NoticeVO) 전체 건수 조회
+	public static int getTotalNotice() {
+		SqlSession ss = DBService.getFactory().openSession();
+		int totalCount = ss.selectOne("Baking_y.totalNotice");
+		ss.close();
+		return totalCount;
+	}
+	
+//---------------------------------------------------------------------
+	
+	
 	// 후기 게시글 (ReviewVO) 전체 건수 조회
 	public static int getTotalCount(String select_, String query_) {
 		Map<String, String> map = new HashMap<>();

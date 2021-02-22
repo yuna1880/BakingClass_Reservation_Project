@@ -287,8 +287,8 @@ if (msg != null && msg.length > 0) {
 				<form method="get">
 						<!-- reviewList 컨트롤러로 이동 !!  -->
 						<a href="reviewList">목록으로</a>
-						<!-- 아이디가 로그인 아이디랑 같을때만 수정/삭제 가능하도록.. -->
-						<c:if test="${mvo.id == userid}">
+						<!-- 리뷰 작성 아이디가 로그인 아이디랑 같을때만 수정/삭제 가능하도록.. -->
+						<c:if test="${vo.id == userid}">
 							<a href="ReviewUpdateForm?idx=${vo.review_idx}">수정</a>
 							<a href="review_delete.jsp?review_idx=${vo.review_idx}">삭제</a>
 						</c:if>

@@ -1,27 +1,29 @@
 package com.bc.model.vo;
 
+import java.sql.Date;
+
 public class NoticeVO {
 
 	private int notice_idx;
-	private String review_name;
-	private String review_title;
-	private String review_content;
-	private int review_date;
-	private String review_hit;
-	private String review_image;
+	private String notice_name;
+	private String notice_title;
+	private String notice_content;
+	private Date notice_date;
+	private int notice_hit;
+	private String notice_image;
 
 	public NoticeVO() { }
-	
-	public NoticeVO(int notice_idx, String review_name, String review_title, String review_content, int review_date,
-			String review_hit, String review_image) {
+
+	public NoticeVO(int notice_idx, String notice_name, String notice_title, String notice_content, Date notice_date,
+			int notice_hit, String notice_image) {
 		super();
 		this.notice_idx = notice_idx;
-		this.review_name = review_name;
-		this.review_title = review_title;
-		this.review_content = review_content;
-		this.review_date = review_date;
-		this.review_hit = review_hit;
-		this.review_image = review_image;
+		this.notice_name = notice_name;
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+		this.notice_date = notice_date;
+		this.notice_hit = notice_hit;
+		this.notice_image = notice_image;
 	}
 
 	public int getNotice_idx() {
@@ -32,61 +34,62 @@ public class NoticeVO {
 		this.notice_idx = notice_idx;
 	}
 
-	public String getReview_name() {
-		return review_name;
+	public String getNotice_name() {
+		return notice_name;
 	}
 
-	public void setReview_name(String review_name) {
-		this.review_name = review_name;
+	public void setNotice_name(String notice_name) {
+		this.notice_name = notice_name;
 	}
 
-	public String getReview_title() {
-		return review_title;
+	public String getNotice_title() {
+		return notice_title;
 	}
 
-	public void setReview_title(String review_title) {
-		this.review_title = review_title;
+	public void setNotice_title(String notice_title) {
+		this.notice_title = notice_title;
 	}
 
-	public String getReview_content() {
-		return review_content;
+	public String getNotice_content() {
+		return notice_content;
 	}
 
-	public void setReview_content(String review_content) {
-		this.review_content = review_content;
+	public void setNotice_content(String notice_content) {
+		this.notice_content = notice_content;
 	}
 
-	public int getReview_date() {
-		return review_date;
+	public Date getNotice_date() {
+		return notice_date;
 	}
 
-	public void setReview_date(int review_date) {
-		this.review_date = review_date;
+	public void setNotice_date(Date notice_date) {
+		this.notice_date = notice_date;
 	}
 
-	public String getReview_hit() {
-		return review_hit;
+	public int getNotice_hit() {
+		return notice_hit;
 	}
 
-	public void setReview_hit(String review_hit) {
-		this.review_hit = review_hit;
+	public void setNotice_hit(int notice_hit) {
+		this.notice_hit = notice_hit;
 	}
 
-	public String getReview_image() {
-		return review_image;
+	public String getNotice_image() {
+		return notice_image;
 	}
 
-	public void setReview_image(String review_image) {
-		this.review_image = review_image;
+	public void setNotice_image(String notice_image) {
+		this.notice_image = notice_image;
 	}
 
 	@Override
 	public String toString() {
-		return "NoticeVO [notice_idx=" + notice_idx + ", review_name=" + review_name + ", review_title=" + review_title
-				+ ", review_content=" + review_content + ", review_date=" + review_date + ", review_hit=" + review_hit
-				+ ", review_image=" + review_image + "]";
+		return "NoticeVO [notice_idx=" + notice_idx + ", notice_name=" + notice_name + ", notice_title=" + notice_title
+				+ ", notice_content=" + notice_content + ", notice_date=" + notice_date + ", notice_hit=" + notice_hit
+				+ ", notice_image=" + notice_image + "]";
 	}
-	
+
 	
 	
 }
+	

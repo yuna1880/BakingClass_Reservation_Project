@@ -90,8 +90,99 @@ html {
 }
 
 button,
-input,
-select,
+input, 
+select {
+	-webkit-tap-highlight-color: transparent
+	
+}
+
+
+
+
+/* 버튼 */
+.btn-point {
+	padding:1px;
+	color:#fff;
+    border:1px solid #0ca9a3;
+    border-radius:3px;
+    cursor:pointer;
+	width:10%;
+	border:none;
+	background:#0ca9a3;
+	margin:0 0 3px;
+	padding:5px;
+	font-size:15px;
+}
+
+.btn-search {
+	color:#fff;
+    border:1px solid #9e9e9e;
+    border-radius:3px;
+	background:#9e9e9e;
+	cursor:pointer;
+	padding:2px;
+	margin:2px;
+}
+
+/* 이전 */
+.btn-search-pager {
+	width:30px;
+	height:20px;
+	color:#fff;
+    border:1px solid #9e9e9e;
+    border-radius:3px;
+	background:#9e9e9e;
+	cursor:pointer;
+	padding:2px;
+	margin-top:7px;
+	margin-right:20px;
+}
+/* 다음 */
+.btn-search-pagers {
+	width:30px;
+	height:20px;
+	color:#fff;
+    border:1px solid #9e9e9e;
+    border-radius:3px;
+	background:#9e9e9e;
+	cursor:pointer;
+	padding:2px;
+	margin-left:27px;
+	margin-top:7px;
+	
+}
+
+/* 숫자 버튼 */
+.btn-search-num {
+	color:#fff;
+    border:1px solid #9e9e9e;
+    border-radius:3px;
+	background:#9e9e9e;
+	cursor:pointer;
+	padding:2px;
+	margin:7px;
+}
+
+.divNum {
+	display:flex;
+	justify-content: space-around;
+	margin-right:4px;
+}
+
+
+.btn-point:hover,
+.btn.active:hover {
+    background: rgb(9, 105, 102);
+}
+
+.btn-search:hover,
+.btn-search-pager:hover,
+.btn-search-pagers:hover,
+.btn-search-num:hover {
+	background: #707070;
+}
+
+
 textarea {
     border-radius: 0;
     border: none;
@@ -107,6 +198,15 @@ textarea {
 
 button {
     cursor: pointer
+     border: 0 none;
+    background: transparent;
+    cursor: pointer;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    padding: 0;
+    margin: 0
 }
 
 label {
@@ -172,13 +272,13 @@ body {
 main {
 	position: relative;
 	min-height: inherit;
-	width: 755px;
-	padding-left: 35px;
+	padding-left: 120px;
 	padding-top: 45px;
 	padding-bottom:80px;
 	float: left;
 	display: flex;
 	flex-direction: column;
+	width:900px;
 }
 
 main .stretch-child{
@@ -240,6 +340,7 @@ main .title.main {
 	font-weight: bold;
 	color: #646464;
 	padding-left: 25px;
+	padding-top: 25px;
 	background: url("../images/icon-main-title.png") no-repeat left center;
 }
 
@@ -252,6 +353,10 @@ main .title.sub {
 	line-height: 30px;
 	padding-left: 20px;
 	background: url("../images/icon-sub-title.png") no-repeat 0px 10px;
+}
+
+main .margin-top-0 {
+	margin-top: 0px;
 }
 
 main .margin-top {
@@ -271,7 +376,7 @@ main .padding-bottom {
 }
 
 main .margin-top.first {
-	margin-top: 49px;
+	margin-top: 20px;
 }
 
 /* --- border style------------------------------------------------------------------------- */
@@ -312,13 +417,13 @@ main .search-form form fieldset>* {
 
 main .search-form select {
 	height: 20px;
-	border: 1px solid #8CBA34;
+	border: 1px solid #e9e9e9;
 }
 
 main .search-form input[type="text"] {
 	width: 150px;
 	height: 20px;
-	border: 1px solid #8CBA34;
+	border: 1px solid #e9e9e9;
 }
 
 /*---< pager style >-----------------------------------------------------------------------------*/
@@ -338,7 +443,6 @@ main .search-form input[type="text"] {
 .pager > div
 {
     float:left;
-    width:15px;
     height:15px;
     line-height:15px;
     text-align:center;
@@ -362,7 +466,7 @@ main .search-form input[type="text"] {
 .pager > div:first-child a,
 .pager > div:first-child span
 {
-	width:15px;
+	width:20px;
 	height:15px;
 	background: url("../images/btn-prev.png") no-repeat center;
 }
@@ -371,12 +475,14 @@ main .search-form input[type="text"] {
 .pager > div:last-child a,
 .pager > div:last-child span
 {
-	width:15px;
+	width:20px;
 	height:15px;
 	background: url("../images/btn-next.png") no-repeat center;
 }
 
 /* --- table style ----------------------------------------------------------------------- */
+
+
 main .table {
 	display: table;
 	table-layout: fixed;
@@ -463,6 +569,7 @@ main .table.h50 td
 main .table tr, main .table .tr {
 	display: table-row;
 	height: 30px;
+	
 }
 
 main .table tr.content, main .table .tr.conent {
@@ -478,6 +585,9 @@ main .table tr.hover:hover{
 	cursor:pointer;
 }
 
+
+
+
 /* --- 셀의 모양 -------------------------- */
 
 main .table td, 
@@ -487,6 +597,7 @@ main .table .th {
 	display: table-cell;
 	text-align: center;
 	border-bottom: 1px solid #e9e9e9;
+	padding : 15px;
 }
 
 main .table.dashed td, 
@@ -532,7 +643,7 @@ main .table th.w180, main .table td.w180, main .table .th.w180, main .table .td.
 
 main .table tr.content td,
 main .table .tr.conent td{
-	text-align: left;
+	text-align: center;
 	padding: 10px;
 }
 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> DALCOCO 메인페이지</title>
+<title> 메인페이지</title>
 <script>
 	let msg = "${param.msg}";
 	if (msg != null && msg.length > 0) {
@@ -13,6 +13,7 @@
 	}
 </script>
 <link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/nav.css"/>
 <style>
 *{
 	margin: 0;
@@ -46,7 +47,7 @@ header{
 }
 #main_menu li {
 	margin: 50px 0 0 80px;
-	font-family: "맑은고딕";
+
 	font-weight: bold;
 	font-size: 20px;
 }
@@ -65,11 +66,12 @@ header{
 #main {
 	width: 840px;
 	float: left;
-	margin: 70px 10px;
+	margin: 70px 70px;
 }
 #main .title{
 	padding-bottom: 10px;
-	border-bottom: solid 1px black;
+	padding-left: 30px;
+	border-bottom: solid 1px #cccccc;
 }
 
 #main .items {
@@ -157,27 +159,45 @@ footer .phone{
 </head>
 <body>
 
+<!-- Navbar -->
+
+    <nav id="navbar">
+        <div class="navbar__logo">
+        </div>
+        <div>
+            <ul class="navbar__menu">
+                <li class="navbar__menu_item">${sessionScope.userid} 님</li>
+                <li class="navbar__menu_item"><a href = "yuna/mypage.jsp">내정보</a></li>
+                <li class="navbar__menu_item">예약조회</li>
+                <li class="navbar__menu_item"><a href = "yuna/logout.jsp">로그아웃</a></li>
+                <br>
+            </ul>
+        </div>
+    </nav>
+
+
 <!-- header html영역 -->
 	<header>
-		<div class="box">
+		<nav id="navbars">
 			<div id="logo">
 				<img src="images/header_logo.jpeg" width="155px" height="140px">
 			</div>
 			<div id="menu">
-				<ul id="top_menu">
-					<li>${sessionScope.userid} 님</li>
-					<a href = "yuna/mypage.jsp">내정보</a>
-				<li>관심목록</li>
-				<li>예약조회</li>
-					<a href = "yuna/logout.jsp">로그아웃</a>
-				</ul>
+
 				<ul id="main_menu">
-					<li>Home</li>
-					<li>DALCOCO소개</li>
-					<li>강사소개</li>
+					<li>
+						<a href = "main.jsp">Home</a>
+					</li>
+					<li>
+						<a href = "main.jsp">DALCOCO소개</a>
+					</li>
+					<li>
+						<a href = "main.jsp">강사소개</a>
+					</li>
 				</ul>
+
 			</div>
-		</div>
+		</nav>
 	</header>
 	
 <!-- mainimg html 영역 -->
@@ -194,11 +214,14 @@ footer .phone{
 	
 			<h2 class="title2">게시판</h2>
 			<ul class="list">
-				<li>공지사항</li>
-					
 				<form method="get">
+					<li>
+						<a href="noticeList">공지사항</a>
+					</li>
 					<!-- reviewList 컨트롤러로 이동 !!  -->
-					<a href="reviewList">후기게시판</a>
+					<li>
+						<a href="reviewList">수강후기</a>
+					</li>
 				</form>
 			</ul>
 		</aside>
