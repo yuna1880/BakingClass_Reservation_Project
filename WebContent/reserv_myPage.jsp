@@ -82,7 +82,7 @@
 
 	function pay(btn){
 		 let idx = btn.parentElement.parentElement.firstElementChild.textContent;
-	     windowopen = window.open("reserv_pay.jsp?reserv_idx=" + idx ,"ow1","width=500, height=800");
+	     windowopen = window.open("reserv_pay.jsp?reserv_idx=" + idx ,"ow1","width=500, height=1200");
 
 	}
 	
@@ -149,7 +149,7 @@
 	 }
 </script>
 
-
+<!-- 
 <style>
 #bbs table {
 	width: 680px;
@@ -244,21 +244,31 @@
 	display: none;
 }
 </style>
+-->
+
+
+<style>
+
+</style>
+<link rel="stylesheet" href="css/reserv_myPage.css"/>
 </head>
 <body>
-	<h1>예약 조회 페이지입니다.</h1>
-	<form method="get">
-		<div id="bbs">
-			<table>
+<main class="main">
+<h1>예약 조회 페이지입니다.</h1>
+<form method="get">
+<div class="table">
+	
+		
+			<table class="table">
 				<thead>
 					<tr class="title">
-						<th class="no">예약번호</th>
-						<th class="subject">클래스명</th>
-						<th class="writer">수업날짜</th>
-						<th class="writer">수업시간</th>
-						<th class="hit">결제금액</th>
-						<th class="hit">결제</th>
-						<th class="regdate">진행상태</th>
+						<th class="w40">예약번호</th>
+						<th class="w100">클래스명</th>
+						<th class="w100">수업날짜</th>
+						<th class="expand">수업시간</th>
+						<th class="w100">결제금액</th>
+						<th class="w100">결제</th>
+						<th class="w100">진행상태</th>
 
 					</tr>
 				</thead>
@@ -340,7 +350,9 @@
 					</tr>
 				</tfoot>
 			</table>
+	
 		</div>
 	</form>
+</main>
 </body>
 </html>

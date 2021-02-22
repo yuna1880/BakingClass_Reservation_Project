@@ -24,6 +24,7 @@ public class PaymentController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		req.setCharacterEncoding("UTF-8");
 		PaymentVO vo = new PaymentVO();
 		//결제하기 상태 바뀌기 위한 부분
@@ -42,6 +43,7 @@ public class PaymentController extends HttpServlet{
 		
 		//결제수단
 		vo.setPay_method(req.getParameter("cashOrCard"));
+		System.out.println(vo.getPay_method());
 		
 		if(vo.getPay_method().equals("현금")) {
 			String cash1 = req.getParameter("pay_cash1")+"/";
@@ -54,11 +56,16 @@ public class PaymentController extends HttpServlet{
 			//결제하기부분
 			rvo.setReserv_status("입금확인중");
 		}else if(vo.getPay_method().equals("카드")) {
-			String card1 = req.getParameter("pay_bank")+"/";
-			String card2 = req.getParameter("pay_cardDateM")+"/";
-			String card3 = req.getParameter("pay_cardDateY")+"/";
-			String card4 = req.getParameter("cardPwd");
-			String totalCard = "";
+			/*
+			 * String card1 = req.getParameter("pay_bank")+"/"; String card2 =
+			 * req.getParameter("pay_cardDateM")+"/"; String card3 =
+			 * req.getParameter("pay_cardDateY")+"/"; String card4 =
+			 * req.getParameter("cardPwd"); String totalCard = "";
+			 */
+			String card1 = req.getParameter("wantNum")+"/"; 
+			String card2 =req.getParameter("wantName")+"/"; 
+			String card3 =req.getParameter("wantDDYY")+"/"; 
+			String card4 =req.getParameter("wantCVC"); String totalCard = "";
 			totalCard = card1+card2+card3+card4;
 			vo.setPay_card(totalCard);
 			vo.setPay_bank("null");
@@ -88,6 +95,9 @@ public class PaymentController extends HttpServlet{
 		
 		
 		//resp.sendRedirect("JavaScript('window.close();')");
+		
+		
+		
 	}
 	
 	
