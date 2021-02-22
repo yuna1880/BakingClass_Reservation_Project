@@ -16,8 +16,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> 수강 후기 </title>
 <link rel="stylesheet" href="css/board_style.css"/>
+
 <style>
 *{
 	margin: 0;
@@ -168,6 +170,8 @@ let msg = "${param.msg}";
 if (msg != null && msg.length > 0) {
 	alert(msg);
 }
+<!-- font awsome -->
+<script src="https://kit.fontawesome.com/2ce4018d5a.js" crossorigin="anonymous"></script>
 </script>
 </head>
 <body>
@@ -293,7 +297,9 @@ if (msg != null && msg.length > 0) {
 				<div><span class="text-orange text-strong">${pvo.nowPage}</span> / ${pvo.totalPage} pages</div>
 		</div>
 		<div class="text-align-right margin-top">
-			<button type="button" class="btn-point" onclick="javascript:location.href='write_review2.jsp'">후기작성</button>					
+			<button type="button" class="btn-point" onclick="javascript:location.href='write_review2.jsp'">후기작성
+			</button>					
+			<i class="fas fa-pencil-alt"></i>
 		</div>
 		
 	<%-- ============================================================= 페이징 영역 ================================================================================== --%>

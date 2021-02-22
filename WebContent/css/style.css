@@ -131,14 +131,10 @@ em {
 
 a {
     text-decoration: none;
-    cursor: pointer
+    cursor: pointer;
+    color:black;
 }
 
-a:active,
-a:focus,
-a:hover {
-    text-decoration: underline
-}
 
 table {
     border-collapse: collapse;

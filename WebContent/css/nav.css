@@ -43,7 +43,7 @@
     position: sticky;
     top: 0;
     justify-content: space-between;
-    background-color: #fff0e2;
+    background-color: #f7f2e8;
     align-items: center;
     padding: 16px;
     font-family: NanumSquareB;
@@ -77,6 +77,8 @@
     cursor: pointer;
     border-radius: 3px;
     padding: 0 10px;
+    text-decoration:none;
+    color:black;
 }
 
 .navbar__menu_item.active{
@@ -85,7 +87,7 @@
     
 }
 .navbar__menu_item:hover{
-    background-color: #0ca9a3;
+    background-color: #a49a85;
 }
 
 .img {

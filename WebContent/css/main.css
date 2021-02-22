@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: NanumSquareL;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareR;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareB;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.ttf) format("truetype")
+}
+
+@font-face {
+    font-family: NanumSquareEB;
+    font-weight: 400;
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot);
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot?#iefix) format("embedded-opentype");
+    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.ttf) format("truetype")
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: NanumSquareB;
+} 
+li { list-style-type: none; }
+
+/*------------ header css영역 --------------*/
+header{ 
+	height: 166px;
+}
+.box { /* 클래스 박스들 너비, 중앙배치 */
+	width: 1100px;
+	margin: 0 auto;
+}
+#logo {
+	float: left; /* 좌측배치 */
+	margin: 20px 0 0 30px;
+}
+#menu {
+	float: right;
+	text-align: right;
+	margin-right: 20px;
+}
+#menu li {
+	display: inline-block; /* 수평방향으로 배치 */
+}
+#top_menu li {
+	margin: 30px 0 0 10px;
+	cursor:pointer;
+}
+#main_menu li {
+	margin: 50px 0 0 80px;
+	font-weight: bold;
+	font-size: 20px;
+
+}
+
+#main_menu a {
+	color:black;
+	cursor:pointer;
+	
+}
+
+#main_menu a:hover {
+	color:#da2d33;
+}
+
+/*------------ mainimg css영역 --------------*/
+
+#main_image{
+	height: 400px;
+	background-image: url("./images/ori_main_new.png");
+	background-position: top center;
+	text-align: center;
+	padding: 230px 0 0 750px;
+}
+
+/*------------ product css영역 --------------*/
+#main {
+	width: 840px;
+	float: left;
+	margin: 70px 70px;
+}
+#main .title{
+	padding-bottom: 10px;
+	margin-left:30px;
+	
+	border-bottom: solid 1px #cccccc;
+}
+
+#main .items {
+	width: 250px;
+	border: solid 1px #cccccc;
+	padding: 30px 0 0 20px;
+	margin: 30px 0px 10px 30px;
+	float: left;
+	
+}
+#main .i1 img { width: 210px; height: 170px;}
+#main .i2 {
+	margin-top: 20px;
+	font-size: 16px;
+	color: #908076;
+}
+#main .i3 {
+	margin-top: 10px;
+	font-size: 23px;
+	font-weight: bold;
+}
+#main .i4 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+#main .i4 div{
+	border-top: solid 1px black;
+	padding: 15px 0;
+	font-size: 16px;
+}
+#main .i4 .s1 { color: #908076; }
+
+
+
+/*------------ sidebar css영역 --------------*/
+aside {
+	width: 220px;
+	float: left;
+	margin: 70px 0;
+}
+aside .title1{
+	padding: 12px;
+	background-color: #f7f2e8;;
+	color: black;
+	font-size: 18px;
+}
+aside .comment{
+	padding: 20px 10px;
+	line-height: 150%;
+}
+
+aside .title2 {
+	margin-top: 30px;
+	padding: 12px 12px 12px 20px;
+	border-top: solid 2px black;
+	border-bottom: solid 1px #cccccc;
+	font-size: 18px;
+}
+aside .list {
+	margin: 20px 0;
+	padding-left: 15px;
+	font-size: 14px;
+}
+aside .list li {
+	margin: 10px 12px;
+}
+
+aside .list a {
+	color:black;
+	text-decoration:none;
+}
+
+/*------------ footer css영역 --------------*/
+footer{
+	clear: both; /* float 속성 해제 footer가 새로운 줄에서 시작 */
+	height: 260px;
+	background-color: #474d54;
+	color: white;
+}
+footer .items {
+	float: left;
+	margin: 40px 0 0 100px;
+}
+footer h3 {color:#a49a85 ;}
+footer .items ul{ margin-top: 15px; }
+footer .items li{ margin-top: 5px; }
+footer .phone{
+	font-size: 25px;
+	font-weight: bold;
+}
