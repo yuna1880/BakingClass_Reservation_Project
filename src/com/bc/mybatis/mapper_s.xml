@@ -2,14 +2,59 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 상희  -->
+<!-- 상희 -->
 <mapper namespace="Baking_s">
+
+	<!-- 예약하기 insert -->
+	<insert id="addList" parameterType="com.bc.model.vo.ReservationVO">
+		INSERT INTO RESERVATION (
+		RESERV_IDX,
+		RESERV_DATE,
+		RESERV_TIME,
+		RESERV_PEOPLE,
+		RESERV_PRICE,
+		CLS_IDX,
+		ID,
+		RESERV_STATUS,
+		RESERV_INPUTDATE
+		)
+		VALUES( RESERVATION_SEQ.NEXTVAL, #{reserv_date}, #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status}, SYSDATE)
+	</insert>
+	<!-- VALUES( RESERVATION_SEQ.NEXTVAL, TO_DATE(#{reserv_date}, 'yyyy/MM/dd'), #{reserv_time}, #{reserv_people}, #{reserv_price}, #{cls_idx}, #{id}, #{reserv_status}, SYSDATE) -->
 	
+	<!-- 전체 게시글 수 조회 -->
+	<select id="totalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) AS CNT FROM RESERVATION WHERE ID = #{id}
+	</select>
 	
-	<select id="all" resultType="com.bc.model.vo.MemberVO">
-		SELECT * FROM MEMBER
+	<!-- 페이지에 표시할 데이터 -->
+	<select id="list" resultType="com.bc.model.vo.ReservationVO"
+			parameterType="Map">
+		SELECT *
+		  FROM (SELECT ROWNUM AS R_NUM, B.*
+		          FROM (SELECT *
+		                  FROM RESERVATION
+		                 ORDER BY RESERV_IDX DESC
+		               ) B 
+		       )
+		 WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
 	
+	<!-- 예약페이지 조회 (예약번호 가지고) -->
+	<select id="ReservList" resultType="com.bc.model.vo.ReservationVO" parameterType="int">
+		SELECT * FROM RESERVATION WHERE RESERV_IDX = #{idx}
+	</select>
 	
+	
+	<!-- 결제페이지 insert -->
+	<insert id="payment" parameterType="com.bc.model.vo.PaymentVO" >
+		INSERT INTO PAYMENT(PAY_IDX, PAY_DATE, PAY_PRICE, PAY_METHOD,RESERV_IDX , PAY_CARD, PAY_BANK) 
+		VALUES(PAYMENT_SEQ.NEXTVAL, SYSDATE, #{pay_price },#{pay_method },#{reserv_idx },#{pay_card },#{pay_bank })
+	</insert>
+	
+	<!-- 결제후 상태바꾸기 update  -->
+	<update id="status" parameterType="com.bc.model.vo.ReservationVO">
+		UPDATE RESERVATION SET RESERV_STATUS = #{reserv_status } WHERE RESERV_IDX = #{reserv_idx }
+	</update>
 </mapper>

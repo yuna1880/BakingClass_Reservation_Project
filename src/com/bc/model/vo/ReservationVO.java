@@ -1,20 +1,24 @@
 package com.bc.model.vo;
 
+import java.sql.Date;
+
 public class ReservationVO {
 
 	private int reserv_idx;
-	private String reserv_date;
+	private Date reserv_date;
 	private String reserv_time;
 	private int reserv_people;
 	private int reserv_price;
 	private int cls_idx;
 	private String id;
 	private String reserv_status;
+	private Date reserv_inputDate;
+	
 	
 	public ReservationVO() { }
 	
-	public ReservationVO(int reserv_idx, String reserv_date, String reserv_time, int reserv_people, int reserv_price,
-			int cls_idx, String id, String reserv_status) {
+	public ReservationVO(int reserv_idx, Date reserv_date, String reserv_time, int reserv_people, int reserv_price,
+			int cls_idx, String id, String reserv_status, Date reserv_inputDate ) {
 		super();
 		this.reserv_idx = reserv_idx;
 		this.reserv_date = reserv_date;
@@ -24,6 +28,8 @@ public class ReservationVO {
 		this.cls_idx = cls_idx;
 		this.id = id;
 		this.reserv_status = reserv_status;
+		this.reserv_inputDate = reserv_inputDate;
+		
 	}
 
 	public int getReserv_idx() {
@@ -34,11 +40,11 @@ public class ReservationVO {
 		this.reserv_idx = reserv_idx;
 	}
 
-	public String getReserv_date() {
+	public Date getReserv_date() {
 		return reserv_date;
 	}
 
-	public void setReserv_date(String reserv_date) {
+	public void setReserv_date(Date reserv_date) {
 		this.reserv_date = reserv_date;
 	}
 
@@ -89,6 +95,16 @@ public class ReservationVO {
 	public void setReserv_status(String reserv_status) {
 		this.reserv_status = reserv_status;
 	}
+
+	public Date getReserv_inputDate() {
+		return reserv_inputDate;
+	}
+
+	public void setReserv_inputDate(Date reserv_inputDate) {
+		this.reserv_inputDate = reserv_inputDate;
+	}
+
+
 	
 	
 	

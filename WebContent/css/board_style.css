@@ -1,43 +1,9 @@
 
 @import url("//vendor-cdn.imweb.me/css/notosanskr-hestia.css");@import url("//vendor-cdn.imweb.me/css/notosans.css");@import url("//vendor-cdn.imweb.me/css/lora.css");@import url('//fonts.googleapis.com/earlyaccess/nanumgothic.css');	*::-moz-selection {
-		background-color: #212121;
+		
 		color: #fff;
 	}
 	
-	/*2/8/2021, 12:44:25 PM*/
-@charset "UTF-8";
-
-@font-face {
-    font-family: NanumSquareL;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareR;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareEB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.ttf) format("truetype")
-}
 
 body,
 button,
@@ -66,6 +32,7 @@ ul {
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 body,
@@ -74,7 +41,6 @@ input,
 select,
 table,
 textarea {
-    font-family: Dotum, '돋움', Helvetica, sans-serif;
     font-size: 12px;
     -webkit-text-size-adjust: none
 }
@@ -108,7 +74,7 @@ select {
     cursor:pointer;
 	width:10%;
 	border:none;
-	background:#0ca9a3;
+	background:#454545;
 	margin:0 0 3px;
 	padding:5px;
 	font-size:15px;
@@ -172,7 +138,7 @@ select {
 
 .btn-point:hover,
 .btn.active:hover {
-    background: rgb(9, 105, 102);
+    background: #878787;
 }
 
 .btn-search:hover,
@@ -228,7 +194,14 @@ em {
     font-style: normal
 }
 
-a {
+td>a {
+	color:#454545;
+    text-decoration: none;
+    cursor: pointer
+}
+
+td>form>a {
+	color:#454545;
     text-decoration: none;
     cursor: pointer
 }
@@ -261,7 +234,7 @@ hr {
 
 body {
     position: relative;
-    background: #f5f6f7
+    background: #white;
 }
 
 /* 게시판 부분 */	
@@ -272,7 +245,7 @@ body {
 main {
 	position: relative;
 	min-height: inherit;
-	padding-left: 120px;
+	padding-left: 140px;
 	padding-top: 45px;
 	padding-bottom:80px;
 	float: left;
@@ -488,6 +461,7 @@ main .table {
 	table-layout: fixed;
 	width: 100%;
 	border-top: 2px solid #383838;
+	font-size:15px
 }
 
 main .table input[type=text],

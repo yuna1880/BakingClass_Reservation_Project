@@ -1,6 +1,7 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/MemberUpdate")
+@WebServlet("/MemberUpdate")
 public class MemberUpdateController extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,9 +31,8 @@ public class MemberUpdateController extends HttpServlet{
 		request.setAttribute("phone", vo.getPhone());
 		request.setAttribute("addr", vo.getAddr());
 		
+		//회원정보 수정 페이지로 이동! 
 		request.getRequestDispatcher("member_update.jsp").forward(request, response);
-	
-		System.out.println("> ListController.doGet() 끝");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

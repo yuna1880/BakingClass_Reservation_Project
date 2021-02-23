@@ -1,43 +1,11 @@
 
 @import url("//vendor-cdn.imweb.me/css/notosanskr-hestia.css");@import url("//vendor-cdn.imweb.me/css/notosans.css");@import url("//vendor-cdn.imweb.me/css/lora.css");@import url('//fonts.googleapis.com/earlyaccess/nanumgothic.css');	*::-moz-selection {
-		background-color: #212121;
+		background-color: white;
 		color: #fff;
 	}
 	
 	/*2/8/2021, 12:44:25 PM*/
 @charset "UTF-8";
-
-@font-face {
-    font-family: NanumSquareL;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareR;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareEB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.ttf) format("truetype")
-}
 
 /* 여기부터 */
 body,
@@ -67,6 +35,8 @@ ul {
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none
+    font-family: 'Karla', sans-serif;
+	font-weight: 700;
 }
 
 body,
@@ -75,7 +45,7 @@ input,
 select,
 table,
 textarea {
-    font-family: Dotum, '돋움', Helvetica, sans-serif;
+	
     font-size: 12px;
     -webkit-text-size-adjust: none
 }
@@ -180,7 +150,7 @@ hr {
 
 body {
     position: relative;
-    background: #f5f6f7
+    background: #white;
 }
 
 html[lang=en] body,
@@ -370,9 +340,7 @@ select::-ms-expand {
 #container,
 #footer,
 #header {
-    margin: 0 auto;
-    max-width: 768px;
-    min-width: 460px
+    margin-left:230px;
 }
 
 
@@ -836,8 +804,7 @@ html[lang=zh-Hant] .btn_join input.int_home {
 
 
     #container {
-        width: auto;
-        max-width: 768px
+      
     }
 
     #content {

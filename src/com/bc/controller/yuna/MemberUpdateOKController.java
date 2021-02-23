@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/MemberUpdate_OK")
+@WebServlet("/MemberUpdate_OK")
 public class MemberUpdateOKController extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

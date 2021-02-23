@@ -13,7 +13,7 @@ import com.bc.model.vo.MemberVO;
 
 
 //회원가입 컨트롤러
-@WebServlet("/yuna/MemberJoin")
+@WebServlet("/MemberJoin")
 public class MemberJoinController extends HttpServlet{
 	
 	@Override

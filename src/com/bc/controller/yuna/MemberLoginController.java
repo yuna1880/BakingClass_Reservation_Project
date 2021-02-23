@@ -16,7 +16,7 @@ import org.apache.catalina.Session;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/Memberlogin")
+@WebServlet("/Memberlogin")
 public class MemberLoginController extends HttpServlet{
 	
 	@Override
@@ -43,7 +43,7 @@ public class MemberLoginController extends HttpServlet{
 			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
 			
 			//!!!!! 경로때문에 ../main으로 설정! (컨트롤러 1개 타고 경로 바꿔주도록 redirect)
-			response.sendRedirect("../main.jsp?msg=" + encodedMsg);
+			response.sendRedirect("list?msg=" + encodedMsg);
 
 		} else {
 			System.out.println("로그인 실패");

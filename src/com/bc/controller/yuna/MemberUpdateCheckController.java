@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/MemberUpdateCheck")
+@WebServlet("/MemberUpdateCheck")
 public class MemberUpdateCheckController extends HttpServlet{
 
 	@Override

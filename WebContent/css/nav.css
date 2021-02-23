@@ -1,42 +1,19 @@
 
 @charset "UTF-8";
 
-@font-face {
-    font-family: NanumSquareL;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareL.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareR;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareR.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareB.ttf) format("truetype")
-}
-
-@font-face {
-    font-family: NanumSquareEB;
-    font-weight: 400;
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot);
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.eot?#iefix) format("embedded-opentype");
-    src: url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff2) format("woff2"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.woff) format("woff"), url(https://ssl.pstatic.net/static/nid/webfont/NanumSquareEB.ttf) format("truetype")
-}
-
-
 
 
 /*Navbar*/
+
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+nav {
+	text-decoration:none;
+	color:black;
+}
+
 
 #navbar{
     display:flex;
@@ -46,22 +23,25 @@
     background-color: #f7f2e8;
     align-items: center;
     padding: 16px;
-    font-family: NanumSquareB;
-    font-size:15px;
+    font-family: 'Karla', sans-serif;
+    font-size:13px;
     color:black;
 	text-decoration:none;
+	z-index: 10;
+	color:black;
+	font-weight:400;
 }
 
 #navbars{
     display:flex;
-    position: sticky;
     top: 0;
     justify-content: space-between;
     background-color: white;
-    align-items: flex-end;
-    padding-left:330px;
-    padding-right: 330px;
-    padding-bottom: 20px;
+    align-items:flex-end;
+    padding-left:345px;
+    padding-right: 345px;
+    margin-bottom: 50px;
+
 }
 
 .navbar__menu{
@@ -78,6 +58,11 @@
     border-radius: 3px;
     padding: 0 10px;
     text-decoration:none;
+    color:black;
+}
+
+.navbar__menu_item a {
+	text-decoration:none;
     color:black;
 }
 

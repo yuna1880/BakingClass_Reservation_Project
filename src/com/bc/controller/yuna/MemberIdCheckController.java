@@ -16,7 +16,7 @@ import org.apache.catalina.Session;
 import com.bc.model.dao.DAO;
 import com.bc.model.vo.MemberVO;
 
-@WebServlet("/yuna/checkId")
+@WebServlet("/checkId")
 public class MemberIdCheckController extends HttpServlet{
 	
 	@Override

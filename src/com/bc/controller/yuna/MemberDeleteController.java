@@ -1,6 +1,7 @@
 package com.bc.controller.yuna;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ import com.bc.model.vo.MemberVO;
 
 
 //회원가입 컨트롤러
-@WebServlet("/yuna/MemberDelete")
+@WebServlet("/MemberDelete")
 public class MemberDeleteController extends HttpServlet{
 	
 	@Override
@@ -29,10 +30,18 @@ public class MemberDeleteController extends HttpServlet{
 		
 		if(result == 0) {
 			System.out.println("탈퇴 실패");
+			//가입 후 페이지에 넘겨줄 메세지 
+			String msg = "탈퇴처리중 오류가 발생했습니다. 다시 시도해주세요.";
+			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+			response.sendRedirect("login.jsp?msg=" + encodedMsg);
 			
 		}else {
 			System.out.println("탈퇴 완료");//회원가입 정보 출력
-			request.getRequestDispatcher("member_delete_ok.jsp").forward(request, response);
+			
+			//가입 후 페이지에 넘겨줄 메세지 
+			String msg = "탈퇴가 정상적으로 처리되었습니다. 안녕히 가십시오.";
+			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
+			response.sendRedirect("login.jsp?msg=" + encodedMsg);
 		} 
 		
 		
