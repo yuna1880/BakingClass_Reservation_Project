@@ -23,6 +23,11 @@
 <link rel="stylesheet" href="css/write_style.css"/>
 <link rel="stylesheet" href="css/nav.css"/>
 <link rel="stylesheet" href="css/main.css"/>
+<style>
+input[type='file']{
+	display:none;
+}
+</style>
 <script>
 	
 	document.addEventListener("DOMContentLoaded", function(){
