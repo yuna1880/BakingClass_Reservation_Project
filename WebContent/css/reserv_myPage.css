@@ -247,7 +247,7 @@ main {
    float: left;
    display: flex;
    flex-direction: column;
-   width:900px;
+   width:1000px;
    margin-top:15px;
 }
 
@@ -601,6 +601,12 @@ main .table th.w100, main .table td.w100, main .table .th.w100, main .table .td.
 {
    width: 100px;
 }
+
+main .table th.w120, main .table td.w120, main .table .th.w120, main .table .td.w120
+{
+   width: 120px;
+}
+
 
 main .table th.w150, main .table td.w150, main .table .th.w150, main .table .td.w150
 {

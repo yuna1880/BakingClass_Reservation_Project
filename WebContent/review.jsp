@@ -76,8 +76,8 @@
 						<th class="w60">번호</th>
 						<th class="expand">제목</th>
 						<th class="w100">작성자</th>
-						<th class="w100">작성일</th>
-						<th class="w60">별점</th>
+						<th class="w120">작성일</th>
+						<th class="w40">별점</th>
 					</tr>
 				</thead>
 				<tbody>

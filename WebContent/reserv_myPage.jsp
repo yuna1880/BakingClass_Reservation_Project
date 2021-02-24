@@ -163,10 +163,10 @@
 			<table class="table">
 				<thead>
 					<tr class="title">
-						<th class="w40">예약번호</th>
-						<th class="w100">클래스명</th>
-						<th class="w100">수업날짜</th>
-						<th class="expand">수업시간</th>
+						<th class="w60">예약번호</th>
+						<th class="w120">클래스명</th>
+						<th class="w120">수업날짜</th>
+						<th class="w120">수업시간</th>
 						<th class="w100">결제금액</th>
 						<th class="w100">결제</th>
 						<th class="w100">진행상태</th>
@@ -185,7 +185,24 @@
 						<c:forEach var="vo" items="${list }">
 							<tr>
 								<td>${vo.reserv_idx }</td>
-								<td>${vo.cls_idx }</td>
+								<c:if test="${vo.cls_idx  == '100' }">
+									<td>쿠키 클래스</td>
+								</c:if>
+								<c:if test="${vo.cls_idx  == '200' }">
+									<td>케이크 클래스</td>
+								</c:if>
+								<c:if test="${vo.cls_idx  == '300' }">
+									<td>스콘 클래스</td>
+								</c:if>
+								<c:if test="${vo.cls_idx  == '400' }">
+									<td>초콜릿 클래스</td>
+								</c:if>
+								<c:if test="${vo.cls_idx  == '500' }">
+									<td>마카롱 클래스</td>
+								</c:if>
+								<c:if test="${vo.cls_idx  == '600' }">
+									<td>미니타르트 클래스</td>
+								</c:if>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${vo.reserv_date }" /></td>
 
