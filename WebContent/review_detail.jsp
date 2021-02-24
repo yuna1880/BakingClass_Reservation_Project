@@ -58,31 +58,29 @@ if (msg != null && msg.length > 0) {
 						</tr>
 					<tr>
 						<th>작성자</th>
-						<td>${vo.id}</td>
+						<td style="text-align: left">${vo.id}</td>
 					</tr>
 					<tr>
 						<th>평점</th>
-						<td>
+						<td class="align-star">
 							<div class="product-review-stars">
-								<input type="radio" id="star5" name="rating" value="5"
-									class="visuallyhidden" ${vo.review_star == '5' ? "checked" : ""} />
-								<label for="star5" title="Rocks!">★</label>
+								<c:if test="${vo.review_star eq 5}">
+									<p>★★★★★</p>
+								</c:if>
+								<c:if test="${vo.review_star eq 4}">
+									<p>★★★★</p>
+								</c:if>
+								<c:if test="${vo.review_star eq 3}">
+									<p>★★★</p>
+								</c:if>
+								<c:if test="${vo.review_star eq 2}">
+									<p>★★</p>
+								</c:if>
+								<c:if test="${vo.review_star eq 1}">
+									<p>★</p>
+								</c:if>
 							
-								<input type="radio" id="star4" name="rating" value="4"
-									class="visuallyhidden" ${vo.review_star == '4' ? "checked" : ""}/>
-								<label for="star4" title="Pretty good">★</label>
-							
-								<input type="radio" id="star3" name="rating" value="3"
-									class="visuallyhidden" ${vo.review_star == '3' ? "checked" : ""}/>
-								<label for="star3" title="Meh">★</label>
-							
-								<input type="radio" id="star2" name="rating" value="2"
-									class="visuallyhidden" ${vo.review_star == '2' ? "checked" : ""}/>
-								<label for="star2" title="Kinda bad">★</label>
-							
-								<input type="radio" id="star1" name="rating" value="1"
-									class="visuallyhidden" ${vo.review_star == '1' ? "checked" : ""}/>
-								<label for="star1" title="Sucks big time">★</label>	
+								
 							</div>
 						</td>
 					</tr>
@@ -92,7 +90,7 @@ if (msg != null && msg.length > 0) {
 								<br>
 							</div>
 							<div>
-								<img src="${vo.review_image}" width="600px" height="500px">
+								<img src="${vo.review_image}" width="600px" height="700px">
 							<br>
 								${vo.review_content}
 							</div>
@@ -114,11 +112,13 @@ if (msg != null && msg.length > 0) {
 		<div class="margin-top text-align-center">
 				<form method="get">
 						<!-- reviewList 컨트롤러로 이동 !!  -->
-						<a href="reviewList">목록으로</a>
+						<button type="button" class="btn-point" onclick="javascript:location.href='reviewList'" >목록으로</button>
+						
 						<!-- 리뷰 작성 아이디가 로그인 아이디랑 같을때만 수정/삭제 가능하도록.. -->
 						<c:if test="${vo.id == userid}">
-							<a href="ReviewUpdateForm?idx=${vo.review_idx}">수정</a>
-							<a href="review_delete.jsp?review_idx=${vo.review_idx}">삭제</a>
+							<button type="button" class="btn-point" onclick="javascript:location.href='ReviewUpdateForm?idx=${vo.review_idx}'" >수정</button>	
+							<button type="button" class="btn-point" onclick="javascript:location.href='review_delete.jsp?review_idx=${vo.review_idx}'" >삭제</button>	
+								
 						</c:if>
 				</form>
 		</div>

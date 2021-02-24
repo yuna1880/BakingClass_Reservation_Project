@@ -71,8 +71,6 @@
 								<th class="w100">작성자</th>
 								<th class="w100">작성일</th>
 								<th class="w100">조회수</th>
-								<th class="w40">공개</th>
-								<th class="w40">삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,8 +90,6 @@
 											
 										</td>
 										<td>${list.notice_hit}</td>
-										<td><input type="checkbox" name="open"></td>
-										<td><input type="checkbox" name="del"></td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -106,35 +102,110 @@
 				</div>
 
 				<div class="text-align-right margin-top">
-					<input type="submit" class="btn-text btn-default" value="일괄공개">
-					<input type="submit" class="btn-text btn-default" value="일괄삭제">
-					<div class="text-align-right margin-top">
-					<button type="button" class="btn-point">작성
-					</button>					
-		</div>			
+
 				</div>
 
-				<div class="margin-top align-center pager">
 
-					<div>
+<%-- ========================================================================================================== --%>
+				<div class="align-center pager">
+			<%-- 파라미터  값이 null 이면 1을 넣어주고, null 이 아니면 파라미터값으로 셋팅해준다.
+			<c:set var="page" value="${(param.p == null)?1:param.p}" />
+			<c:set var="startNum" value="${page-(page - 1)%5}" />
+			<c:set var="lastNum" value="23" />--%>
 
+			<!--  페이징 구현  -->
+				<div class="divNum">
+					<%-- 이전페이지 --%>
+					<c:if test="${pvo.beginPage == 1}">
+							<button type="button" class="btn-search-pager" onclick="javascript:alert('이전 페이지가 없습니다.');">이전</button>
+					</c:if>
+				
+					<c:if test="${not empty param.q}">
+						<c:if test="${pvo.beginPage != 1}">
+							<button type="button" class="btn-search-pager" onclick="javascript:location.href='reviewListSearch?cPage=${pvo.beginPage - 1}&f=${review_title}&q=${id}'">이전</button>
+						</c:if>
+					</c:if>	
+					
+					<c:if test="${empty param.q}">
+						<c:if test="${pvo.beginPage != 1}">
+							<button type="button" class="btn-search-pager" onclick="javascript:location.href='reviewList?cPage=${pvo.beginPage - 1}'">이전</button>
+						</c:if>
+					</c:if>	
+				</div>
+				
+			<%-- 페이지 번호 --%>
+		<div class="divNum">
+			<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
 
-						<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
-
-					</div>
+			<%-- 현재 페이지 번호 누를때 -> 해당 페이지 번호의 리스트 보여줌  --%>
+				<c:if test="${pageNo == pvo.nowPage}">
+					<c:if test="${empty param.q}">
+						<!-- 일반리스트 -->
+						<ul class="-list- center">
+							<li>
+								<!-- <a class="-text- orange bold" href="reviewList?cPage=${pageNo}">${pageNo}</a>-->
+								<button type="button" class="btn-search-num" onclick="javascript:location.href='reviewList?cPage=${pageNo}'">${pageNo}</button>
+							</li>
+						</ul>
+				</c:if>
+				
+					<c:if test="${not empty param.q}">
+						<!-- 검색 -->
+						<ul class="-list- center">
+							<li>
+								<!-- <a class="-text- orange bold" href="reviewListSearch?cPage=${pageNo}&f=${review_title}&q=${id}">${pageNo}</a> -->
+								<button type="button" class="btn-search-num" onclick="javascript:location.href='reviewListSearch?cPage=${pageNo}&f=${review_title}&q=${id}'">${pageNo}</button>
+							</li>
+						</ul>
+					</c:if>
+				</c:if>
+				
+    			<%-- 현재 페이지 번호랑 다를때  --%>
+	  			<c:if test="${pageNo != pvo.nowPage}">
 					<ul class="-list- center">
-						<li><a class="-text- orange bold" href="?p=1&t=&q=">1</a></li>
-
+						<c:if test="${empty param.q}">
+							<ul class="-list- center">
+								<li>
+									<!-- <a class="-text- orange bold" href="reviewList?cPage=${pageNo}">${pageNo}</a> -->
+									<button type="button" class="btn-search-num" onclick="javascript:location.href='reviewList?cPage=${pageNo}'">${pageNo}</button>
+								</li>
+							</ul>
+						</c:if>
+				
+				<c:if test="${not empty param.q}">
+							<ul class="-list- center">
+								<li>
+								<!-- <a class="-text- orange bold"href="reviewListSearch?cPage=${pageNo}&f=${review_title}&q=${id}">${pageNo}</a></li> -->
+								<button type="button" class="btn-search-num" onclick="javascript:location.href='reviewListSearch?cPage=${pageNo}&f=${review_title}&q=${id}'">${pageNo}</button>
+							</ul>
+						</c:if>
 					</ul>
-					<div>
+				</c:if>
+			</c:forEach>
+		</div>
+			<%-- (다음)페이지 --%>
+				<div class="divNum">
+					<c:if test="${not empty param.q}">
+						<c:if test="${pvo.endPage < pvo.totalPage}">
+							<!-- <a class="btn btn-next" href="reviewListSearch?cPage=${pvo.endPage + 1}&f=${review_title}&q=${id}">다음</a> -->
+							<button type="button" class="btn-search-pagers" onclick="javascript:location.href='reviewListSearch?cPage=${pvo.endPage + 1}&f=${review_title}&q=${id}'">다음</button>
+						</c:if>
+					</c:if>	
 
-
-						<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
-
-					</div>
-
+					<c:if test="${empty param.q}">
+						<c:if test="${pvo.endPage < pvo.totalPage}">
+							<!-- <a class="btn btn-next" href="reviewList?cPage=${pvo.endPage + 1}">다음</a>-->
+							<button type="button" class="btn-search-pagers" onclick="javascript:location.href='reviewList?cPage=${pvo.endPage + 1}'">다음</button>
+						</c:if>
+					</c:if>	
+					
+					<!--  다음페이지 없을때  -->
+					<c:if test="${pvo.endPage >= pvo.totalPage}">
+						<button type="button" class="btn-search-pagers" onclick="javascript:alert('다음 페이지가 없습니다.');">다음</button>
+					</c:if>
 				</div>
-			</main>
+			</div>
+		</main>
 
 	
 	<%-- =============================================================================================================================================== --%>

@@ -20,6 +20,12 @@
 	if (msg != null && msg.length > 0) {
 		alert(msg);
 	}
+	
+	let clo = "${param.clo}";
+	if (clo == 'close') {
+		//location.reload(true);
+		window.close();
+	}
 
 	function member_update(frm) {
 		//frm.action = "memberupdate"; // 예전 jsp 직접 호출 방식
@@ -28,8 +34,8 @@
 	}
 	function member_delete(frm) {
 		window.name = "MemberDeleteMessage";
-		window.open("memberdelete.jsp",
-					"width=50, height=50, resizable = no, scrollbars = no");
+		window.open("memberdelete.jsp", "ow1",
+					"width=500, height=500");
 		
 	}
 	function member_reserv(frm) {
@@ -37,6 +43,8 @@
 		frm.submit();
 		
 	}
+	
+	
 </script>
 <link rel="stylesheet" href="css/style.css"/>
 </head>

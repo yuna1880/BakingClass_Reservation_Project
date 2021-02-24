@@ -93,7 +93,7 @@ select {
 /* 이전 */
 .btn-search-pager {
 	width:30px;
-	height:20px;
+	height:25px;
 	color:#fff;
     border:1px solid #9e9e9e;
     border-radius:3px;
@@ -102,11 +102,12 @@ select {
 	padding:2px;
 	margin-top:7px;
 	margin-right:20px;
+	text-decoration:none;
 }
 /* 다음 */
 .btn-search-pagers {
 	width:30px;
-	height:20px;
+	height:25px;
 	color:#fff;
     border:1px solid #9e9e9e;
     border-radius:3px;
@@ -115,6 +116,7 @@ select {
 	padding:2px;
 	margin-left:27px;
 	margin-top:7px;
+	text-decoration:none;
 	
 }
 
@@ -138,7 +140,7 @@ select {
 
 .btn-point:hover,
 .btn.active:hover {
-    background: #878787;
+    background: #da2d33;
 }
 
 .btn-search:hover,
@@ -146,6 +148,7 @@ select {
 .btn-search-pagers:hover,
 .btn-search-num:hover {
 	background: #707070;
+	text-decoration:none;
 }
 
 
@@ -209,7 +212,7 @@ td>form>a {
 a:active,
 a:focus,
 a:hover {
-    text-decoration: underline
+    color:#da2d33;
 }
 
 table {
@@ -563,6 +566,10 @@ main .table tr.hover:hover{
 
 
 /* --- 셀의 모양 -------------------------- */
+.product-review-stars {
+	
+	text-align: left;
+}
 
 main .table td, 
 main .table th, 
@@ -572,6 +579,11 @@ main .table .th {
 	text-align: center;
 	border-bottom: 1px solid #e9e9e9;
 	padding : 15px;
+}
+
+main .table .td .align-star {
+	
+	text-align: left;
 }
 
 main .table.dashed td, 
@@ -703,6 +715,10 @@ main .table td img.-text-.vertical.center,
 main .table td label.-text-.vertical.center{
 	vertical-align: middle;
 }
+
+/* 별점 */
+
+
 
 
 

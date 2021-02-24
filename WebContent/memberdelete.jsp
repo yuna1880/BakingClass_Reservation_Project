@@ -7,10 +7,10 @@
 <title>회원탈퇴</title>
 <script>
 	function member_delete(frm) {
-		//memberdelete.jsp페이지로 이동..
 		frm.action = "MemberDelete";
 		frm.submit();
-	}
+}
+	
 </script>
 <link rel="stylesheet" href="css/style.css"/>
 </head>

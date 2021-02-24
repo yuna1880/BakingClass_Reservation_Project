@@ -77,7 +77,7 @@
 						<th class="expand">제목</th>
 						<th class="w100">작성자</th>
 						<th class="w100">작성일</th>
-						<th class="w60">조회수</th>
+						<th class="w60">별점</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -100,7 +100,7 @@
 							<td>
 								<fmt:formatDate pattern="yyyy-MM-dd" value="${list.review_date}"/>
 							</td>
-							<td>${list.review_hit}</td>
+							<td>${list.review_star}</td>
 						</tr>
 					</c:forEach>
 					</c:if>	
@@ -114,8 +114,10 @@
 				<div><span class="text-orange text-strong">${pvo.nowPage}</span> / ${pvo.totalPage} pages</div>
 		</div>
 		<div class="text-align-right margin-top">
-			<button type="button" class="btn-point" onclick="javascript:location.href='write_review2.jsp'">후기작성
-			</button>					
+			<c:if test="${not empty userid}">
+				<button type="button" class="btn-point" onclick="javascript:location.href='write_review2.jsp'" >후기작성
+				</button>	
+			</c:if>		
 		</div>
 		
 	<%-- ============================================================= 페이징 영역 ================================================================================== --%>

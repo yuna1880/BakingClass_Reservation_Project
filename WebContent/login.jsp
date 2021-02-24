@@ -18,6 +18,8 @@
 		alert(msg);
 	}
 	
+	
+	
 	function checkValue() {
 		if(!document.join_form.id.value){
 			alert("아이디를 입력해주세요.");

@@ -72,9 +72,12 @@
 						autofocus>
 					<select name="class_name" class="class_select" required>
 						<option value="선택없음" disabled>수강 클래스 리스트</option>
-						<option value="제빵 클래스">제빵 클래스</option>
+						<option value="미니타르트 클래스">미니타르트 클래스</option>
 						<option value="마카롱 클래스">마카롱 클래스</option>
-						<option value="파티시에 클래스">파티시에 클래스</option>
+						<option value="초콜릿 클래스">초콜릿 클래스</option>
+						<option value="스콘 클래스">스콘 클래스</option>
+						<option value="케이크 클래스">케이크 클래스</option>
+						<option value="쿠키 클래스">쿠키 클래스</option>
 					</select>
 				</fieldset>
 				

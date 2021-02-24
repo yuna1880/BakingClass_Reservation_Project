@@ -41,12 +41,14 @@ public class MemberDeleteController extends HttpServlet{
 			//가입 후 페이지에 넘겨줄 메세지 
 			String msg = "탈퇴가 정상적으로 처리되었습니다. 안녕히 가십시오.";
 			String encodedMsg = URLEncoder.encode(msg, "UTF-8");
-			response.sendRedirect("login.jsp?msg=" + encodedMsg);
+			String clo = "close";
+			session.invalidate();
+			
+			//response.getWriter().write(result + "");
+			response.sendRedirect("mypage.jsp?msg=" + encodedMsg + "&clo=" + clo);
 		} 
 		
-		
 
-		
 		
 	}
 	
