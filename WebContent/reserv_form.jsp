@@ -8,27 +8,6 @@
 	String clsidx = request.getParameter("clsidx");
 	String clsprice = request.getParameter("clsprice");
 	String id = (String)session.getAttribute("nname");
-
-	
-/*
-	String clsidx = request.getParameter("clsidx");
-	int clsprice = Integer.valueOf(request.getParameter("clsprice"));
-	*/
-	
-
-/* 	
-	String clsName = request.getParameter("clsName");
-	int parmPrice = Integer.valueOf(request.getParameter("price"));
-	pageContext.setAttribute("parmPrice",parmPrice);
-	
-	
-	session.setAttribute("id", request.getParameter("id"));	
-	//상세페이지되면 바꿔야하는 것들
-	
-	// 클래스 번호
-	String clsNum = request.getParameter("clsNum");
-	pageContext.setAttribute("clsNum", clsNum);
- */
 	
 %>
 <!DOCTYPE html>
@@ -87,6 +66,10 @@ select {
 		<div id="content">
 			<div class="row_group">
 			
+			
+			
+			
+			.
 				<div class="join_row">
 					<h3 class="join_title" id="title">
 						<label for="name" >클래스이름</label>
