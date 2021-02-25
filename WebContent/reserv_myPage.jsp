@@ -27,7 +27,7 @@
 		p.setNowPage(Integer.parseInt(cPage));
 	}
 
-	//3. 현재 페이지에 표시할 게시글 시작번호(begin), 끝번호(end) 구하기
+	//3. 현재 페이지에 표시할 게시글 시작번호(begin), 끝번호(end) S구하기
 	p.setEnd(p.getNowPage() * p.getNumPerPage()); //현재페이지번호 * 페이지당 글수
 	p.setBegin(p.getEnd() - p.getNumPerPage() + 1);
 

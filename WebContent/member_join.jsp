@@ -125,7 +125,7 @@
                                 <h3 class="join_title"><label for="pswd2">비밀번호 확인</label></h3>
                                 <span class="ps_box int_pass_check" id="pswd2Img">
                                     <input type="password" id="pswd2" name="pwd2" class="int" placeholder="비밀번호 (영문+숫자) 8자이상" 
-                                    	title="비밀번호 (영문+숫자) 8-15자" aria-describedby="pswd2Blind" maxlength="20">
+                                    	title="비밀번호 (영문+숫자) 8-15자" aria-describedby="pswd2Blind" maxlength="20" >
                                     	
                                     <span id="pswd2Blind" class="wa_blind"></span>
                                 </span>

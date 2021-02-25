@@ -28,7 +28,7 @@
                 <%-- 비로그인시 --%>
                 <c:if test="${empty sessionScope.userid}">
                 	<li class="navbar__menu_item"><a href="login.jsp">로그인</a></li>
-                	<li class="navbar__menu_item"><a href="longin.jsp">내정보</a></li>
+                	<li class="navbar__menu_item"><a href="login.jsp">내정보</a></li>
 	                <li class="navbar__menu_item"><a href="login.jsp">예약조회</a></li>
                 </c:if>
                 <br>

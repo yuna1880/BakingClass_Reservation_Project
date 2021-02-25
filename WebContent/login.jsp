@@ -59,7 +59,7 @@
 							<div class="name_wrap">
 								<div class="">
 									<span class="ps_box box_right_space"> <input type="text"
-										id="id" name="id" placeholder=id class="int" maxlength="40">
+										id="id" name="id" placeholder=id class="int" maxlength="40" autocomplete="off">
 									</span>
 								</div>
 							</div>
@@ -73,7 +73,7 @@
 							<span class="ps_box int_pass" id="pswd1Img"> <input
 								type="password" id="pswd1" name="pwd1" class="int"
 								placeholder="password" title="Input password"
-								aria-describedby="pswd1Msg" maxlength="20"> <span
+								aria-describedby="pswd1Msg" maxlength="20" autocomplete="off"> <span
 								class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 							</span> <span class="error_next_box" id="pswd1Msg" style="display: none"
 								aria-live="assertive"></span>
@@ -91,6 +91,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</form>
 	<c:import url="footer.jsp"></c:import>
 </body>

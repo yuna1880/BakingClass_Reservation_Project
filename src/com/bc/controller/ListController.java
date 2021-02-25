@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,17 @@ public class ListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("> ListController.doGet() 시작 ");
+		
+//		Cookie cookie = new Cookie("id", "yuna1880");
+//		response.addCookie(cookie);
+		Cookie[] cookies = request.getCookies();
+		for (Cookie c : cookies) {
+			System.out.println(c.getName() + ", " + c.getValue());
+			if (c.getName().equals("id")) {
+				System.out.println("cookie 값 : " + c.getValue());
+				break;
+			}
+		}
 	
 		List<ClsVO> list = ProductDAO.getList();
 		request.setAttribute("list", list); 

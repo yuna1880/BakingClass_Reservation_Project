@@ -56,7 +56,7 @@
 					<li class="redtext" name="clsprice">수강료(1인) : ${vo.getCls_price()}원 </li>
 					<li>개강 날짜 : ${vo.getCls_startdate().substring(0,10) } </li>
 					<li>마감 날짜 : ${vo.getCls_enddate().substring(0,10) } </li>
-					<li>소요 시간 : 약 4시간
+					<li>소요 시간 : 약 4시간 
 					<li>오전 : 9:00 ~ 13:00 </li>
 					<li>오후 : 14:00 ~ 18:00 </li>
 					<li>강사명 : ${vo.getName()} </li>
