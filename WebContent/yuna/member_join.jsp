@@ -10,9 +10,9 @@
     <title>회원가입 페이지</title>
     <style>
     	#id_check { color : red; }
-    
+
     </style>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 crossorigin="anonymous"></script>
 <script>
 	function checkValue() {
@@ -35,16 +35,16 @@ crossorigin="anonymous"></script>
 			return false;
 		}
 	}
-	
+
 	let timer;
 	function checkId() {
 		//alert("실행!");
 		// 아이디 중복체크  1: 중복     0: 중복x
 		var idCheck = 0;
 		var inputid = $("#id").val();
-		
+
 		clearTimeout(timer);
-		
+
 		timer = setTimeout( function () {
 			$.ajax({
 				url : "checkId?id=" + inputid,
@@ -61,17 +61,17 @@ crossorigin="anonymous"></script>
 					}
 					else if (data == 1) {
 						$("#id_check").text("사용중인 아이디입니다. 다시 입력해주세요.");
-		
+
 					}
 				}, error : function() {
 					console.log("실패");
 				}
 			});
 		}, 400);
-				
+
 	}
-	
-</script>  
+
+</script>
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
@@ -80,7 +80,7 @@ crossorigin="anonymous"></script>
     <br>
     <p align="center">회원가입을 위한 정보를 입력해주세요.</p>
     <br>
-    
+
     <form name="join_form" method="post" action="MemberJoin" onsubmit="return checkValue()">
 
         <!-- container -->
@@ -90,7 +90,7 @@ crossorigin="anonymous"></script>
                 <h2 class="blind">Sign Up</h2>
                     <div class="join_content">
                         <!-- 아이디, 비밀번호 입력 -->
-                        
+
                         <!--
                         <div class="row_group">
                             <div class="join_row">
@@ -105,7 +105,7 @@ crossorigin="anonymous"></script>
                                 <h3 class="join_title"><label for="id">아이디</label></h3>
                                 <div class="int_mobile_area">
                                     <span class="ps_box int_mobile">
-                                        <input type="text" id="id" name="id" placeholder="아이디를 입력해주세요." aria-label="아이디입력" 
+                                        <input type="text" id="id" name="id" placeholder="아이디를 입력해주세요." aria-label="아이디입력"
                                         class="int" maxlength="16" oninput="checkId()" >
                                    	<!-- 아이디 중복체크 공간 -->
                                     </span>
@@ -118,19 +118,19 @@ crossorigin="anonymous"></script>
                             <div class="join_row">
                                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                                 <span class="ps_box int_pass" id="pswd1Img">
-                                    <input type="password" id="pswd1" name="pwd1" class="int" placeholder="비밀번호 (영문+숫자) 8자이상" 
+                                    <input type="password" id="pswd1" name="pwd1" class="int" placeholder="비밀번호 (영문+숫자) 8자이상"
                                     		title="비밀번호 (영문+숫자) 8자이상" aria-describedby="pswd1Msg" maxlength="20"
                                     		pattern="[A-Za-z0-9]{8}">
-                                    		
+
                                     <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
                                 </span>
                                 <span class="error_next_box" id="pswd1Msg" style="display:none" aria-live="assertive"></span>
 
                                 <h3 class="join_title"><label for="pswd2">비밀번호 확인</label></h3>
                                 <span class="ps_box int_pass_check" id="pswd2Img">
-                                    <input type="password" id="pswd2" name="pwd2" class="int" placeholder="비밀번호 (영문+숫자) 8자이상" 
+                                    <input type="password" id="pswd2" name="pwd2" class="int" placeholder="비밀번호 (영문+숫자) 8자이상"
                                     	title="비밀번호 (영문+숫자) 8자이상" aria-describedby="pswd2Blind" maxlength="20">
-                                    	
+
                                     <span id="pswd2Blind" class="wa_blind"></span>
                                 </span>
                                 <span class="error_next_box" id="pswd2Msg" style="display:none" aria-live="assertive"></span>
@@ -154,7 +154,7 @@ crossorigin="anonymous"></script>
                         <div class="join_row join_mobile">
                             <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                             <span class="ps_box box_right_space">
-                                <input type="text" id="phoneNo" name="phoneNo" placeholder="010-1234-5678" 
+                                <input type="text" id="phoneNo" name="phoneNo" placeholder="010-1234-5678"
                                 	class="int" maxlength="40" pattern="[0-9]{3}[-]+[0-9]{4}[-]+[0-9]{4}"
                                 	title="핸드폰번호 : 010-1234-5678">
                             </span>
