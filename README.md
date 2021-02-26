@@ -116,6 +116,7 @@
 
 ![게시판6](https://user-images.githubusercontent.com/72509037/109277021-18006180-785a-11eb-9b92-78c0833aac70.PNG)
 ![게시판7](https://user-images.githubusercontent.com/72509037/109277028-19318e80-785a-11eb-80b3-11e2e0e9e74f.PNG)
+---
 검색창에서 **`동적검색`** (**`이름`**, **`아이디`**) 키워드로 검색이 가능하도록 구현.
 
 
