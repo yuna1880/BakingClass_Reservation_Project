@@ -1,4 +1,4 @@
-## Baking Class Reservation Website Project (Team)
+## 🍞 Baking Class Reservation Website Project (Team)
 ##### JSP + MyBatis 를 이용한 베이킹 원데이 클래스 예약 사이트 만들기 
 ##### (2021.02.15 - 25)
 ##### 팀프로젝트 (권유나, 김보경, 이상희 총 3명)
