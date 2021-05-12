@@ -121,7 +121,3 @@
 - **중복되는 코드 정리**
 - 여러개의 Controller를 FrontController로 대체할 것에 대한 고민.
 - 처음 설계시, 명확한 설계와 기획의 필요성.
-
-More about this project 🔽 Please have a look !
----
-[👉🏻 click here 👈🏻](https://www.notion.so/yunakwon/Baking-Class-Reservation-Website-Project-e4d1e7a4524840b7b75ca9ca6be9f67b)
